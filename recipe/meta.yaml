@@ -1,6 +1,6 @@
 {% set name = "adios2" %}
 {% set version = "2.4.0" %}
-{% set build = 1 %}
+{% set build = 2 %}
 {% set sha256 = "50ecea04b1e41c88835b4b3fd4e7bf0a0a2a3129855c9cc4ba6cf6a1575106e2" %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
@@ -64,6 +64,8 @@ requirements:
     # TODO: seams broken on OSX
     - zeromq >=4.1  # [not osx]
     - bzip2         # [not osx]
+    - blosc         # [not osx]
+    - libpng        # [not osx]
     # TODO: zfp, sz, mgard
   run:
     - {{ mpi }}  # [mpi != 'nompi']
