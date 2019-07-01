@@ -1,6 +1,6 @@
 {% set name = "adios2" %}
 {% set version = "2.4.0" %}
-{% set build = 5 %}
+{% set build = 6 %}
 {% set sha256 = "50ecea04b1e41c88835b4b3fd4e7bf0a0a2a3129855c9cc4ba6cf6a1575106e2" %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
@@ -64,8 +64,10 @@ requirements:
     # TODO: missing linker symbols on Windows
     # need to list hdf5 twice to get version pinning from conda_build_config
     # and build pinning from {{ mpi_prefix }}
-    - hdf5                                 # [not win]
-    - hdf5  >=1.8.13 = {{ mpi_prefix }}_*  # [not win]
+    # TODO: hdf5 is not yet available on aarch64
+    # https://github.com/conda-forge/hdf5-feedstock/pull/111#issuecomment-523484918
+    - hdf5                                 # [not (win or aarch64)]
+    - hdf5  >=1.8.13 = {{ mpi_prefix }}_*  # [not (win or aarch64)]
     # TODO: Could NOT find ZeroMQ (missing: ZeroMQ_LIBRARY) on Windows
     - zeromq >=4.1  # [not win]
     - bzip2
