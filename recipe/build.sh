@@ -9,8 +9,12 @@ if [[ ${target_platform} =~ osx.* ]]; then
     CMAKE_PLATFORM_FLAGS+=(-DCMAKE_TOOLCHAIN_FILE="${RECIPE_DIR}/cross-osx.cmake")
     CMAKE_PLATFORM_FLAGS+=(-DADIOS2_USE_Fortran=OFF)
     CMAKE_PLATFORM_FLAGS+=(-DADIOS2_USE_BZip2=OFF)
+    USE_Blosc=OFF
+    USE_PNG=OFF
 elif [[ ${target_platform} =~ linux.* ]]; then
     CMAKE_PLATFORM_FLAGS+=(-DCMAKE_TOOLCHAIN_FILE="${RECIPE_DIR}/cross-linux.cmake")
+    USE_Blosc=ON
+    USE_PNG=ON
 fi
 
 
@@ -56,7 +60,9 @@ cmake \
     -DCMAKE_CXX_STANDARD=${CXX_STANDARD}      \
     -DCMAKE_CXX_STANDARD_REQUIRED=ON          \
     -DCMAKE_CXX_EXTENSIONS=${CXX_EXTENSIONS}  \
+    -DADIOS2_USE_Blosc=${USE_Blosc}           \
     -DADIOS2_USE_MPI=${USE_MPI}               \
+    -DADIOS2_USE_PNG=${USE_PNG}               \
     -DADIOS2_USE_Python=ON                    \
     -DADIOS2_BUILD_EXAMPLES=OFF               \
     -DADIOS2_BUILD_TESTING=OFF                \

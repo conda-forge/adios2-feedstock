@@ -19,6 +19,8 @@ cmake ^
     -DADIOS2_USE_MPI=OFF        ^
     -DADIOS2_BUILD_EXAMPLES=OFF ^
     -DADIOS2_BUILD_TESTING=OFF  ^
+    -DADIOS2_USE_Blosc=ON       ^
+    -DADIOS2_USE_PNG=ON         ^
     -DADIOS2_USE_Python=ON      ^
     -DADIOS2_USE_Profiling=OFF  ^
     -DADIOS2_USE_Fortran=OFF    ^
