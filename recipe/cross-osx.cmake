@@ -5,7 +5,7 @@ set(CMAKE_PLATFORM Darwin)
 set(CMAKE_SYSTEM_VERSION 1)
 
 # architecture
-set(CMAKE_SYSTEM_PROCESSOR $ENV{OSX_ARCH})
+# set(CMAKE_SYSTEM_PROCESSOR $ENV{OSX_ARCH})
 
 # specify the cross compiler
 set(CMAKE_C_COMPILER $ENV{CC})
