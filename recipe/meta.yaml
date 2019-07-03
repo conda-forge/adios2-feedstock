@@ -52,13 +52,15 @@ requirements:
     - {{ compiler('cxx') }}
     # TODO: seams incompatible on OSX and too experimental for Windows
     - {{ compiler('fortran') }}  # [linux]
-    - make  # [unix]
+    - make          # [unix]
+    - pkg-config    # [unix]
     - cmake >=3.11
   host:
     - {{ mpi }}  # [mpi != 'nompi'] 
     - mpi4py     # [mpi != 'nompi']
     - python
     - numpy >=1.15.0
+    - libffi
     # TODO: missing linker symbols on Windows
     - hdf5  >=1.8.13 = {{ mpi_prefix }}_*  # [not win]
     # TODO: Could NOT find ZeroMQ (missing: ZeroMQ_LIBRARY) on Windows
