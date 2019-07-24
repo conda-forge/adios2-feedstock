@@ -5,11 +5,11 @@ set(CMAKE_PLATFORM Darwin)
 set(CMAKE_SYSTEM_VERSION 1)
 
 # architecture
-# set(CMAKE_SYSTEM_PROCESSOR $ENV{OSX_ARCH})
+set(CMAKE_SYSTEM_PROCESSOR $ENV{OSX_ARCH})
 
 # link dependencies with rpaths
-set(CMAKE_SHARED_LIBRARY_RUNTIME_C_FLAG "-Wl,-rpath,")
-set(CMAKE_SHARED_LIBRARY_RUNTIME_C_FLAG_SEP ":")
+#set(CMAKE_SHARED_LIBRARY_RUNTIME_C_FLAG "-Wl,-rpath,")
+#set(CMAKE_SHARED_LIBRARY_RUNTIME_C_FLAG_SEP ":")
 
 # specify the cross compiler
 set(CMAKE_C_COMPILER $ENV{CC})
