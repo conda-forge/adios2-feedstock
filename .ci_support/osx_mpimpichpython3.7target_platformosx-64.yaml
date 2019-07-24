@@ -2,6 +2,8 @@ MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 VERBOSE_CM:
 - VERBOSE=1
+bzip2:
+- '1'
 c_compiler:
 - clang
 c_compiler_version:
@@ -14,6 +16,10 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '4'
+libffi:
+- '3.2'
+libpng:
+- 1.6.35
 macos_machine:
 - x86_64-apple-darwin13.4.0
 macos_min_version:
@@ -21,6 +27,12 @@ macos_min_version:
 mpi:
 - mpich
 pin_run_as_build:
+  bzip2:
+    max_pin: x
+  libffi:
+    max_pin: x.x
+  libpng:
+    max_pin: x.x
   python:
     min_pin: x.x
     max_pin: x.x

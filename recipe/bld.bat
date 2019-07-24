@@ -20,10 +20,12 @@ cmake ^
     -DADIOS2_BUILD_EXAMPLES=OFF ^
     -DADIOS2_BUILD_TESTING=OFF  ^
     -DADIOS2_USE_Blosc=ON       ^
-    -DADIOS2_USE_PNG=ON         ^
-    -DADIOS2_USE_Python=ON      ^
-    -DADIOS2_USE_Profiling=OFF  ^
+    -DADIOS2_USE_BZip2=ON       ^
     -DADIOS2_USE_Fortran=OFF    ^
+    -DADIOS2_USE_PNG=ON         ^
+    -DADIOS2_USE_Profiling=OFF  ^
+    -DADIOS2_USE_Python=ON      ^
+    -DADIOS2_USE_ZeroMQ=OFF     ^
     -DCMAKE_INSTALL_LIBDIR=lib  ^
     -DCMAKE_INSTALL_PYTHONDIR=%SP_DIR% ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  ^
