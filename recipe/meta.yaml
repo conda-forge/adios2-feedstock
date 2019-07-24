@@ -21,8 +21,6 @@ source:
   patches:
     # FIXME: https://github.com/ornladios/ADIOS2/pull/1593
     - 0001-pyd-path-msvc.patch
-    # FIXME: verbose message
-    - 0002-dill-processor.patch
 
 build:
   number: {{ build }}
