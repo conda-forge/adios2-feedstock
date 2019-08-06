@@ -16,6 +16,8 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '4'
+hdf5:
+- 1.10.5
 libffi:
 - '3.2'
 libpng:
