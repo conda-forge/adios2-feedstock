@@ -65,6 +65,7 @@ cmake \
     -DADIOS2_BUILD_EXAMPLES=OFF               \
     -DADIOS2_BUILD_TESTING=OFF                \
     -DPYTHON_EXECUTABLE:FILEPATH=$(which ${PYTHON})  \
+    -DCMAKE_INSTALL_LIBDIR=lib        \
     -DCMAKE_INSTALL_PREFIX=${PREFIX}  \
     -DKWSYS_LFS_WORKS=0               \
     ${CMAKE_PLATFORM_FLAGS[@]}        \
