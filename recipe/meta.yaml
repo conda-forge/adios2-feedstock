@@ -64,10 +64,8 @@ requirements:
     # TODO: missing linker symbols on Windows
     # need to list hdf5 twice to get version pinning from conda_build_config
     # and build pinning from {{ mpi_prefix }}
-    # TODO: hdf5 is not yet available on aarch64
-    # https://github.com/conda-forge/hdf5-feedstock/pull/111#issuecomment-523484918
-    - hdf5                                 # [not (win or aarch64)]
-    - hdf5  >=1.8.13 = {{ mpi_prefix }}_*  # [not (win or aarch64)]
+    - hdf5                                 # [not win]
+    - hdf5  >=1.8.13 = {{ mpi_prefix }}_*  # [not win]
     # TODO: Could NOT find ZeroMQ (missing: ZeroMQ_LIBRARY) on Windows
     - zeromq >=4.1  # [not win]
     - bzip2

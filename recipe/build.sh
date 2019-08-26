@@ -58,6 +58,7 @@ cmake \
     -DCMAKE_CXX_EXTENSIONS=${CXX_EXTENSIONS}  \
     -DADIOS2_USE_Blosc=ON                     \
     -DADIOS2_USE_BZip2=ON                     \
+    -DADIOS2_USE_HDF5=ON                      \
     -DADIOS2_USE_MPI=${USE_MPI}               \
     -DADIOS2_USE_PNG=ON                       \
     -DADIOS2_USE_Python=ON                    \
