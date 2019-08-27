@@ -1,0 +1,35 @@
+# This file was generated automatically from conda-smithy. To update this configuration,
+# update the conda-forge.yml and/or the recipe/meta.yaml.
+
+language: generic
+
+env:
+  global:
+    # The BINSTAR_TOKEN secure variable. This is defined canonically in conda-forge.yml.
+    - secure: "oE15EAmA0S8idq8/WmFhoBqRxbwN+PD+UsYzxuVCBIUKdYfjOPb8YuyR0GW+vifsfJZFIThFyffzmMl3JWkrkaIPlo7zJOXe+nbukAqoICXoi+20ly3/rosiCktM6A+E7EmjAB/KL/7/Pj2UM4yfiKwOK2w+o6RDbdr47LiAYPZQ+a5jQDUBzaViXNCH17zWVDaMCFuNQIpNRBFaalZMpskywMG28WpMDAMt2oFjDxvjHH4Ws/qrvlCoDDcPjA6OseO/D0FevCxzFeuZb3QxRfJNyzzKxbX8L+CEtytShhcfmaD9k1PbHuCT6hE0dfoc+VMpzBCHrhkSXCWBqtT+shWPWSZtOobzEC6k+xmJ+TSb1y+UBWLOe6xGMXm8TMzLo4qghIliz0b1nqdBLTt+gQsQpXrH+P3zBrNLPRRDa/0M34ruouB+/a51d0RGEFNqv0YStSqamA/11rsiiPf7ymTSggpj/UGqliqDxZzLciuFVrm50sSOB8hf+Uj2ewOT3ONthv4HkhUqvEJesPCPQjINBHGDe3G47/p7IIklmW1WPP/zoix2fM/gOClRJ5KGy93jGZWfzFmPF1Fn4Ldx8JDoNTwNKov4qb+0mcbCMBsEyjHREflk0td4+Zbrenbkz13NH2tLZeS1xaht2Q6qHF4hEb9pOWIbBOxX4aCAHK8="
+
+matrix:
+  include:
+    - env: CONFIG=linux_ppc64le_mpimpichpython3.6target_platformlinux-ppc64le UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
+      os: linux-ppc64le
+
+    - env: CONFIG=linux_ppc64le_mpimpichpython3.7target_platformlinux-ppc64le UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
+      os: linux-ppc64le
+
+    - env: CONFIG=linux_ppc64le_mpinompipython3.6target_platformlinux-ppc64le UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
+      os: linux-ppc64le
+
+    - env: CONFIG=linux_ppc64le_mpinompipython3.7target_platformlinux-ppc64le UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
+      os: linux-ppc64le
+
+    - env: CONFIG=linux_ppc64le_mpiopenmpipython3.6target_platformlinux-ppc64le UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
+      os: linux-ppc64le
+
+    - env: CONFIG=linux_ppc64le_mpiopenmpipython3.7target_platformlinux-ppc64le UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=condaforge/linux-anvil-ppc64le
+      os: linux-ppc64le
+
+script:
+  - export CI=travis
+
+
+  - if [[ ${PLATFORM} =~ .*linux.* ]]; then ./.travis/run_docker_build.sh; fi
