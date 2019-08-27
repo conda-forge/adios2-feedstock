@@ -50,6 +50,14 @@ if [[ "$mpi" == "openmpi" ]]; then
     export OMPI_MCA_btl_vader_single_copy_mechanism=none
 fi
 
+# FIXME: the compiler activation on aarch64 is outdated and forgets
+#        to set -rpath-link
+# "warning: libXYZ.so.0, needed by libABC.so, not found (try using -rpath or -rpath-link)"
+if [[ ${target_platform} =~ .*aarch64.* ]]; then
+    export LDFLAGS="${LDFLAGS} -Wl,-rpath-link,${PREFIX}/lib"
+fi
+
+
 cmake \
     -DCMAKE_BUILD_TYPE=Release                \
     -DBUILD_SHARED_LIBS=ON                    \
@@ -58,6 +66,7 @@ cmake \
     -DCMAKE_CXX_EXTENSIONS=${CXX_EXTENSIONS}  \
     -DADIOS2_USE_Blosc=ON                     \
     -DADIOS2_USE_BZip2=ON                     \
+    -DADIOS2_USE_HDF5=ON                      \
     -DADIOS2_USE_MPI=${USE_MPI}               \
     -DADIOS2_USE_PNG=ON                       \
     -DADIOS2_USE_Python=ON                    \
@@ -65,6 +74,7 @@ cmake \
     -DADIOS2_BUILD_EXAMPLES=OFF               \
     -DADIOS2_BUILD_TESTING=OFF                \
     -DPYTHON_EXECUTABLE:FILEPATH=$(which ${PYTHON})  \
+    -DCMAKE_INSTALL_LIBDIR=lib        \
     -DCMAKE_INSTALL_PREFIX=${PREFIX}  \
     -DKWSYS_LFS_WORKS=0               \
     ${CMAKE_PLATFORM_FLAGS[@]}        \
