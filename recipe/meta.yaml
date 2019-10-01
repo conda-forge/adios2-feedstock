@@ -19,8 +19,8 @@ source:
   url: https://github.com/ornladios/ADIOS2/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
-    # FIXME: https://github.com/ornladios/ADIOS2/pull/1593
-    - 0001-pyd-path-msvc.patch
+    # FIXME: https://github.com/ornladios/ADIOS2/pull/1805
+    - 0001-string-compare.patch
 
 build:
   number: {{ build }}
