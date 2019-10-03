@@ -1,0 +1,24 @@
+From 013d1a62e6f007dad78dc9c5985ea15241a7eec1 Mon Sep 17 00:00:00 2001
+From: Axel Huebl <axel.huebl@plasma.ninja>
+Date: Thu, 3 Oct 2019 15:50:45 -0700
+Subject: [PATCH] OSX: Fix JSON Compile Issue
+
+Cast to `std::string` to avoid ambiguity in `std::string::compare`.
+---
+ source/adios2/toolkit/query/JsonWorker.cpp | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/source/adios2/toolkit/query/JsonWorker.cpp b/source/adios2/toolkit/query/JsonWorker.cpp
+index 6af485879..d2657382a 100644
+--- a/source/adios2/toolkit/query/JsonWorker.cpp
++++ b/source/adios2/toolkit/query/JsonWorker.cpp
+@@ -124,7 +124,7 @@ void JsonWorker::ParseJson()
+     }
+ 
+     auto ioO = jsonObj.find("io");
+-    auto ioName = (*ioO)["name"];
++    std::string const ioName = (*ioO)["name"];
+     if (m_SourceReader->m_IO.m_Name.compare(ioName) != 0)
+         throw std::ios_base::failure("invalid query io. Expecting io name = " +
+                                      m_SourceReader->m_IO.m_Name);
+
