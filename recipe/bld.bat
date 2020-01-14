@@ -7,6 +7,12 @@ set CFLAGS=%CFLAGS: -GL=%
 set CXXFLAGS=%CXXFLAGS: -GL=%
 echo "%CXXFLAGS%"
 
+:: dynamic HDF5 linking
+:: https://forum.hdfgroup.org/t/linking-hdf5-with-vs2015-c-64-bit-only-works-with-static-libraries/3697
+set CFLAGS=%CFLAGS% -DH5_BUILT_AS_DYNAMIC_LIB
+set CXXFLAGS=%CXXFLAGS% -DH5_BUILT_AS_DYNAMIC_LIB
+echo "%CXXFLAGS%"
+
 mkdir build
 cd build
 
@@ -22,6 +28,7 @@ cmake ^
     -DADIOS2_USE_Blosc=ON       ^
     -DADIOS2_USE_BZip2=ON       ^
     -DADIOS2_USE_Fortran=OFF    ^
+    -DADIOS2_USE_HDF5=ON        ^
     -DADIOS2_USE_PNG=ON         ^
     -DADIOS2_USE_Profiling=OFF  ^
     -DADIOS2_USE_Python=ON      ^
