@@ -24,7 +24,8 @@ source:
 
 build:
   number: {{ build }}
-  skip: True  # [py27]
+  # https://github.com/ornladios/ADIOS2/issues/2068
+  skip: True  # [python_impl == 'pypy']
 
   # add build string so packages can depend on
   # mpi or nompi variants
