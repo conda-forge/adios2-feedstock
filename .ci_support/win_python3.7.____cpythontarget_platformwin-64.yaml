@@ -3,15 +3,15 @@ VERBOSE_CM:
 bzip2:
 - '1'
 c_compiler:
-- vs2015
+- vs2017
 channel_sources:
 - conda-forge,defaults
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2015
+- vs2017
 hdf5:
-- 1.10.5
+- 1.10.6
 libffi:
 - '3.2'
 libpng:
