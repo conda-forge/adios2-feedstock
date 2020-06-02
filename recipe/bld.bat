@@ -35,7 +35,6 @@ cmake ^
     -DADIOS2_USE_ZeroMQ=OFF     ^
     -DPython_EXECUTABLE:FILEPATH=%PYTHON% ^
     -DCMAKE_INSTALL_LIBDIR=lib  ^
-    -DCMAKE_INSTALL_PYTHONDIR=%SP_DIR% ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  ^
     %SRC_DIR%
 if errorlevel 1 exit 1
