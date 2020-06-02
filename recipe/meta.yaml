@@ -82,7 +82,7 @@ test:
   commands:
     # - python -c "import adios2; print(adios2.__version__);"
     - test -f ${PREFIX}/lib/cmake/adios2/adios2-config.cmake                      # [unix]
-    - test -f ${PREFIX}/lib/lib/libadios2_cxx11.so                                # [linux]
+    - test -f ${PREFIX}/lib/libadios2_cxx11.so                                    # [linux]
     - otool -L ${PREFIX}/lib/libadios2_cxx11.dylib                                # [osx]
     - if exist %LIBRARY_PREFIX%\bin\adios2_cxx11.dll (exit 0) else (exit 1)       # [win]
     - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-config.cmake (exit 0) else (exit 1)  # [win]
