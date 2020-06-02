@@ -1,11 +1,8 @@
 REM Install library with ADIOS2Config.cmake files with cmake
 
-:: remove -GL (whole program optimization) from CXXFLAGS
-:: causes a fatal error when linking our .dll
-echo "%CXXFLAGS%"
-set CFLAGS=%CFLAGS: -GL=%
-set CXXFLAGS=%CXXFLAGS: -GL=%
-echo "%CXXFLAGS%"
+echo "CFLAGS: %CFLAGS%"
+echo "CXXFLAGS: %CXXFLAGS%"
+echo "LDFLAGS: %LDFLAGS%"
 
 :: dynamic HDF5 linking
 :: https://forum.hdfgroup.org/t/linking-hdf5-with-vs2015-c-64-bit-only-works-with-static-libraries/3697
