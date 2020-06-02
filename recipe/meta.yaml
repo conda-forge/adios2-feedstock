@@ -18,9 +18,6 @@ package:
 source:
   url: https://github.com/ornladios/ADIOS2/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    # FIXME: https://github.com/ornladios/ADIOS2/pull/1805
-    - 0001-string-compare.patch
 
 build:
   number: {{ build }}
