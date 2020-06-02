@@ -1,11 +1,8 @@
 REM Install library with ADIOS2Config.cmake files with cmake
 
-:: remove -GL (whole program optimization) from CXXFLAGS
-:: causes a fatal error when linking our .dll
-echo "%CXXFLAGS%"
-set CFLAGS=%CFLAGS: -GL=%
-set CXXFLAGS=%CXXFLAGS: -GL=%
-echo "%CXXFLAGS%"
+echo "CFLAGS: %CFLAGS%"
+echo "CXXFLAGS: %CXXFLAGS%"
+echo "LDFLAGS: %LDFLAGS%"
 
 :: dynamic HDF5 linking
 :: https://forum.hdfgroup.org/t/linking-hdf5-with-vs2015-c-64-bit-only-works-with-static-libraries/3697
@@ -33,10 +30,9 @@ cmake ^
     -DADIOS2_USE_Profiling=OFF  ^
     -DADIOS2_USE_Python=ON      ^
     -DADIOS2_USE_ZeroMQ=OFF     ^
+    -DPython_EXECUTABLE:FILEPATH=%PYTHON% ^
     -DCMAKE_INSTALL_LIBDIR=lib  ^
-    -DCMAKE_INSTALL_PYTHONDIR=%SP_DIR% ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  ^
-    -DCMAKE_PYTHON_OUTPUT_DIRECTORY=%CURRENTDIR%\lib\site-packages  ^
     %SRC_DIR%
 if errorlevel 1 exit 1
 

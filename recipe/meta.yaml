@@ -1,7 +1,7 @@
 {% set name = "adios2" %}
-{% set version = "2.5.0" %}
-{% set build = 2 %}
-{% set sha256 = "7c8ff3bf5441dd662806df9650c56a669359cb0185ea232ecb3578de7b065329" %}
+{% set version = "2.6.0" %}
+{% set build = 0 %}
+{% set sha256 = "45b41889065f8b840725928db092848b8a8b8d1bfae1b92e72f8868d1c76216c" %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
 {% set mpi = mpi or 'nompi' %}
@@ -18,14 +18,11 @@ package:
 source:
   url: https://github.com/ornladios/ADIOS2/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    # FIXME: https://github.com/ornladios/ADIOS2/pull/1805
-    - 0001-string-compare.patch
 
 build:
   number: {{ build }}
   # https://github.com/ornladios/ADIOS2/issues/2068
-  skip: True  # [python_impl == 'pypy']
+  skip: true  # [python_impl == 'pypy']
 
   # add build string so packages can depend on
   # mpi or nompi variants
@@ -38,14 +35,15 @@ build:
   {% else %}
   {% set mpi_prefix = "mpi_" + mpi %}
   {% endif %}
-  string: "{{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}"
+  string: {{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}
 
   run_exports:
     # strict runtime dependency on build-time MPI flavor
     - {{ name }} * {{ mpi_prefix }}_*
-    # https://conda.io/docs/user-guide/tasks/build-packages/variants.html#referencing-subpackages
-    # in 0.X.*, newer minor versions are compatible
-    - {{ pin_subpackage('adios2', min_pin='x.x', max_pin='x.x') }}
+    # patch-releases are not ABI compatible:
+    #   https://docs.conda.io/projects/conda-build/en/latest/resources/variants.html#referencing-subpackages
+    #   https://abi-laboratory.pro/?view=timeline&l=adios2
+    - {{ pin_subpackage('adios2', min_pin='x.x.x', max_pin='x.x.x') }}
 
 requirements:
   build:
@@ -55,7 +53,7 @@ requirements:
     - {{ compiler('fortran') }}  # [linux]
     - make          # [unix]
     - pkg-config    # [unix]
-    - cmake >=3.11
+    - cmake >=3.12
   host:
     - {{ mpi }}  # [mpi != 'nompi'] 
     - mpi4py     # [mpi != 'nompi']
@@ -84,16 +82,16 @@ test:
   commands:
     # - python -c "import adios2; print(adios2.__version__);"
     - test -f ${PREFIX}/lib/cmake/adios2/adios2-config.cmake                      # [unix]
-    - test -f ${PREFIX}/lib/libadios2.so                                          # [linux]
-    - otool -L ${PREFIX}/lib/libadios2.dylib                                      # [osx]
-    - if exist %LIBRARY_PREFIX%\bin\adios2.dll (exit 0) else (exit 1)             # [win]
+    - test -f ${PREFIX}/lib/libadios2_cxx11.so                                    # [linux]
+    - otool -L ${PREFIX}/lib/libadios2_cxx11.dylib                                # [osx]
+    - if exist %LIBRARY_PREFIX%\bin\adios2_cxx11.dll (exit 0) else (exit 1)       # [win]
     - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-config.cmake (exit 0) else (exit 1)  # [win]
 
 about:
   home: https://www.olcf.ornl.gov/center-projects/adios/
   license: Apache-2.0
   license_file: LICENSE
-  summary: 'Next generation of ADIOS developed in the Exascale Computing Program'
+  summary: Next generation of ADIOS developed in the Exascale Computing Program
 
   description: |
     ADIOS2 is the latest implementation of the ADaptable Input Output System,
