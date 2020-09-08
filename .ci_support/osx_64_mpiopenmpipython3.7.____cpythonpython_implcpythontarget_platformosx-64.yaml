@@ -7,7 +7,7 @@ bzip2:
 c_compiler:
 - clang
 c_compiler_version:
-- '9'
+- '10'
 channel_sources:
 - conda-forge,defaults
 channel_targets:
@@ -15,7 +15,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '9'
+- '10'
 hdf5:
 - 1.10.6
 libffi:
@@ -24,10 +24,8 @@ libpng:
 - '1.6'
 macos_machine:
 - x86_64-apple-darwin13.4.0
-macos_min_version:
-- '10.9'
 mpi:
-- mpich
+- openmpi
 pin_run_as_build:
   bzip2:
     max_pin: x
