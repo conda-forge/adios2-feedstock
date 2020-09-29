@@ -30,6 +30,7 @@ cmake ^
     -DADIOS2_USE_Profiling=OFF  ^
     -DADIOS2_USE_Python=ON      ^
     -DADIOS2_USE_ZeroMQ=OFF     ^
+    -DADIOS2_USE_ZFP=ON         ^
     -DPython_EXECUTABLE:FILEPATH=%PYTHON% ^
     -DCMAKE_INSTALL_LIBDIR=lib  ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  ^
