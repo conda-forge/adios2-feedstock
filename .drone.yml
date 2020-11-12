@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_h06d7bd4835
+name: linux_aarch64_c_compiler_version7cx_hce858c65a6
 
 platform:
   os: linux
@@ -8,9 +8,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpimpichpython3.6.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpimpichpython3.6.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -31,7 +31,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_h6efe804f11
+name: linux_aarch64_c_compiler_version7cx_h6b4c0153e5
 
 platform:
   os: linux
@@ -39,9 +39,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpimpichpython3.7.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpimpichpython3.7.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -62,7 +62,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_h35fd8a1669
+name: linux_aarch64_c_compiler_version7cx_h51141c39c2
 
 platform:
   os: linux
@@ -70,9 +70,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpimpichpython3.8.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpimpichpython3.8.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -93,7 +93,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_hfb2cc5a191
+name: linux_aarch64_c_compiler_version7cx_ha64b5a14e4
 
 platform:
   os: linux
@@ -101,9 +101,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpimpichpython3.9.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpimpichpython3.9.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -124,7 +124,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_hb847867d8a
+name: linux_aarch64_c_compiler_version7cx_h2c541148d9
 
 platform:
   os: linux
@@ -132,9 +132,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpinompipython3.6.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpinompipython3.6.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -155,7 +155,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_h9303c3f069
+name: linux_aarch64_c_compiler_version7cx_h00fc29fbde
 
 platform:
   os: linux
@@ -163,9 +163,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpinompipython3.7.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpinompipython3.7.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -186,7 +186,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_h18637a820a
+name: linux_aarch64_c_compiler_version7cx_h85f99be6a6
 
 platform:
   os: linux
@@ -194,9 +194,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpinompipython3.8.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpinompipython3.8.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -217,7 +217,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_hfa5ead1dfa
+name: linux_aarch64_c_compiler_version7cx_hf940131c6c
 
 platform:
   os: linux
@@ -225,9 +225,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpinompipython3.9.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpinompipython3.9.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -248,7 +248,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_h9f7afadbc3
+name: linux_aarch64_c_compiler_version7cx_h068830e4ca
 
 platform:
   os: linux
@@ -256,9 +256,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpiopenmpipython3.6.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpiopenmpipython3.6.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -279,7 +279,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_h0c38cf6a6f
+name: linux_aarch64_c_compiler_version7cx_hbb0e2d5009
 
 platform:
   os: linux
@@ -287,9 +287,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpiopenmpipython3.7.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpiopenmpipython3.7.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -310,7 +310,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_h186d21da29
+name: linux_aarch64_c_compiler_version7cx_h65c8e66deb
 
 platform:
   os: linux
@@ -318,9 +318,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpiopenmpipython3.8.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpiopenmpipython3.8.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -341,7 +341,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version7cx_h6887dc0726
+name: linux_aarch64_c_compiler_version7cx_h6edf7989cd
 
 platform:
   os: linux
@@ -349,9 +349,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpiopenmpipython3.9.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version7cxx_compiler_version7fortran_compiler_version7mpiopenmpipython3.9.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -372,7 +372,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_h4701c032ea
+name: linux_aarch64_c_compiler_version9cx_hd64ddcb9e5
 
 platform:
   os: linux
@@ -380,9 +380,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpimpichpython3.6.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpimpichpython3.6.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -403,7 +403,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_hb5ca53ffa9
+name: linux_aarch64_c_compiler_version9cx_he1e45a41bd
 
 platform:
   os: linux
@@ -411,9 +411,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpimpichpython3.7.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpimpichpython3.7.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -434,7 +434,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_h14eafcd986
+name: linux_aarch64_c_compiler_version9cx_h5f5e3e5dfe
 
 platform:
   os: linux
@@ -442,9 +442,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpimpichpython3.8.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpimpichpython3.8.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -465,7 +465,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_ha1a539f8e7
+name: linux_aarch64_c_compiler_version9cx_h4eb50c36ce
 
 platform:
   os: linux
@@ -473,9 +473,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpimpichpython3.9.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpimpichpython3.9.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -496,7 +496,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_h35fae0d5ed
+name: linux_aarch64_c_compiler_version9cx_ha571ed2cc2
 
 platform:
   os: linux
@@ -504,9 +504,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpinompipython3.6.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpinompipython3.6.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -527,7 +527,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_h0de74f12b6
+name: linux_aarch64_c_compiler_version9cx_h3263169b63
 
 platform:
   os: linux
@@ -535,9 +535,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpinompipython3.7.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpinompipython3.7.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -558,7 +558,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_h9455b83796
+name: linux_aarch64_c_compiler_version9cx_h9af796dc4a
 
 platform:
   os: linux
@@ -566,9 +566,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpinompipython3.8.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpinompipython3.8.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -589,7 +589,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_hb30acb63ff
+name: linux_aarch64_c_compiler_version9cx_h52bd968bf7
 
 platform:
   os: linux
@@ -597,9 +597,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpinompipython3.9.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpinompipython3.9.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -620,7 +620,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_hf435d1dd4d
+name: linux_aarch64_c_compiler_version9cx_heaf6a2f816
 
 platform:
   os: linux
@@ -628,9 +628,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpiopenmpipython3.6.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpiopenmpipython3.6.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -651,7 +651,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_hcee33aae4b
+name: linux_aarch64_c_compiler_version9cx_hc86d528ee4
 
 platform:
   os: linux
@@ -659,9 +659,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpiopenmpipython3.7.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpiopenmpipython3.7.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -682,7 +682,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_hf289f4b346
+name: linux_aarch64_c_compiler_version9cx_h85272ed173
 
 platform:
   os: linux
@@ -690,9 +690,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpiopenmpipython3.8.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpiopenmpipython3.8.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -713,7 +713,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_c_compiler_version9cx_hbfb6666553
+name: linux_aarch64_c_compiler_version9cx_h4802cc999c
 
 platform:
   os: linux
@@ -721,9 +721,9 @@ platform:
 
 steps:
 - name: Install and build
-  image: condaforge/linux-anvil-aarch64
+  image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpiopenmpipython3.9.____cpythonpython_implcpythontarget_platformlinux-aarch64
+    CONFIG: linux_aarch64_c_compiler_version9cxx_compiler_version9fortran_compiler_version9mpiopenmpipython3.9.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
