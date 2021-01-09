@@ -58,11 +58,12 @@ requirements:
     - make          # [unix]
     - pkg-config    # [unix]
     - cmake >=3.12
+    - {{ mpi }}  # [mpi == 'openmpi'] 
   host:
     - {{ mpi }}  # [mpi != 'nompi'] 
     - mpi4py     # [mpi != 'nompi']
     - python
-    - numpy >=1.15.0
+    - numpy
     - libffi
     # need to list hdf5 twice to get version pinning from conda_build_config
     # and build pinning from {{ mpi_prefix }}
@@ -79,7 +80,7 @@ requirements:
     - {{ mpi }}  # [mpi != 'nompi']
     - mpi4py     # [mpi != 'nompi']
     - python
-    - numpy >=1.15.0
+    - {{ pin_compatible("numpy") }}
 
 test:
   imports:
