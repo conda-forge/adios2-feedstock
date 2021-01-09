@@ -47,6 +47,12 @@ if [[ "$mpi" == "openmpi" ]]; then
     export OMPI_MCA_rmaps_base_oversubscribe=yes
     export OMPI_MCA_btl_vader_single_copy_mechanism=none
     export OPAL_PREFIX=${PREFIX}
+    if [[ "$CONDA_BUILD_CROSS_COMPILATION" == 1 ]]; then
+        rm -rf $PREFIX/bin/mpicc
+        rm -rf $PREFIX/bin/mpic++
+        ln -sf $BUILD_PREFIX/bin/mpicc $PREFIX/bin/mpicc
+        ln -sf $BUILD_PREFIX/bin/mpic++ $PREFIX/bin/mpic++
+    fi
 fi
 
 

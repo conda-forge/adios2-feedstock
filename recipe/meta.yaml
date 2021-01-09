@@ -58,7 +58,9 @@ requirements:
     - make          # [unix]
     - pkg-config    # [unix]
     - cmake >=3.12
-    - {{ mpi }}  # [mpi == 'openmpi'] 
+    - {{ mpi }}  # [mpi == 'openmpi']
+    - flex
+    - bison
   host:
     - {{ mpi }}  # [mpi != 'nompi'] 
     - mpi4py     # [mpi != 'nompi']
