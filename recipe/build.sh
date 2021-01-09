@@ -6,10 +6,9 @@ mkdir build
 cd build
 
 
-declare -a CMAKE_PLATFORM_FLAGS
 if [[ ${target_platform} =~ osx.* ]]; then
-    CMAKE_PLATFORM_FLAGS+=(-DADIOS2_USE_Fortran=OFF)
-    CMAKE_PLATFORM_FLAGS+=(-DADIOS2_USE_BZip2=OFF)
+    CMAKE_ARGS+=" -DADIOS2_USE_Fortran=OFF"
+    CMAKE_ARGS+=" -DADIOS2_USE_BZip2=OFF"
 fi
 
 
@@ -47,7 +46,7 @@ if [[ "$mpi" == "openmpi" ]]; then
     export OMPI_MCA_plm=isolated
     export OMPI_MCA_rmaps_base_oversubscribe=yes
     export OMPI_MCA_btl_vader_single_copy_mechanism=none
-    export OPAL_PREFIX=$PREFIX
+    export OPAL_PREFIX=${PREFIX}
 fi
 
 
@@ -71,7 +70,7 @@ cmake ${CMAKE_ARGS} \
     -DCMAKE_INSTALL_LIBDIR=lib        \
     -DCMAKE_INSTALL_PREFIX=${PREFIX}  \
     -DKWSYS_LFS_WORKS=0               \
-    ${CMAKE_PLATFORM_FLAGS[@]}        \
+    -DPNG_PNG_INCLUDE_DIR=${PREFIX}   \
     ${SRC_DIR}
 
 make ${VERBOSE_CM} -j${CPU_COUNT}
