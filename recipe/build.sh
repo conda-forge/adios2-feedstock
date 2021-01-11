@@ -1,16 +1,14 @@
 #!/bin/bash
+# Get an updated config.sub and config.guess
+cp $BUILD_PREFIX/share/gnuconfig/config.* ./thirdparty/enet/enet
 
 mkdir build
 cd build
 
 
-declare -a CMAKE_PLATFORM_FLAGS
 if [[ ${target_platform} =~ osx.* ]]; then
-    CMAKE_PLATFORM_FLAGS+=(-DCMAKE_TOOLCHAIN_FILE="${RECIPE_DIR}/cross-osx.cmake")
-    CMAKE_PLATFORM_FLAGS+=(-DADIOS2_USE_Fortran=OFF)
-    CMAKE_PLATFORM_FLAGS+=(-DADIOS2_USE_BZip2=OFF)
-elif [[ ${target_platform} =~ linux.* ]]; then
-    CMAKE_PLATFORM_FLAGS+=(-DCMAKE_TOOLCHAIN_FILE="${RECIPE_DIR}/cross-linux.cmake")
+    CMAKE_ARGS+=" -DADIOS2_USE_Fortran=OFF"
+    CMAKE_ARGS+=" -DADIOS2_USE_BZip2=OFF"
 fi
 
 
@@ -48,17 +46,13 @@ if [[ "$mpi" == "openmpi" ]]; then
     export OMPI_MCA_plm=isolated
     export OMPI_MCA_rmaps_base_oversubscribe=yes
     export OMPI_MCA_btl_vader_single_copy_mechanism=none
-fi
-
-# FIXME: the compiler activation on aarch64 is outdated and forgets
-#        to set -rpath-link
-# "warning: libXYZ.so.0, needed by libABC.so, not found (try using -rpath or -rpath-link)"
-if [[ ${target_platform} =~ .*aarch64.* ]]; then
-    export LDFLAGS="${LDFLAGS} -Wl,-rpath-link,${PREFIX}/lib"
+    export OPAL_PREFIX=${PREFIX}
+    export CC=mpicc
+    export CXX=mpic++
 fi
 
 
-cmake \
+cmake ${CMAKE_ARGS} \
     -DCMAKE_BUILD_TYPE=Release                \
     -DBUILD_SHARED_LIBS=ON                    \
     -DCMAKE_CXX_STANDARD=${CXX_STANDARD}      \
@@ -78,9 +72,11 @@ cmake \
     -DCMAKE_INSTALL_LIBDIR=lib        \
     -DCMAKE_INSTALL_PREFIX=${PREFIX}  \
     -DKWSYS_LFS_WORKS=0               \
-    ${CMAKE_PLATFORM_FLAGS[@]}        \
+    -DPNG_PNG_INCLUDE_DIR=${PREFIX}   \
     ${SRC_DIR}
 
 make ${VERBOSE_CM} -j${CPU_COUNT}
+if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
 CTEST_OUTPUT_ON_FAILURE=1 make ${VERBOSE_CM} test
+fi
 make install
