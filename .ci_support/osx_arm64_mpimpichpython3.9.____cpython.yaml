@@ -19,7 +19,7 @@ cxx_compiler_version:
 hdf5:
 - 1.10.6
 libffi:
-- '3.2'
+- '3.3'
 libpng:
 - '1.6'
 macos_machine:
