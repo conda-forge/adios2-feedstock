@@ -35,19 +35,3 @@ index eeefbcfe1..b8acbf7f5 100644
        RENAME bp2h5_mpi${ADIOS2_EXECUTABLE_SUFFIX}
        DESTINATION ${CMAKE_INSTALL_BINDIR}
      )
-diff --git a/source/utils/adios_reorganize/bp2h5 b/source/utils/adios_reorganize/bp2h5
-deleted file mode 120000
-index 0ad254a02..000000000
---- a/source/utils/adios_reorganize/bp2h5
-+++ /dev/null
-@@ -1 +0,0 @@
--adios2_reorganize_wrapper
-\ No newline at end of file
-diff --git a/source/utils/adios_reorganize/bp2h5_mpi b/source/utils/adios_reorganize/bp2h5_mpi
-deleted file mode 120000
-index 0ad254a02..000000000
---- a/source/utils/adios_reorganize/bp2h5_mpi
-+++ /dev/null
-@@ -1 +0,0 @@
--adios2_reorganize_wrapper
-\ No newline at end of file
