@@ -18,6 +18,9 @@ package:
 source:
   url: https://github.com/ornladios/ADIOS2/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    # https://github.com/ornladios/ADIOS2/pull/2746
+    - 0001-win-blosc-packed-attribute.patch
 
 build:
   number: {{ build }}
