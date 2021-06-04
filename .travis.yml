@@ -7,53 +7,65 @@ language: generic
 
 matrix:
   include:
-    - env: CONFIG=linux_ppc64le_mpimpichnumpy1.16python3.6.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+    - env: CONFIG=linux_ppc64le_mpimpichnumpy1.17python3.6.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
+      dist: focal
 
-    - env: CONFIG=linux_ppc64le_mpimpichnumpy1.16python3.7.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+    - env: CONFIG=linux_ppc64le_mpimpichnumpy1.17python3.7.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
+      dist: focal
 
-    - env: CONFIG=linux_ppc64le_mpimpichnumpy1.16python3.8.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+    - env: CONFIG=linux_ppc64le_mpimpichnumpy1.17python3.8.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
+      dist: focal
 
     - env: CONFIG=linux_ppc64le_mpimpichnumpy1.19python3.9.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
+      dist: focal
 
-    - env: CONFIG=linux_ppc64le_mpinompinumpy1.16python3.6.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+    - env: CONFIG=linux_ppc64le_mpinompinumpy1.17python3.6.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
+      dist: focal
 
-    - env: CONFIG=linux_ppc64le_mpinompinumpy1.16python3.7.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+    - env: CONFIG=linux_ppc64le_mpinompinumpy1.17python3.7.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
+      dist: focal
 
-    - env: CONFIG=linux_ppc64le_mpinompinumpy1.16python3.8.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+    - env: CONFIG=linux_ppc64le_mpinompinumpy1.17python3.8.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
+      dist: focal
 
     - env: CONFIG=linux_ppc64le_mpinompinumpy1.19python3.9.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
+      dist: focal
 
-    - env: CONFIG=linux_ppc64le_mpiopenmpinumpy1.16python3.6.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+    - env: CONFIG=linux_ppc64le_mpiopenmpinumpy1.17python3.6.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
+      dist: focal
 
-    - env: CONFIG=linux_ppc64le_mpiopenmpinumpy1.16python3.7.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+    - env: CONFIG=linux_ppc64le_mpiopenmpinumpy1.17python3.7.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
+      dist: focal
 
-    - env: CONFIG=linux_ppc64le_mpiopenmpinumpy1.16python3.8.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+    - env: CONFIG=linux_ppc64le_mpiopenmpinumpy1.17python3.8.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
+      dist: focal
 
     - env: CONFIG=linux_ppc64le_mpiopenmpinumpy1.19python3.9.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
+      dist: focal
 
 script:
   - export CI=travis
