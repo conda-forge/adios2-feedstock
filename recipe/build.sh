@@ -34,8 +34,10 @@ fi
 # MPI variants
 if [[ ${mpi} == "nompi" ]]; then
     export USE_MPI=OFF
+    export RUN_TESTS=ON
 else
     export USE_MPI=ON
+    export RUN_TESTS=OFF  # some SST and SSC tests hang sporadically in CI
 fi
 #   see https://github.com/conda-forge/hdf5-feedstock/blob/master/recipe/mpiexec.sh
 if [[ "$mpi" == "mpich" ]]; then
@@ -55,7 +57,7 @@ fi
 cmake ${CMAKE_ARGS} \
     -DCMAKE_BUILD_TYPE=Release                \
     -DBUILD_SHARED_LIBS=ON                    \
-    -DBUILD_TESTING=ON                        \
+    -DBUILD_TESTING=${RUN_TESTS}              \
     -DCMAKE_CXX_STANDARD=${CXX_STANDARD}      \
     -DCMAKE_CXX_STANDARD_REQUIRED=ON          \
     -DCMAKE_CXX_EXTENSIONS=${CXX_EXTENSIONS}  \
@@ -77,7 +79,7 @@ cmake ${CMAKE_ARGS} \
     ${SRC_DIR}
 
 make ${VERBOSE_CM} -j${CPU_COUNT}
-if [[ "$CONDA_BUILD_CROSS_COMPILATION" != "1" ]]; then
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]; then
 CTEST_OUTPUT_ON_FAILURE=1 make ${VERBOSE_CM} test
 fi
 make install
