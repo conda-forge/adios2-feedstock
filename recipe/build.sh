@@ -55,6 +55,7 @@ fi
 cmake ${CMAKE_ARGS} \
     -DCMAKE_BUILD_TYPE=Release                \
     -DBUILD_SHARED_LIBS=ON                    \
+    -DBUILD_TESTING=ON                        \
     -DCMAKE_CXX_STANDARD=${CXX_STANDARD}      \
     -DCMAKE_CXX_STANDARD_REQUIRED=ON          \
     -DCMAKE_CXX_EXTENSIONS=${CXX_EXTENSIONS}  \
@@ -67,7 +68,7 @@ cmake ${CMAKE_ARGS} \
     -DADIOS2_USE_ZeroMQ=ON                    \
     -DADIOS2_USE_ZFP=ON                       \
     -DADIOS2_BUILD_EXAMPLES=OFF               \
-    -DADIOS2_BUILD_TESTING=OFF                \
+    -DADIOS2_RUN_INSTALL_TEST=OFF             \
     -DPython_EXECUTABLE:FILEPATH=$(which ${PYTHON})  \
     -DCMAKE_INSTALL_LIBDIR=lib        \
     -DCMAKE_INSTALL_PREFIX=${PREFIX}  \

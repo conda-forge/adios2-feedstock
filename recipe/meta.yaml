@@ -61,6 +61,7 @@ requirements:
     - {{ mpi }}  # [mpi == 'openmpi']
     - flex       # [unix]
     - bison      # [unix]
+    #- diff-match-patch  # for ADIOS2 testing on windows, but does not help
   host:
     - {{ mpi }}  # [mpi != 'nompi'] 
     - mpi4py     # [mpi != 'nompi']
