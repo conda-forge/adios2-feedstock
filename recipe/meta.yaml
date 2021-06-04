@@ -18,9 +18,6 @@ package:
 source:
   url: https://github.com/ornladios/ADIOS2/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    # https://github.com/ornladios/ADIOS2/pull/2583
-    - 0001-win-bp2h5-symlink.patch
 
 build:
   number: {{ build }}
