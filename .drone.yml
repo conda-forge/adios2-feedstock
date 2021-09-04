@@ -1,6 +1,6 @@
 ---
 kind: pipeline
-name: linux_aarch64_mpimpichnumpy1.17pyth_h71b719bdf6
+name: linux_aarch64_mpimpichnumpy1.18pyth_h0481a29605
 
 platform:
   os: linux
@@ -10,7 +10,7 @@ steps:
 - name: Install and build
   image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_mpimpichnumpy1.17python3.6.____cpythonpython_implcpython
+    CONFIG: linux_aarch64_mpimpichnumpy1.18python3.6.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -31,7 +31,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_mpimpichnumpy1.17pyth_ha5847873f4
+name: linux_aarch64_mpimpichnumpy1.18pyth_h3d430a5924
 
 platform:
   os: linux
@@ -41,7 +41,7 @@ steps:
 - name: Install and build
   image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_mpimpichnumpy1.17python3.7.____cpythonpython_implcpython
+    CONFIG: linux_aarch64_mpimpichnumpy1.18python3.7.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -62,7 +62,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_mpimpichnumpy1.17pyth_ha8242fb128
+name: linux_aarch64_mpimpichnumpy1.18pyth_hf6a0ce6b4c
 
 platform:
   os: linux
@@ -72,7 +72,7 @@ steps:
 - name: Install and build
   image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_mpimpichnumpy1.17python3.8.____cpythonpython_implcpython
+    CONFIG: linux_aarch64_mpimpichnumpy1.18python3.8.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -124,7 +124,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_mpinompinumpy1.17pyth_h9d696f3ea9
+name: linux_aarch64_mpinompinumpy1.18pyth_hc4784f4923
 
 platform:
   os: linux
@@ -134,7 +134,7 @@ steps:
 - name: Install and build
   image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_mpinompinumpy1.17python3.6.____cpythonpython_implcpython
+    CONFIG: linux_aarch64_mpinompinumpy1.18python3.6.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -155,7 +155,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_mpinompinumpy1.17pyth_h978dc7e8a6
+name: linux_aarch64_mpinompinumpy1.18pyth_hf587d9716c
 
 platform:
   os: linux
@@ -165,7 +165,7 @@ steps:
 - name: Install and build
   image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_mpinompinumpy1.17python3.7.____cpythonpython_implcpython
+    CONFIG: linux_aarch64_mpinompinumpy1.18python3.7.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -186,7 +186,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_mpinompinumpy1.17pyth_h9cc7336993
+name: linux_aarch64_mpinompinumpy1.18pyth_hfc388f315a
 
 platform:
   os: linux
@@ -196,7 +196,7 @@ steps:
 - name: Install and build
   image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_mpinompinumpy1.17python3.8.____cpythonpython_implcpython
+    CONFIG: linux_aarch64_mpinompinumpy1.18python3.8.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -248,7 +248,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_mpiopenmpinumpy1.17py_h9fd0fa1223
+name: linux_aarch64_mpiopenmpinumpy1.18py_h18a9d269b2
 
 platform:
   os: linux
@@ -258,7 +258,7 @@ steps:
 - name: Install and build
   image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_mpiopenmpinumpy1.17python3.6.____cpythonpython_implcpython
+    CONFIG: linux_aarch64_mpiopenmpinumpy1.18python3.6.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -279,7 +279,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_mpiopenmpinumpy1.17py_hee03d18dad
+name: linux_aarch64_mpiopenmpinumpy1.18py_hbb66a7c5d0
 
 platform:
   os: linux
@@ -289,7 +289,7 @@ steps:
 - name: Install and build
   image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_mpiopenmpinumpy1.17python3.7.____cpythonpython_implcpython
+    CONFIG: linux_aarch64_mpiopenmpinumpy1.18python3.7.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
@@ -310,7 +310,7 @@ steps:
 
 ---
 kind: pipeline
-name: linux_aarch64_mpiopenmpinumpy1.17py_hfba7a71790
+name: linux_aarch64_mpiopenmpinumpy1.18py_h05281298ba
 
 platform:
   os: linux
@@ -320,7 +320,7 @@ steps:
 - name: Install and build
   image: quay.io/condaforge/linux-anvil-aarch64
   environment:
-    CONFIG: linux_aarch64_mpiopenmpinumpy1.17python3.8.____cpythonpython_implcpython
+    CONFIG: linux_aarch64_mpiopenmpinumpy1.18python3.8.____cpythonpython_implcpython
     UPLOAD_PACKAGES: True
     PLATFORM: linux-aarch64
     BINSTAR_TOKEN:
