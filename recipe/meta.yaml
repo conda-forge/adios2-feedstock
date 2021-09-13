@@ -21,6 +21,8 @@ source:
   patches:
     # https://github.com/ornladios/ADIOS2/pull/2746
     - 0001-win-blosc-packed-attribute.patch
+    # https://github.com/ornladios/ADIOS2/issues/2848
+    - 0002-win-sizet-hdf5.patch
 
 build:
   number: {{ build }}

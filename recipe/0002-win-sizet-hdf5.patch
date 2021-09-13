@@ -1,0 +1,78 @@
+From 5f59ce69bdbb30ca3480eaeb935f1c0166ea87ba Mon Sep 17 00:00:00 2001
+From: Axel Huebl <axel.huebl@plasma.ninja>
+Date: Mon, 13 Sep 2021 13:02:43 -0700
+Subject: [PATCH] HDF5Mixer: size_t
+
+Fix issues on some platforms (e.g. Windows with HDF5 1.12):
+```
+%SRC_DIR%\source\adios2\engine\mixer\HDFMixerWriter.cpp(96): warning C4267: 'initializing': conversion from 'size_t' to 'int', possible loss of data
+%SRC_DIR%\source\adios2\engine\mixer\HDFMixerWriter.cpp(123): error C2131: expression did not evaluate to a constant
+%SRC_DIR%\source\adios2\engine\mixer\HDFMixerWriter.cpp(123): note: failure was caused by a read of a variable outside its lifetime
+%SRC_DIR%\source\adios2\engine\mixer\HDFMixerWriter.cpp(123): note: see usage of 'this'
+%SRC_DIR%\source\adios2\engine\mixer\HDFMixerWriter.cpp(124): error C2131: expression did not evaluate to a constant
+%SRC_DIR%\source\adios2\engine\mixer\HDFMixerWriter.cpp(124): note: failure was caused by a read of a variable outside its lifetime
+%SRC_DIR%\source\adios2\engine\mixer\HDFMixerWriter.cpp(124): note: see usage of 'this'
+%SRC_DIR%\source\adios2\engine\mixer\HDFMixerWriter.cpp(131): error C2672: 'adios2::helper::Comm::Gather': no matching overloaded function found
+```
+---
+ source/adios2/engine/mixer/HDFMixerWriter.cpp | 14 +++++++-------
+ source/adios2/engine/mixer/HDFMixerWriter.h   |  6 +++---
+ 2 files changed, 10 insertions(+), 10 deletions(-)
+
+diff --git a/source/adios2/engine/mixer/HDFMixerWriter.cpp b/source/adios2/engine/mixer/HDFMixerWriter.cpp
+index 8ece096a93..d132b58fc2 100644
+--- a/source/adios2/engine/mixer/HDFMixerWriter.cpp
++++ b/source/adios2/engine/mixer/HDFMixerWriter.cpp
+@@ -47,12 +47,12 @@ void HDFVDSWriter::Init(const std::string &name)
+ }
+ 
+ void HDFVDSWriter::GetVarInfo(const VariableBase &var,
+-                              std::vector<hsize_t> &dimsf, int nDims,
+-                              std::vector<hsize_t> &start,
+-                              std::vector<hsize_t> &count,
+-                              std::vector<hsize_t> &one)
++                              std::vector<size_t> &dimsf, int nDims,
++                              std::vector<size_t> &start,
++                              std::vector<size_t> &count,
++                              std::vector<size_t> &one)
+ { // interop::HDF5Common summaryFile(true);
+-    // std::vector<hsize_t> dimsf, start, one, count;
++    // std::vector<size_t> dimsf, start, one, count;
+     // int nDims = std::max(var.m_Shape.size(), var.m_Count.size());
+ 
+     for (int i = 0; i < nDims; i++)
+@@ -124,7 +124,7 @@ void HDFVDSWriter::AddVar(const VariableBase &var, hid_t h5Type)
+     size_t all_counts[m_NumSubFiles][nDims];
+ 
+     //
+-    std::vector<hsize_t> dimsf, start, one, count;
++    std::vector<size_t> dimsf, start, one, count;
+     GetVarInfo(var, dimsf, nDims, start, count, one);
+     //
+ 
+@@ -142,7 +142,7 @@ void HDFVDSWriter::AddVar(const VariableBase &var, hid_t h5Type)
+         space = H5Screate_simple(nDims, dimsf.data(), NULL);
+         // summaryFile.Init(fileName.c_str(), MPI_COMM_SELF, true);
+ 
+-        hsize_t currCount[nDims], currStart[nDims];
++        size_t currCount[nDims], currStart[nDims];
+         // std::string subfileVarName="TimeStep0/"+var.m_Name; // need full
+         // path?  NEED TO GET the RIGHT SUBFILE VAR NAME RELATED to TIMESTEP!!
+         std::string subfileVarName;
+diff --git a/source/adios2/engine/mixer/HDFMixerWriter.h b/source/adios2/engine/mixer/HDFMixerWriter.h
+index 101a39eae8..63c9ddeb7c 100644
+--- a/source/adios2/engine/mixer/HDFMixerWriter.h
++++ b/source/adios2/engine/mixer/HDFMixerWriter.h
+@@ -35,9 +35,9 @@ class HDFVDSWriter
+     int m_Rank;
+ 
+ private:
+-    void GetVarInfo(const VariableBase &var, std::vector<hsize_t> &dimsf,
+-                    int nDim, std::vector<hsize_t> &start,
+-                    std::vector<hsize_t> &count, std::vector<hsize_t> &one);
++    void GetVarInfo(const VariableBase &var, std::vector<size_t> &dimsf,
++                    int nDim, std::vector<size_t> &start,
++                    std::vector<size_t> &count, std::vector<size_t> &one);
+ 
+     int m_NumSubFiles;
+     std::string m_FileName;
