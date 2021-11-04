@@ -21,6 +21,8 @@ source:
   patches:
     # https://github.com/ornladios/ADIOS2/pull/2746
     - 0001-win-blosc-packed-attribute.patch
+    # https://github.com/ornladios/ADIOS2/pull/2866
+    - 0002-hdf5-remove-mixer.patch
 
 build:
   number: {{ build }}
