@@ -22,7 +22,12 @@ source:
     # https://github.com/ornladios/ADIOS2/pull/2746
     - 0001-win-blosc-packed-attribute.patch
     # https://github.com/ornladios/ADIOS2/pull/2866
-    - 0002-hdf5-remove-mixer.patch
+    # backport to 2.7.1:
+    #   https://github.com/ax3l/ADIOS2/tree/removeMixer271
+    - 0001-Removed-mixer.patch
+    - 0002-removed-HDF5Mixer-engine-as-it-is-obsolete.patch
+    - 0003-Updated.-Removed-HDF5Mixer-engine.patch
+    - 0004-clang-format.patch
 
 build:
   number: {{ build }}
