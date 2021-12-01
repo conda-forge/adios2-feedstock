@@ -1,6 +1,6 @@
 {% set name = "adios2" %}
 {% set version = "2.7.1" %}
-{% set build = 1 %}
+{% set build = 2 %}
 {% set sha256 = "c8e237fd51f49d8a62a0660db12b72ea5067512aa7970f3fcf80b70e3f87ca3e" %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
@@ -21,6 +21,13 @@ source:
   patches:
     # https://github.com/ornladios/ADIOS2/pull/2746
     - 0001-win-blosc-packed-attribute.patch
+    # https://github.com/ornladios/ADIOS2/pull/2866
+    # backport to 2.7.1:
+    #   https://github.com/ax3l/ADIOS2/tree/removeMixer271
+    - 0001-Removed-mixer.patch
+    - 0002-removed-HDF5Mixer-engine-as-it-is-obsolete.patch
+    - 0003-Updated.-Removed-HDF5Mixer-engine.patch
+    - 0004-clang-format.patch
 
 build:
   number: {{ build }}
@@ -73,8 +80,10 @@ requirements:
     - libffi
     # need to list hdf5 twice to get version pinning from conda_build_config
     # and build pinning from {{ mpi_prefix }}
-    - hdf5
-    - hdf5  >=1.8.13 = {{ mpi_prefix }}_*
+    # temporarily disable HDF5 1.12 on Windows:
+    #   https://github.com/ornladios/ADIOS2/issues/2848#issuecomment-960463939
+    - hdf5  # [not win]
+    - hdf5  >=1.8.13 = {{ mpi_prefix }}_*  # [not win]
     # TODO: Could NOT find ZeroMQ (missing: ZeroMQ_LIBRARY) on Windows
     - zeromq >=4.1  # [not win]
     - bzip2

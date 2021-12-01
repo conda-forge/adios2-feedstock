@@ -1,0 +1,900 @@
+From e31c905cf2a3954be0275736f15c0b4bc123772c Mon Sep 17 00:00:00 2001
+From: Axel Huebl <axel.huebl@plasma.ninja>
+Date: Wed, 3 Nov 2021 20:09:52 -0700
+Subject: [PATCH 1/4] Removed mixer
+
+---
+ source/adios2/engine/mixer/HDFMixer.cpp       | 146 ------
+ source/adios2/engine/mixer/HDFMixer.h         | 122 -----
+ source/adios2/engine/mixer/HDFMixer.tcc       |  53 --
+ source/adios2/engine/mixer/HDFMixerWriter.cpp | 451 ------------------
+ source/adios2/engine/mixer/HDFMixerWriter.h   |  77 ---
+ 5 files changed, 849 deletions(-)
+ delete mode 100644 source/adios2/engine/mixer/HDFMixer.cpp
+ delete mode 100644 source/adios2/engine/mixer/HDFMixer.h
+ delete mode 100644 source/adios2/engine/mixer/HDFMixer.tcc
+ delete mode 100644 source/adios2/engine/mixer/HDFMixerWriter.cpp
+ delete mode 100644 source/adios2/engine/mixer/HDFMixerWriter.h
+
+diff --git a/source/adios2/engine/mixer/HDFMixer.cpp b/source/adios2/engine/mixer/HDFMixer.cpp
+deleted file mode 100644
+index be6128f22..000000000
+--- a/source/adios2/engine/mixer/HDFMixer.cpp
++++ /dev/null
+@@ -1,146 +0,0 @@
+-/*
+- * Distributed under the OSI-approved Apache License, Version 2.0.  See
+- * accompanying file Copyright.txt for details.
+- *
+- * HDFMixer.cpp
+- *
+- *  Created on: Dec 19, 2016
+- *      Author: Junmin GU
+- */
+-
+-#include "HDFMixer.h"
+-#include "HDFMixer.tcc"
+-
+-#include "adios2/core/IO.h"
+-#include "adios2/helper/adiosFunctions.h" //CheckIndexRange
+-#include "adios2/toolkit/transport/file/FileFStream.h"
+-
+-namespace adios2
+-{
+-namespace core
+-{
+-namespace engine
+-{
+-
+-HDFMixer::HDFMixer(IO &io, const std::string &name, const Mode openMode,
+-                   helper::Comm comm)
+-: Engine("HDFMixer", io, name, openMode, std::move(comm)),
+-  m_HDFVDSWriter(m_Comm), m_HDFSerialWriter(helper::Comm()),
+-  m_TransportsManager(m_Comm)
+-{
+-    m_EndMessage = " in call to IO Open HDFMixer " + m_Name + "\n";
+-    Init();
+-}
+-
+-HDFMixer::~HDFMixer() = default;
+-
+-void HDFMixer::Init()
+-{
+-    InitParameters();
+-    InitTransports();
+-    InitBuffer();
+-}
+-
+-#define declare_type(T)                                                        \
+-    void HDFMixer::DoPutSync(Variable<T> &variable, const T *values)           \
+-    {                                                                          \
+-        DoPutSyncCommon(variable, values);                                     \
+-    }                                                                          \
+-    void HDFMixer::DoPutDeferred(Variable<T> &variable, const T *values)       \
+-    {                                                                          \
+-        DoPutSyncCommon(variable, values);                                     \
+-    }
+-ADIOS2_FOREACH_STDTYPE_1ARG(declare_type)
+-#undef declare_type
+-
+-StepStatus HDFMixer::BeginStep(StepMode mode, const float timeout_sec)
+-{
+-    return StepStatus::OK;
+-}
+-
+-void HDFMixer::PerformPuts() {}
+-
+-// void HDFMixer::Advance(const float /*timeout_sec*/)
+-// void HDFMixer::EndStep(const float /*timeout_sec*/)
+-void HDFMixer::EndStep()
+-{
+-    m_HDFSerialWriter.Advance();
+-    m_HDFVDSWriter.Advance();
+-}
+-
+-// PRIVATE FUNCTIONS
+-void HDFMixer::InitParameters()
+-{
+-    // no need for hdf5
+-    // m_HDFSerialWriter.InitParameters(m_IO.m_Parameters);
+-}
+-
+-void HDFMixer::InitTransports()
+-{
+-    if (m_IO.m_TransportsParameters.empty())
+-    {
+-        Params defaultTransportParameters;
+-        defaultTransportParameters["transport"] = "File";
+-        m_IO.m_TransportsParameters.push_back(defaultTransportParameters);
+-    }
+-
+-#ifdef NEVER
+-/*
+-  // TODO need to add support for aggregators here later
+-
+-  // Names are std::vector<std::string>
+-  auto transportsNames = m_TransportsManager.GetFilesBaseNames(
+-      m_Name, m_IO.m_TransportsParameters);
+-  auto bpBaseNames = m_HDFSerialWriter.GetBPBaseNames(transportsNames);
+-  auto bpNames = m_HDFSerialWriter.GetBPNames(transportsNames);
+-
+-  m_TransportsManager.OpenFiles(bpBaseNames, bpNames, m_OpenMode,
+-                                m_IO.m_TransportsParameters,
+-                                m_HDFSerialWriter.m_Profiler.IsActive);
+-*/
+-#else
+-
+-    m_HDFSerialWriter.Init(m_Name, m_Comm.Rank());
+-    m_HDFVDSWriter.Init(m_Name);
+-/*
+-auto transportsNames = m_TransportsManager.GetFilesBaseNames(
+-                                                             m_Name,
+-m_IO.m_TransportsParameters); auto baseNames =
+-m_HDFSerialWriter.GetBaseNames(transportsNames);
+-
+-auto h5name =  m_HDFSerialWriter.GetLocalFileNames(baseNames, m_Name); // e.g.
+-base=/my/path/xy_1.h5 m_TransportsManager.OpenFiles(baseNames, h5name,
+-m_OpenMode, m_IO.m_TransportsParameters, m_HDFSerialWriter.m_Profiler.IsActive);
+-*/
+-#endif
+-}
+-
+-void HDFMixer::InitBuffer()
+-{
+-    /*
+-      if (m_OpenMode == OpenMode::Append)
+-      {
+-          throw std::invalid_argument(
+-              "ADIOS2: OpenMode Append hasn't been implemented, yet");
+-          // TODO: Get last pg timestep and update timestep counter in
+-      }
+-      else
+-      {
+-        m_HDFSerialWriter.WriteProcessGroupIndex(
+-                                                 m_IO.m_HostLanguage,
+-      m_TransportsManager.GetTransportsTypes());
+-      }
+-    */
+-}
+-
+-void HDFMixer::WriteProfilingJSONFile() {}
+-
+-void HDFMixer::DoClose(const int transportIndex)
+-{
+-    m_HDFSerialWriter.Close();
+-    m_HDFVDSWriter.Close();
+-}
+-
+-} // end namespace engine
+-} // end namespace core
+-} // end namespace adios2
+diff --git a/source/adios2/engine/mixer/HDFMixer.h b/source/adios2/engine/mixer/HDFMixer.h
+deleted file mode 100644
+index de61fe2b4..000000000
+--- a/source/adios2/engine/mixer/HDFMixer.h
++++ /dev/null
+@@ -1,122 +0,0 @@
+-/*
+- * Distributed under the OSI-approved Apache License, Version 2.0.  See
+- * accompanying file Copyright.txt for details.
+- *
+- * HDFMixer.h
+- *
+- *  Created on: Aug 16 2017
+- *      Author: Junmin GU
+- */
+-
+-#ifndef ADIOS2_ENGINE_H5_HDFMIXER_H_
+-#define ADIOS2_ENGINE_H5_HDFMIXER_H_
+-
+-#include "adios2/common/ADIOSConfig.h"
+-#include "adios2/core/Engine.h"
+-//#include "adios2/toolkit/format/bp1/BP1Writer.h" //format::BP1Writer
+-
+-/// \cond EXCLUDE_FROM_DOXYGEN
+-#include <algorithm> //std::count, std::copy, std::for_each
+-#include <cmath>     //std::ceil
+-#include <cstring>   //std::memcpy
+-/// \endcond
+-
+-#include "HDFMixerWriter.h"
+-#include "adios2/common/ADIOSConfig.h"
+-#include "adios2/common/ADIOSMacros.h"
+-#include "adios2/common/ADIOSTypes.h"
+-#include "adios2/core/Variable.h"
+-#include "adios2/helper/adiosComm.h"
+-#include "adios2/helper/adiosFunctions.h"
+-//#include "adios2/toolkit/capsule/heap/STLVector.h"
+-#include "adios2/toolkit/transportman/TransportMan.h" //transport::TransportsMan
+-
+-#include <iostream>
+-
+-namespace adios2
+-{
+-namespace core
+-{
+-namespace engine
+-{
+-
+-class HDFMixer : public Engine
+-{
+-
+-public:
+-    /**
+-     * Constructor for file Writer in H5 format
+-     * @param name unique name given to the engine
+-     * @param openMode w (supported), r, a from OpenMode in ADIOSTypes.h
+-     * @param comm multi-process communicator
+-     */
+-    HDFMixer(IO &io, const std::string &name, const Mode openMode,
+-             helper::Comm comm);
+-
+-    ~HDFMixer();
+-
+-    // void Advance(const float timeoutSeconds =
+-    // std::numeric_limits<float>::max()) final;
+-    StepStatus BeginStep(StepMode mode, const float timeout_sec);
+-    // void EndStep(const float /*timeout_sec*/);
+-    void EndStep() final;
+-
+-    void PerformPuts() final;
+-
+-    void CreateName(std::string &pathName, std::string &rootName,
+-                    std::string &fullH5Name, int rank);
+-
+-private:
+-    /** Single object controlling H5 buffering */
+-    // format::H51Writer m_H51Writer;
+-    HDFSerialWriter m_HDFSerialWriter;
+-    HDFVDSWriter m_HDFVDSWriter;
+-
+-    /** single object controlling a vector of Transports from IO AddTransport */
+-    transportman::TransportMan m_TransportsManager;
+-
+-    /** true: due to buffer overflow, move to transports manager */
+-    bool m_DoTransportFlush = false;
+-
+-    void Init() final;
+-
+-    /** Parses parameters from IO SetParameters */
+-    void InitParameters() final;
+-    /** Parses transports and parameters from IO AddTransport */
+-    void InitTransports() final;
+-
+-    void InitBuffer();
+-
+-#define declare_type(T)                                                        \
+-    void DoPutSync(Variable<T> &variable, const T *values) /*final */;         \
+-    void DoPutDeferred(Variable<T> &variable, const T *values) /*final */;
+-    ADIOS2_FOREACH_STDTYPE_1ARG(declare_type)
+-#undef declare_type
+-
+-    /**
+-     * Closes a single transport or all transports
+-     * @param transportIndex, if -1 (default) closes all transports,
+-     * otherwise it
+-     * closes a transport in m_Transport[transportIndex]. transportIndex is
+-     * bounds-checked.
+-     */
+-    void DoClose(const int transportIndex = -1) final;
+-
+-    /**
+-     * Common function for primitive (including std::complex) writes
+-     * @param variable
+-     * @param values
+-     */
+-    template <class T>
+-    void DoPutSyncCommon(Variable<T> &variable, const T *values);
+-
+-    /** Write a profiling.json file from m_H51Writer and m_TransportsManager
+-     * profilers*/
+-    void WriteProfilingJSONFile();
+-};
+-
+-} // end namespace engine
+-} // end namespace core
+-} // end namespace adios2
+-
+-#endif /* ADIOS2_ENGINE_H5_HDFMIXER_H_ */
+diff --git a/source/adios2/engine/mixer/HDFMixer.tcc b/source/adios2/engine/mixer/HDFMixer.tcc
+deleted file mode 100644
+index d1acfd002..000000000
+--- a/source/adios2/engine/mixer/HDFMixer.tcc
++++ /dev/null
+@@ -1,53 +0,0 @@
+-/*
+- * Distributed under the OSI-approved Apache License, Version 2.0.  See
+- * accompanying file Copyright.txt for details.
+- *
+- * HDFMixer.tcc implementation of template functions with known type
+- *
+- *  Created on: Aug 16 2017
+- *      Author: Junmin GU
+- */
+-
+-#include "HDFMixer.h"
+-
+-namespace adios2
+-{
+-namespace core
+-{
+-namespace engine
+-{
+-
+-template <class T>
+-void HDFMixer::DoPutSyncCommon(Variable<T> &variable, const T *values)
+-{
+-    // set values
+-    variable.SetData(values);
+-    // m_WrittenVariables.insert(variable.m_Name);
+-    Variable<T> local(variable.m_Name, {}, {}, variable.m_Count,
+-                      variable.IsConstantDims());
+-
+-    // m_HDFSerialWriter.m_H5File.Write(variable, values);
+-    // writes only the m_Count() part
+-    int nDims = std::max(variable.m_Shape.size(), variable.m_Count.size());
+-    if (nDims == 0)
+-    {
+-        // this is scalar
+-        if (m_HDFVDSWriter.m_Rank == 0)
+-        {
+-            m_HDFVDSWriter.m_VDSFile.Write(local, values);
+-        }
+-    }
+-    else
+-    {
+-        m_HDFSerialWriter.m_H5File.Write(local, values);
+-        // std::cout<<"   ==> "<< variable.m_Name<<std::endl;
+-        // BuildVDS(AddExtension(m_Name, ".h5"), variable,
+-        // m_HDFSerialWriter.m_H5File.GetHDF5Type<T>());
+-        m_HDFVDSWriter.AddVar(variable,
+-                              m_HDFSerialWriter.m_H5File.GetHDF5Type<T>());
+-    }
+-}
+-
+-} // end namespace engine
+-} // end namespace core
+-} // namespace adios2
+diff --git a/source/adios2/engine/mixer/HDFMixerWriter.cpp b/source/adios2/engine/mixer/HDFMixerWriter.cpp
+deleted file mode 100644
+index 8fb4f79b8..000000000
+--- a/source/adios2/engine/mixer/HDFMixerWriter.cpp
++++ /dev/null
+@@ -1,451 +0,0 @@
+-/*
+- * Distributed under the OSI-approved Apache License, Version 2.0.  See
+- * accompanying file Copyright.txt for details.
+- *
+- * HDFMixer.h
+- *
+- *  Created on: Aug 16 2017
+- *      Author: Junmin GU
+- */
+-
+-#include <iostream>
+-
+-#include "HDFMixerWriter.h"
+-#include "adios2/helper/adiosFunctions.h"
+-
+-//
+-// class HDFSerialWriter
+-//
+-namespace adios2
+-{
+-namespace core
+-{
+-namespace engine
+-{
+-
+-HDFVDSWriter::HDFVDSWriter(helper::Comm const &comm)
+-: m_SubfileComm(comm), m_VDSFile(), m_Rank(-1)
+-{
+-    m_NumSubFiles = m_SubfileComm.Size();
+-    m_Rank = m_SubfileComm.Rank();
+-}
+-
+-void HDFVDSWriter::Init(const std::string &name)
+-{
+-    if (m_Rank > 0)
+-    {
+-        return;
+-    }
+-
+-    //
+-    // VDS can only operate on one process. So let rank = 0 handle it
+-    //
+-    std::string h5Name = adios2::helper::AddExtension(name, ".h5");
+-    m_VDSFile.Init(h5Name, helper::Comm(), true);
+-    // m_FileName = h5Name;
+-    m_FileName = name;
+-}
+-
+-void HDFVDSWriter::GetVarInfo(const VariableBase &var,
+-                              std::vector<hsize_t> &dimsf, int nDims,
+-                              std::vector<hsize_t> &start,
+-                              std::vector<hsize_t> &count,
+-                              std::vector<hsize_t> &one)
+-{ // interop::HDF5Common summaryFile(true);
+-    // std::vector<hsize_t> dimsf, start, one, count;
+-    // int nDims = std::max(var.m_Shape.size(), var.m_Count.size());
+-
+-    for (int i = 0; i < nDims; i++)
+-    {
+-        if (var.m_Shape.size() > 0)
+-        {
+-            dimsf.push_back(var.m_Shape[i]);
+-        }
+-        else
+-        {
+-            dimsf.push_back(var.m_Count[i]);
+-        }
+-        if (var.m_Start.size() > 0)
+-        {
+-            start.push_back(var.m_Start[i]);
+-        }
+-        else
+-        {
+-            start.push_back(0);
+-        }
+-        if (var.m_Count.size() > 0)
+-        {
+-            count.push_back(var.m_Count[i]);
+-        }
+-        else if (var.m_Shape.size() > 0)
+-        {
+-            count.push_back(var.m_Shape[i]);
+-        }
+-        else
+-        {
+-            count.push_back(0);
+-        }
+-        one.push_back(1);
+-    }
+-}
+-
+-void HDFVDSWriter::AddVar(const VariableBase &var, hid_t h5Type)
+-{
+-    hid_t space;
+-    /* Create VDS dataspace.  */
+-    int nDims = std::max(var.m_Shape.size(), var.m_Count.size());
+-
+-    if (nDims == 0)
+-    {
+-        if (m_Rank == 0)
+-        {
+-            /*
+-            std::cout<<" will deal with scalar later?"<<var.m_Name<<std::endl;
+-
+-            hid_t filespaceID = H5Screate(H5S_SCALAR);
+-            hid_t dsetID = H5Dcreate(m_VDSFile.m_GroupId, var.m_Name.c_str(),
+-            h5Type, filespaceID, H5P_DEFAULT, H5P_DEFAULT, H5P_DEFAULT);
+-            //hid_t plistID = H5Pcreate(H5P_DATASET_XFER);
+-            //H5Pset_dxpl_mpio(plistID, H5FD_MPIO_COLLECTIVE);
+-            herr_t status = H5Dwrite(dsetID, h5Type, H5S_ALL, H5S_ALL,
+-            H5P_DEFAULT, values);
+-            //herr_t status = H5Dwrite(dsetID, h5Type, H5S_ALL, H5S_ALL,
+-            plistID, values);
+-
+-            H5Sclose(filespaceID);
+-            H5Dclose(dsetID);
+-            */
+-        }
+-        return; //
+-    }
+-
+-    /* Initialize hyperslab values. */
+-    size_t all_starts[m_NumSubFiles][nDims];
+-    size_t all_counts[m_NumSubFiles][nDims];
+-
+-    //
+-    std::vector<hsize_t> dimsf, start, one, count;
+-    GetVarInfo(var, dimsf, nDims, start, count, one);
+-    //
+-
+-    m_SubfileComm.Gather(start.data(), nDims, all_starts[0], nDims, 0);
+-    m_SubfileComm.Gather(count.data(), nDims, all_counts[0], nDims, 0);
+-
+-    herr_t status;
+-    if (m_Rank == 0)
+-    {
+-        m_VDSFile.CheckWriteGroup();
+-        /* Set VDS creation property. */
+-        hid_t dcpl = H5Pcreate(H5P_DATASET_CREATE);
+-        // status = H5Pset_fill_value(dcpl, ADIOS2_MPI_SIZE_T, 0);
+-
+-        space = H5Screate_simple(nDims, dimsf.data(), NULL);
+-        // summaryFile.Init(fileName.c_str(), MPI_COMM_SELF, true);
+-
+-        hsize_t currCount[nDims], currStart[nDims];
+-        // std::string subfileVarName="TimeStep0/"+var.m_Name; // need full
+-        // path?  NEED TO GET the RIGHT SUBFILE VAR NAME RELATED to TIMESTEP!!
+-        std::string subfileVarName;
+-        interop::HDF5Common::StaticGetAdiosStepString(
+-            subfileVarName, m_VDSFile.m_CurrentAdiosStep);
+-        subfileVarName += "/" + var.m_Name;
+-
+-        for (int i = 0; i < m_NumSubFiles; i++)
+-        {
+-            for (int j = 0; j < nDims; j++)
+-            {
+-                currCount[j] = all_counts[i][j];
+-                currStart[j] = all_starts[i][j];
+-                // std::cout<<i<<"th: subfile, "<<j<<"th dirmention:
+-                // count:"<<currCount[j] <<" start:"<<currStart[j]<<std::endl;
+-            }
+-            hid_t src_space = H5Screate_simple(
+-                nDims, currCount,
+-                NULL); // with factor=1, we do not flatten the data
+-
+-            status = H5Sselect_hyperslab(space, H5S_SELECT_SET, currStart, NULL,
+-                                         one.data(), currCount);
+-
+-            std::string path, root, subfileName;
+-            HDFSerialWriter::StaticCreateName(
+-                path, root, subfileName, m_FileName,
+-                i); // for each core, get the subfile name
+-
+-            // std::cout<<" subfileName="<<subfileName<<",
+-            // var="<<subfileVarName<<std::endl;
+-
+-            status = H5Pset_virtual(dcpl, space, subfileName.c_str(),
+-                                    subfileVarName.c_str(), src_space);
+-            status = H5Sclose(src_space);
+-        }
+-
+-        /* Create a virtual dataset. */
+-        // hid_t dset = H5Dcreate2 (m_VDSFile.m_FileId,  subfileVarName.c_str(),
+-        // h5Type, space, H5P_DEFAULT, dcpl, H5P_DEFAULT);
+-
+-        hid_t dset = H5Dcreate2(m_VDSFile.m_GroupId, var.m_Name.c_str(), h5Type,
+-                                space, H5P_DEFAULT, dcpl, H5P_DEFAULT);
+-
+-        status = H5Sclose(space);
+-        status = H5Dclose(dset);
+-        status = H5Pclose(dcpl);
+-    }
+-
+-    // status is never checked so this silences the warning about it not
+-    // being used.  TODO: check the status and handle the error conditions.
+-    static_cast<void>(status);
+-
+-    // m_VDSFile.Close();
+-    m_SubfileComm.Barrier();
+-
+-#if defined(__PGI)
+-    // The above cast to void is not enough to quiet PGI.  "Check" status.
+-    if (status < 0)
+-    {
+-        return;
+-    }
+-#endif
+-}
+-
+-void HDFVDSWriter::Advance(const float timeoutSeconds)
+-{
+-    if (m_Rank > 0)
+-    {
+-        return;
+-    }
+-
+-    m_VDSFile.Advance();
+-}
+-
+-void HDFVDSWriter::Close(const int transportIndex)
+-{
+-    if (m_Rank > 0)
+-    {
+-        return;
+-    }
+-
+-    m_VDSFile.Close();
+-}
+-
+-//
+-// class HDFSerialWriter
+-//
+-HDFSerialWriter::HDFSerialWriter(helper::Comm const &comm)
+-: m_LocalComm(comm), m_H5File()
+-{
+-}
+-
+-void HDFSerialWriter::Advance(const float timeoutSeconds)
+-{
+-    m_H5File.Advance();
+-}
+-void HDFSerialWriter::Close(const int transportIndex) { m_H5File.Close(); };
+-
+-void HDFSerialWriter::StaticCreateName(std::string &pathName,
+-                                       std::string &rootName,
+-                                       std::string &fullH5Name,
+-                                       const std::string &input, int rank)
+-{
+-
+-    auto lf_GetBaseName = [](const std::string &name) -> std::string {
+-        const std::string baseName(adios2::helper::AddExtension(name, ".h5") +
+-                                   ".dir");
+-        return baseName;
+-    };
+-
+-    auto lf_GetRootTag = [](const std::string &userTag) -> std::string {
+-        std::string h5RootName = userTag;
+-        const auto lastPathSeparator(userTag.find_last_of(PathSeparator));
+-        if (lastPathSeparator != std::string::npos)
+-        {
+-            h5RootName = userTag.substr(lastPathSeparator);
+-        }
+-        return h5RootName;
+-    };
+-
+-    pathName = lf_GetBaseName(input);
+-    rootName = lf_GetRootTag(input);
+-
+-    fullH5Name =
+-        (pathName + "/" + rootName + "_" + std::to_string(rank) + ".h5");
+-}
+-
+-void HDFSerialWriter::Init(const std::string &name, int rank)
+-{
+-    /*
+-    auto lf_GetBaseName = [](const std::string &name) -> std::string {
+-      const std::string baseName(AddExtension(name, ".h5") + ".dir");
+-      return baseName;
+-    };
+-
+-    auto lf_GetRootTag = [] (const std::string &userTag) -> std::string {
+-      std::string h5RootName = userTag;
+-      const auto lastPathSeparator(userTag.find_last_of(PathSeparator));
+-      if (lastPathSeparator != std::string::npos)
+-        {
+-          h5RootName = userTag.substr(lastPathSeparator);
+-        }
+-      return h5RootName;
+-    };
+-
+-    std::string baseName=lf_GetBaseName(name);
+-
+-    auto rootTag = lf_GetRootTag(name);
+-    const std::string h5Name(baseName + "/" +
+-    rootTag+"_"+std::to_string(rank)+".h5");
+-
+-    */
+-    std::string baseName, rootTag, h5Name;
+-    StaticCreateName(baseName, rootTag, h5Name, name, rank);
+-    // std::cout<<"rank="<<rank<<"  name="<<h5Name<<std::endl;
+-    adios2::helper::CreateDirectory(baseName);
+-    m_H5File.Init(h5Name, m_LocalComm, true);
+-
+-    m_FileName = h5Name;
+-    m_Rank = rank;
+-    // m_H5File.Init(h5Name, m_, true);
+-}
+-
+-/*
+-  std::vector<std::string>
+-    GetBaseNames(const std::vector<std::string> &names) const noexcept
+-    {
+-      auto lf_GetBaseName = [](const std::string &name) -> std::string {
+-        const std::string baseName(AddExtension(name, ".h5") + ".dir");
+-        return baseName;
+-      };
+-
+-      std::vector<std::string> baseNames;
+-      baseNames.reserve(names.size());
+-
+-      for (const auto &name : names)
+-        {
+-          baseNames.push_back(lf_GetBaseName(name));
+-        }
+-      return baseNames;
+-    }
+-
+-
+-  std::vector<std::string>
+-    GetLocalFileNames(const std::vector<std::string> &baseNames,
+-                      const std::string &userTag) const noexcept
+-    {
+-      // e.g. /some/where/xy.h5.dir
+-      // e.g. xy
+-
+-      auto lf_GetH5Name = [](const std::string &baseName,
+-                             const std::string &userTag,
+-                             const int rank) -> std::string {
+-#ifdef NEVER
+-        const std::string h5BaseName = AddExtension(baseName, ".h5");
+-
+-        std::string h5RootName = h5BaseName;
+-        const auto lastPathSeparator(h5BaseName.find_last_of(PathSeparator));
+-
+-        if (lastPathSeparator != std::string::npos)
+-        {
+-            h5RootName = h5BaseName.substr(lastPathSeparator);
+-        }
+-        const std::string h5Name(h5BaseName + ".dir/" + h5RootName + "." +
+-                                 std::to_string(rank));
+-#else
+-        const std::string h5Name(baseName + "/" +
+-userTag+"_"+std::to_string(rank)+".h5"); #endif return h5Name;
+-    };
+-
+-
+-      auto lf_GetRootTag = [] (const std::string &userTag) -> std::string {
+-        std::string h5RootName = userTag;
+-        const auto lastPathSeparator(userTag.find_last_of(PathSeparator));
+-        if (lastPathSeparator != std::string::npos)
+-          {
+-            h5RootName = userTag.substr(lastPathSeparator);
+-          }
+-        return h5RootName;
+-      };
+-
+-    std::vector<std::string> h5Names;
+-    h5Names.reserve(baseNames.size());
+-
+-    auto rootTag = lf_GetRootTag(userTag);
+-    for (const auto &baseName : baseNames)
+-    {
+-      h5Names.push_back(lf_GetH5Name(baseName, rootTag, m_RankMPI));
+-    }
+-    return h5Names;
+-
+-    }
+-
+-
+-  enum class ResizeResult
+-  {
+-    Failure,   //!< FAILURE, caught a std::bad_alloc
+-    Unchanged, //!< UNCHANGED, no need to resize (sufficient capacity)
+-    Success,   //!< SUCCESS, resize was successful
+-    Flush      //!< FLUSH, need to flush to transports for current variable
+-  };
+-
+-
+-    template <class T>
+-      ResizeResult ResizeBuffer(const Variable<T> &variable)
+-      { std::cout<<"ResizeBuffer() Forcing Flush for now."<<std::endl;
+-        return HDFSerialWriter::ResizeResult::Flush;};
+-
+-  capsule::STLVector m_HeapBuffer;
+-  profiling::IOChrono m_Profiler;
+-
+-  void InitParameters(const Params &parameters)
+-  {
+-    std::cout<<"InitParameters(), empty for now. "<<std::endl;
+-  };
+-
+-  //
+-  // from H51Writer
+-  //
+-
+-
+-  std::string GetRankProfilingJSON(
+-                                   const std::vector<std::string>
+-&transportsTypes, const std::vector<profiling::IOChrono *> &transportsProfilers)
+-noexcept
+-    {
+-      std::cout<<"GetRankProfilingJSON() returns empty string now "<<std::endl;
+-      return "";
+-    }
+-
+-  std::string
+-    AggregateProfilingJSON(const std::string &rankProfilingJSON) noexcept
+-    {
+-      std::cout<<"AggregateProfilingJSON() to hdf5"<<std::endl;
+-      return "agg.hd5";
+-    }
+-
+-  void WriteProcessGroupIndex(
+-                              const std::string hostLanguage,
+-                              const std::vector<std::string> &transportsTypes)
+-noexcept
+-  {
+-      std::cout<<"WriteProcessGroupIndex() to hdf5"<<std::endl;
+-  }
+-
+-  void Flush() {
+-    std::cout<<"Flush() out hdf5"<<std::endl;
+-  }
+-
+-  template <class T>
+-    void WriteVariableMetadata(const Variable<T> &variable) noexcept
+-    {
+-      std::cout<<"WriteVariableMetadata() to hdf5"<<std::endl;
+-    }
+-  template <class T>
+-    void WriteVariablePayload(const Variable<T> &variable) noexcept
+-    {
+-      std::cout<<"WriteVariablePayload() to hdf5"<<std::endl;
+-    }
+-
+-};
+-*/
+-
+-} // end namespace engine
+-} // end namespace core
+-} // end namespace adios2
+diff --git a/source/adios2/engine/mixer/HDFMixerWriter.h b/source/adios2/engine/mixer/HDFMixerWriter.h
+deleted file mode 100644
+index 101a39eae..000000000
+--- a/source/adios2/engine/mixer/HDFMixerWriter.h
++++ /dev/null
+@@ -1,77 +0,0 @@
+-/*
+- * Distributed under the OSI-approved Apache License, Version 2.0.  See
+- * accompanying file Copyright.txt for details.
+- *
+- * HDFMixer.h
+- *
+- *  Created on: Aug 16 2017
+- *      Author: Junmin GU
+- */
+-
+-#ifndef ADIOS2_ENGINE_BP_HDFSERIALWRITER_H_
+-#define ADIOS2_ENGINE_BP_HDFSERIALWRITER_H_
+-
+-#include "adios2/helper/adiosComm.h"
+-#include "adios2/toolkit/interop/hdf5/HDF5Common.h"
+-
+-namespace adios2
+-{
+-namespace core
+-{
+-namespace engine
+-{
+-
+-class HDFVDSWriter
+-{
+-public:
+-    HDFVDSWriter(helper::Comm const &comm);
+-    void Init(const std::string &name);
+-    void AddVar(const VariableBase &var, hid_t h5Type);
+-    void
+-    Advance(const float timeoutSeconds = std::numeric_limits<float>::max());
+-    void Close(const int transportIndex = -1);
+-
+-    interop::HDF5Common m_VDSFile;
+-    int m_Rank;
+-
+-private:
+-    void GetVarInfo(const VariableBase &var, std::vector<hsize_t> &dimsf,
+-                    int nDim, std::vector<hsize_t> &start,
+-                    std::vector<hsize_t> &count, std::vector<hsize_t> &one);
+-
+-    int m_NumSubFiles;
+-    std::string m_FileName;
+-    helper::Comm const
+-        &m_SubfileComm; // only rank 0 in this comm can build VDS;
+-};
+-
+-class HDFSerialWriter
+-{
+-public:
+-    HDFSerialWriter(helper::Comm const &comm);
+-    void
+-    Advance(const float timeoutSeconds = std::numeric_limits<float>::max());
+-    void Close(const int transportIndex = -1);
+-    void Init(const std::string &name, int rank);
+-
+-    static void StaticCreateName(std::string &pathName, std::string &rootName,
+-                                 std::string &fullH5Name,
+-                                 const std::string &input, int rank);
+-    /** contains data buffer and position */
+-    // capsule::STLVector m_HeapBuffer;
+-
+-    // int m_Rank;
+-    interop::HDF5Common m_H5File;
+-    std::string m_FileName;
+-
+-private:
+-    helper::Comm const
+-        &m_LocalComm; // all ranks in this comm write to the same file
+-    int m_Rank;
+-};
+-
+-} // end namespace engine
+-} // end namespace core
+-} // end namespace adios2
+-
+-#endif // ADIOS2_ENGINE_BP_HDFSerialWriter
+-- 
+2.25.1
+
