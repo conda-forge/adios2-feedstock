@@ -38,7 +38,7 @@ cmake ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%
 if errorlevel 1 exit 1
 
-cmake --build build -j${CPU_COUNT}
+cmake --build build -j%CPU_COUNT%
 if errorlevel 1 exit 1
 
 :: diff command is required for testing: package "diff-match-patch"
