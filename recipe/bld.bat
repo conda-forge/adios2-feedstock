@@ -10,17 +10,15 @@ set CFLAGS=%CFLAGS% -DH5_BUILT_AS_DYNAMIC_LIB
 set CXXFLAGS=%CXXFLAGS% -DH5_BUILT_AS_DYNAMIC_LIB
 echo "%CXXFLAGS%"
 
-mkdir build
-cd build
-
-set CURRENTDIR="%cd%"
-
 :: temporarily disable HDF5 1.12 on Windows:
 ::   https://github.com/ornladios/ADIOS2/issues/2848#issuecomment-960463939
 
 cmake ^
+    -S %SRC_DIR%                ^
+    -B build                    ^
     -G "NMake Makefiles"        ^
     -DCMAKE_BUILD_TYPE=Release  ^
+    -DCMAKE_VERBOSE_MAKEFILE=ON ^
     -DBUILD_SHARED_LIBS=ON      ^
     -DBUILD_TESTING=OFF         ^
     -DADIOS2_USE_MPI=OFF        ^
@@ -37,17 +35,17 @@ cmake ^
     -DADIOS2_RUN_INSTALL_TEST=OFF         ^
     -DPython_EXECUTABLE:FILEPATH=%PYTHON% ^
     -DCMAKE_INSTALL_LIBDIR=lib  ^
-    -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  ^
-    %SRC_DIR%
+    -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%
 if errorlevel 1 exit 1
 
-nmake
+cmake --build build -j${CPU_COUNT}
 if errorlevel 1 exit 1
 
 :: diff command is required for testing: package "diff-match-patch"
 :: should provide it but ADIOS 2.7.1 CMake cannot find it
-:: nmake test
+:: nmake test  OR
+:: ctest --test-dir build --output-on-failure -E "SST"
 :: if errorlevel 1 exit 1
 
-nmake install
+cmake --build build --target install
 if errorlevel 1 exit 1

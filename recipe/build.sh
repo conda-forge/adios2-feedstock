@@ -2,10 +2,6 @@
 # Get an updated config.sub and config.guess
 cp $BUILD_PREFIX/share/gnuconfig/config.* ./thirdparty/enet/enet
 
-mkdir build
-cd build
-
-
 if [[ ${target_platform} =~ osx.* ]]; then
     CMAKE_ARGS+=" -DADIOS2_USE_Fortran=OFF"
     CMAKE_ARGS+=" -DADIOS2_USE_BZip2=OFF"
@@ -54,8 +50,12 @@ if [[ "$mpi" == "openmpi" ]]; then
 fi
 
 
-cmake ${CMAKE_ARGS} \
+cmake              \
+    -S ${SRC_DIR}  \
+    -B build       \
+    ${CMAKE_ARGS}  \
     -DCMAKE_BUILD_TYPE=Release                \
+    -DCMAKE_VERBOSE_MAKEFILE=ON               \
     -DBUILD_SHARED_LIBS=ON                    \
     -DBUILD_TESTING=${RUN_TESTS}              \
     -DCMAKE_CXX_STANDARD=${CXX_STANDARD}      \
@@ -75,11 +75,11 @@ cmake ${CMAKE_ARGS} \
     -DCMAKE_INSTALL_LIBDIR=lib        \
     -DCMAKE_INSTALL_PREFIX=${PREFIX}  \
     -DKWSYS_LFS_WORKS=0               \
-    -DPNG_PNG_INCLUDE_DIR=${PREFIX}   \
-    ${SRC_DIR}
+    -DPNG_PNG_INCLUDE_DIR=${PREFIX}
 
-make ${VERBOSE_CM} -j${CPU_COUNT}
-if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]; then
-CTEST_OUTPUT_ON_FAILURE=1 make ${VERBOSE_CM} test
+cmake --build build -j${CPU_COUNT}
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]
+then
+    ctest --test-dir build --output-on-failure -E "SST"
 fi
-make install
+cmake --build build --target install
