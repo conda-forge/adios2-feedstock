@@ -15,6 +15,9 @@ cd build
 
 set CURRENTDIR="%cd%"
 
+:: temporarily disable HDF5 1.12 on Windows:
+::   https://github.com/ornladios/ADIOS2/issues/2848#issuecomment-960463939
+
 cmake ^
     -G "NMake Makefiles"        ^
     -DCMAKE_BUILD_TYPE=Release  ^
@@ -25,7 +28,7 @@ cmake ^
     -DADIOS2_USE_Blosc=ON       ^
     -DADIOS2_USE_BZip2=ON       ^
     -DADIOS2_USE_Fortran=OFF    ^
-    -DADIOS2_USE_HDF5=ON        ^
+    -DADIOS2_USE_HDF5=OFF       ^
     -DADIOS2_USE_PNG=ON         ^
     -DADIOS2_USE_Profiling=OFF  ^
     -DADIOS2_USE_Python=ON      ^

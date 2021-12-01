@@ -80,8 +80,10 @@ requirements:
     - libffi
     # need to list hdf5 twice to get version pinning from conda_build_config
     # and build pinning from {{ mpi_prefix }}
-    - hdf5
-    - hdf5  >=1.8.13 = {{ mpi_prefix }}_*
+    # temporarily disable HDF5 1.12 on Windows:
+    #   https://github.com/ornladios/ADIOS2/issues/2848#issuecomment-960463939
+    - hdf5  # [not win]
+    - hdf5  >=1.8.13 = {{ mpi_prefix }}_*  # [not win]
     # TODO: Could NOT find ZeroMQ (missing: ZeroMQ_LIBRARY) on Windows
     - zeromq >=4.1  # [not win]
     - bzip2
