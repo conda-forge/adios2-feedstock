@@ -10,9 +10,6 @@ set CFLAGS=%CFLAGS% -DH5_BUILT_AS_DYNAMIC_LIB
 set CXXFLAGS=%CXXFLAGS% -DH5_BUILT_AS_DYNAMIC_LIB
 echo "%CXXFLAGS%"
 
-:: temporarily disable HDF5 1.12 on Windows:
-::   https://github.com/ornladios/ADIOS2/issues/2848#issuecomment-960463939
-
 cmake ^
     -S %SRC_DIR%                ^
     -B build                    ^
@@ -26,7 +23,7 @@ cmake ^
     -DADIOS2_USE_Blosc=ON       ^
     -DADIOS2_USE_BZip2=ON       ^
     -DADIOS2_USE_Fortran=OFF    ^
-    -DADIOS2_USE_HDF5=OFF       ^
+    -DADIOS2_USE_HDF5=ON        ^
     -DADIOS2_USE_PNG=ON         ^
     -DADIOS2_USE_Profiling=OFF  ^
     -DADIOS2_USE_Python=ON      ^
