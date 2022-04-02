@@ -49,6 +49,10 @@ if [[ "$mpi" == "openmpi" ]]; then
     export CXX=mpic++
 fi
 
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" == "1" ]]; then
+    export CMAKE_ARGS="${CMAKE_ARGS} -DADIOS2_HAVE_ZFP_CUDA_EXITCODE=0"
+fi
+
 
 cmake              \
     -S ${SRC_DIR}  \
@@ -69,6 +73,9 @@ cmake              \
     -DADIOS2_USE_Python=ON                    \
     -DADIOS2_USE_ZeroMQ=ON                    \
     -DADIOS2_USE_ZFP=ON                       \
+    -DADIOS2_HAVE_ZFP_CUDA=OFF                \
+    -DADIOS2_HAVE_ZFP_CUDA_EXITCODE=1         \
+    -DADIOS2_HAVE_ZFP_CUDA_EXITCODE__TRYRUN_OUTPUT=NO \
     -DADIOS2_BUILD_EXAMPLES=OFF               \
     -DADIOS2_RUN_INSTALL_TEST=OFF             \
     -DPython_EXECUTABLE:FILEPATH=$(which ${PYTHON})  \
