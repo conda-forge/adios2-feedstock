@@ -18,6 +18,9 @@ package:
 source:
   url: https://github.com/ornladios/ADIOS2/archive/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    # https://github.com/ornladios/ADIOS2/pull/3153
+    - 001-PR3153-win-msvc-enum.patch
 
 build:
   number: {{ build }}
