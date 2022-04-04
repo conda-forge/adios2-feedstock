@@ -49,6 +49,10 @@ if [[ "$mpi" == "openmpi" ]]; then
     export CXX=mpic++
 fi
 
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" == "1" ]]; then
+    export CMAKE_ARGS="${CMAKE_ARGS} -DADIOS2_HAVE_ZFP_CUDA_EXITCODE=0"
+fi
+
 
 cmake              \
     -S ${SRC_DIR}  \
@@ -69,6 +73,7 @@ cmake              \
     -DADIOS2_USE_Python=ON                    \
     -DADIOS2_USE_ZeroMQ=ON                    \
     -DADIOS2_USE_ZFP=ON                       \
+    -DADIOS2_HAVE_ZFP_CUDA=OFF                \
     -DADIOS2_BUILD_EXAMPLES=OFF               \
     -DADIOS2_RUN_INSTALL_TEST=OFF             \
     -DPython_EXECUTABLE:FILEPATH=$(which ${PYTHON})  \
@@ -80,6 +85,8 @@ cmake              \
 cmake --build build -j${CPU_COUNT}
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]
 then
-    ctest --test-dir build --output-on-failure -E "SST"
+    # SST: Flaky tests
+    # DataMan in 2.8.0: see https://github.com/ornladios/ADIOS2/issues/3151
+    ctest --test-dir build --output-on-failure -E "SST|DataManEngineTest.1D.Serial"
 fi
 cmake --build build --target install
