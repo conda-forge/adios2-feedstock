@@ -86,7 +86,6 @@ cmake --build build -j${CPU_COUNT}
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]
 then
     # SST: Flaky tests
-    # DataMan in 2.8.0: see https://github.com/ornladios/ADIOS2/issues/3151
-    ctest --test-dir build --output-on-failure -E "SST|DataManEngineTest.1D.Serial"
+    ctest --test-dir build --output-on-failure -E "SST"
 fi
 cmake --build build --target install
