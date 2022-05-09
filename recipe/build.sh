@@ -76,7 +76,8 @@ cmake              \
     -DADIOS2_HAVE_ZFP_CUDA=OFF                \
     -DADIOS2_BUILD_EXAMPLES=OFF               \
     -DADIOS2_RUN_INSTALL_TEST=OFF             \
-    -DPython_EXECUTABLE:FILEPATH=$(which ${PYTHON})  \
+    -DPython_EXECUTABLE:FILEPATH=${PYTHON}    \
+    -DPython_INCLUDE_DIR=$(${PYTHON} -c "from sysconfig import get_paths as gp; print(gp()['include'])") \
     -DCMAKE_INSTALL_LIBDIR=lib        \
     -DCMAKE_INSTALL_PREFIX=${PREFIX}  \
     -DKWSYS_LFS_WORKS=0               \
