@@ -35,6 +35,12 @@ else
     export USE_MPI=ON
     export RUN_TESTS=OFF  # some SST and SSC tests hang sporadically in CI
 fi
+
+if [[ "${target_platform}" == "linux-ppc*" ]]; then
+    # emulated ppc is too slow
+    export RUN_TESTS=OFF
+fi
+
 #   see https://github.com/conda-forge/hdf5-feedstock/blob/master/recipe/mpiexec.sh
 if [[ "$mpi" == "mpich" ]]; then
     export HYDRA_LAUNCHER=fork
