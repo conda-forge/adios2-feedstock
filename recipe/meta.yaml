@@ -38,14 +38,13 @@ build:
   # https://github.com/ornladios/ADIOS2/issues/2068
   skip: true  # [python_impl == 'pypy']
 
-  string: {{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}
-
 outputs:
   - name: libadios2
     script: build-libadios.sh  # [unix]
     script: build-libadios.bat  # [win]
     build:
       skip: true  # [python_impl == 'pypy']
+      string: {{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}
       # ignore run-exports from Python dependencies
       # note: all of these should be duplicated to host/build in adios2
       # to get the right pins
@@ -122,6 +121,7 @@ outputs:
     script: build-adios-py.bat  # [win]
     build:
       skip: true  # [python_impl == 'pypy']
+      string: {{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}
       run_exports:
         - {{ pin_subpackage('adios2', min_pin='x.x.x', max_pin='x.x.x') }} {{ mpi_prefix }}_*
 
@@ -134,13 +134,16 @@ outputs:
         - numpy                                  # [build_platform != target_platform]
         - cmake
       host:
-        - python
-        - mpi4py
-        - numpy
-      run:
+        - {{ mpi }}  # [mpi != 'nompi']
         - {{ pin_subpackage("libadios2", exact=True) }}
         - python
-        - mpi4py
+        - mpi4py  # [mpi != 'nompi']
+        - numpy
+      run:
+        - {{ mpi }}  # [mpi != 'nompi']
+        - {{ pin_subpackage("libadios2", exact=True) }}
+        - python
+        - mpi4py  # [mpi != 'nompi']
         - numpy
     test:
       # test.imports is unreliable for multiple outputs
