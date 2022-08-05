@@ -67,7 +67,7 @@ outputs:
         - {{ compiler('fortran') }}  # [linux]
         - make          # [unix]
         - pkg-config    # [unix]
-        - cmake >=3.12
+        - cmake =3.23
         - {{ mpi }}  # [mpi == 'openmpi']
         - flex       # [unix]
         - bison      # [unix]
@@ -89,7 +89,7 @@ outputs:
         - bzip2
         - blosc
         - libpng
-        - zfp =0.5  # CMake rejects zfp 1.0.0
+        - zfp 0.5  # CMake rejects zfp 1.0.0
         # TODO: sz, mgard
 
         # Python:
