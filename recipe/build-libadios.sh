@@ -36,7 +36,8 @@ else
     export RUN_TESTS=OFF  # some SST and SSC tests hang sporadically in CI
 fi
 
-if [[ "${target_platform}" == "linux-ppc*" ]]; then
+if [[ "${target_platform}" == *ppc* ]]; then
+    echo "Disabling tests on ppc"
     # emulated ppc is too slow
     export RUN_TESTS=OFF
 fi
