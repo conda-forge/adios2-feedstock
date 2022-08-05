@@ -485,6 +485,7 @@ Current release info
 | Name | Downloads | Version | Platforms |
 | --- | --- | --- | --- |
 | [![Conda Recipe](https://img.shields.io/badge/recipe-adios2-green.svg)](https://anaconda.org/conda-forge/adios2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/adios2.svg)](https://anaconda.org/conda-forge/adios2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/adios2.svg)](https://anaconda.org/conda-forge/adios2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/adios2.svg)](https://anaconda.org/conda-forge/adios2) |
+| [![Conda Recipe](https://img.shields.io/badge/recipe-libadios2-green.svg)](https://anaconda.org/conda-forge/libadios2) | [![Conda Downloads](https://img.shields.io/conda/dn/conda-forge/libadios2.svg)](https://anaconda.org/conda-forge/libadios2) | [![Conda Version](https://img.shields.io/conda/vn/conda-forge/libadios2.svg)](https://anaconda.org/conda-forge/libadios2) | [![Conda Platforms](https://img.shields.io/conda/pn/conda-forge/libadios2.svg)](https://anaconda.org/conda-forge/libadios2) |
 
 Installing adios2
 =================
@@ -496,16 +497,16 @@ conda config --add channels conda-forge
 conda config --set channel_priority strict
 ```
 
-Once the `conda-forge` channel has been enabled, `adios2` can be installed with `conda`:
+Once the `conda-forge` channel has been enabled, `adios2, libadios2` can be installed with `conda`:
 
 ```
-conda install adios2
+conda install adios2 libadios2
 ```
 
 or with `mamba`:
 
 ```
-mamba install adios2
+mamba install adios2 libadios2
 ```
 
 It is possible to list all of the versions of `adios2` available on your platform with `conda`:

@@ -1,0 +1,93 @@
+From fd080d65c4fb67fe79664fbcfb1f953e46f4d170 Mon Sep 17 00:00:00 2001
+From: Min RK <benjaminrk@gmail.com>
+Date: Mon, 13 Jun 2022 12:02:39 +0200
+Subject: [PATCH] exclude Python bindings from install
+
+so we can opt-in to Python install for split outputs
+
+includes runtime scripts, which are also Python
+---
+ bindings/Python/CMakeLists.txt     | 2 ++
+ source/utils/CMakeLists.txt        | 8 ++++++--
+ source/utils/bp4dbg/CMakeLists.txt | 2 ++
+ source/utils/bp5dbg/CMakeLists.txt | 2 ++
+ 4 files changed, 12 insertions(+), 2 deletions(-)
+
+diff --git a/bindings/Python/CMakeLists.txt b/bindings/Python/CMakeLists.txt
+index 5c6121e8f..053975c0b 100644
+--- a/bindings/Python/CMakeLists.txt
++++ b/bindings/Python/CMakeLists.txt
+@@ -57,8 +57,10 @@ endif()
+ install(TARGETS adios2_py
+   DESTINATION ${CMAKE_INSTALL_PYTHONDIR}/adios2
+   COMPONENT adios2_python-python
++  EXCLUDE_FROM_ALL
+ )
+ install(FILES ${CMAKE_PYTHON_OUTPUT_DIRECTORY}/adios2/__init__.py
+   DESTINATION ${CMAKE_INSTALL_PYTHONDIR}/adios2
+   COMPONENT adios2_python-python
++  EXCLUDE_FROM_ALL
+ )
+diff --git a/source/utils/CMakeLists.txt b/source/utils/CMakeLists.txt
+index 8d0e979b0..4868c3e86 100644
+--- a/source/utils/CMakeLists.txt
++++ b/source/utils/CMakeLists.txt
+@@ -75,13 +75,17 @@ if(Python_Interpreter_FOUND)
+   install(PROGRAMS adios2_json_pp.py
+     RENAME adios2_json_pp
+     DESTINATION ${CMAKE_INSTALL_BINDIR}
+-    COMPONENT adios2_scripts-runtime)
++    COMPONENT adios2_scripts-runtime
++    EXCLUDE_FROM_ALL
++  )
+ endif()
+ 
+ install(PROGRAMS adios2_deactivate_bp
+   RENAME adios2_deactivate_bp
+   DESTINATION ${CMAKE_INSTALL_BINDIR}
+-  COMPONENT adios2_scripts-runtime)
++  COMPONENT adios2_scripts-runtime
++  EXCLUDE_FROM_ALL
++)
+ 
+ # Simplified wrappers for adios2_reorganize
+ configure_file(
+diff --git a/source/utils/bp4dbg/CMakeLists.txt b/source/utils/bp4dbg/CMakeLists.txt
+index 84b028c95..a2df313cb 100644
+--- a/source/utils/bp4dbg/CMakeLists.txt
++++ b/source/utils/bp4dbg/CMakeLists.txt
+@@ -1,6 +1,7 @@
+ install(PROGRAMS bp4dbg.py
+   RENAME bp4dbg
+   DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT adios2_scripts-runtime
++  EXCLUDE_FROM_ALL
+ )
+ install(
+   FILES
+@@ -10,4 +11,5 @@ install(
+     adios2/bp4dbg/metadata.py
+     adios2/bp4dbg/idxtable.py
+   DESTINATION ${CMAKE_INSTALL_PYTHONDIR}/adios2/bp4dbg COMPONENT adios2_scripts-runtime
++  EXCLUDE_FROM_ALL
+ )
+diff --git a/source/utils/bp5dbg/CMakeLists.txt b/source/utils/bp5dbg/CMakeLists.txt
+index 7cd62825d..ae7bf3baf 100644
+--- a/source/utils/bp5dbg/CMakeLists.txt
++++ b/source/utils/bp5dbg/CMakeLists.txt
+@@ -1,6 +1,7 @@
+ install(PROGRAMS bp5dbg.py
+   RENAME bp5dbg
+   DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT adios2_scripts-runtime
++  EXCLUDE_FROM_ALL
+ )
+ install(
+   FILES
+@@ -10,4 +11,5 @@ install(
+     adios2/bp5dbg/metadata.py
+     adios2/bp5dbg/idxtable.py
+   DESTINATION ${CMAKE_INSTALL_PYTHONDIR}/adios2/bp5dbg COMPONENT adios2_scripts-runtime
++  EXCLUDE_FROM_ALL
+ )
+-- 
+2.37.0
+
