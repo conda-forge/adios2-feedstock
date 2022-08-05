@@ -89,7 +89,7 @@ outputs:
         - bzip2
         - blosc
         - libpng
-        - zfp
+        - zfp =0.5  # CMake rejects zfp 1.0.0
         # TODO: sz, mgard
 
         # Python:
