@@ -32,6 +32,8 @@ source:
   sha256: {{ sha256 }}
   patches:
     - python-exclude-from-all.patch
+    # https://github.com/ornladios/ADIOS2/pull/3312
+    - zfp-1.0.patch
 
 build:
   number: {{ build }}

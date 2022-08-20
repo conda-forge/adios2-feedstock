@@ -1,0 +1,86 @@
+From 6a77ff12cd2211bb9115cea86297807791047aef Mon Sep 17 00:00:00 2001
+From: Chuck Atkins <chuckatkins@gmail.com>
+Date: Sun, 14 Aug 2022 13:08:03 -0400
+Subject: [PATCH] zfp: fix version compatibility for 1.0+
+
+Allow cmake to find zfp >= 1.0.  Also adjusts the minimum requirement to
+0.5.3 for execution policy selection
+---
+ cmake/DetectOptions.cmake                       | 13 +++++++++----
+ source/adios2/operator/compress/CompressZFP.cpp | 12 +++---------
+ 2 files changed, 12 insertions(+), 13 deletions(-)
+
+diff --git a/cmake/DetectOptions.cmake b/cmake/DetectOptions.cmake
+index 9a41f19bb2..77afd2aa10 100644
+--- a/cmake/DetectOptions.cmake
++++ b/cmake/DetectOptions.cmake
+@@ -88,10 +88,15 @@ if(BZIP2_FOUND)
+ endif()
+ 
+ # ZFP
+-if(ADIOS2_USE_ZFP STREQUAL AUTO)
+-  find_package(ZFP 0.5.1 CONFIG)
+-elseif(ADIOS2_USE_ZFP)
+-  find_package(ZFP 0.5.1 REQUIRED CONFIG)
++if(ADIOS2_USE_ZFP)
++  find_package(ZFP 1.0.0 CONFIG)
++  if(NOT ZFP_FOUND)
++    if(ADIOS2_USE_ZFP STREQUAL AUTO)
++      find_package(ZFP 0.5.3 CONFIG)
++    else()
++      find_package(ZFP 0.5.3 REQUIRED CONFIG)
++    endif()
++  endif()
+ endif()
+ if(ZFP_FOUND)
+   set(ADIOS2_HAVE_ZFP TRUE)
+diff --git a/source/adios2/operator/compress/CompressZFP.cpp b/source/adios2/operator/compress/CompressZFP.cpp
+index 77aaa6f086..93642be26b 100644
+--- a/source/adios2/operator/compress/CompressZFP.cpp
++++ b/source/adios2/operator/compress/CompressZFP.cpp
+@@ -12,18 +12,14 @@
+ #include <sstream>
+ #include <zfp.h>
+ 
+-/* CMake will make sure zfp >= 5.0.1 */
+-#if ZFP_VERSION_RELEASE > 1 && !defined(ZFP_DEFAULT_EXECUTION_POLICY)
+-
+-/* ZFP will default to SERIAL if CUDA is not available */
++/* CMake will make sure zfp >= 0.5.3
++   ZFP will default to SERIAL if CUDA is not available */
+ #ifdef ADIOS2_HAVE_ZFP_CUDA
+ #define ZFP_DEFAULT_EXECUTION_POLICY zfp_exec_cuda
+ #else
+ #define ZFP_DEFAULT_EXECUTION_POLICY zfp_exec_serial
+ #endif
+ 
+-#endif
+-
+ namespace adios2
+ {
+ namespace core
+@@ -80,7 +76,7 @@ size_t CompressZFP::Operate(const char *dataIn, const Dims &blockStart,
+     PutParameter(bufferOut, bufferOutOffset,
+                  static_cast<uint8_t>(ZFP_VERSION_MINOR));
+     PutParameter(bufferOut, bufferOutOffset,
+-                 static_cast<uint8_t>(ZFP_VERSION_RELEASE));
++                 static_cast<uint8_t>(ZFP_VERSION_PATCH));
+     PutParameters(bufferOut, bufferOutOffset, m_Parameters);
+     // zfp V1 metadata end
+ 
+@@ -302,7 +298,6 @@ zfp_stream *GetZFPStream(const Dims &dimensions, DataType type,
+     auto itPrecision = parameters.find("precision");
+     const bool hasPrecision = itPrecision != parameters.end();
+ 
+-#if ZFP_VERSION_RELEASE > 1
+     auto itBackend = parameters.find("backend");
+     const bool hasBackend = itBackend != parameters.end();
+ 
+@@ -332,7 +327,6 @@ zfp_stream *GetZFPStream(const Dims &dimensions, DataType type,
+ 
+         zfp_stream_set_execution(stream, policy);
+     }
+-#endif
+ 
+     if ((hasAccuracy && hasPrecision) || (hasAccuracy && hasRate) ||
+         (hasPrecision && hasRate) ||
