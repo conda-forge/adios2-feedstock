@@ -11,6 +11,7 @@ set CXXFLAGS=%CXXFLAGS% -DH5_BUILT_AS_DYNAMIC_LIB
 echo "%CXXFLAGS%"
 
 cmake ^
+    %CMAKE_ARGS%                ^
     -S %SRC_DIR%                ^
     -B build                    ^
     -G "NMake Makefiles"        ^
