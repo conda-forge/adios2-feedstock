@@ -71,6 +71,7 @@ jobs:
       osx_arm64_mpiopenmpinumpy1.21python3.10.____cpython:
         CONFIG: osx_arm64_mpiopenmpinumpy1.21python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
+    maxParallel: 17
   timeoutInMinutes: 360
 
   steps:
