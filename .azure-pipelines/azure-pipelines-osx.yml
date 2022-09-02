@@ -8,41 +8,41 @@ jobs:
     vmImage: macOS-11
   strategy:
     matrix:
-      osx_64_mpimpichnumpy1.19python3.7.____cpython:
-        CONFIG: osx_64_mpimpichnumpy1.19python3.7.____cpython
+      osx_64_mpimpichnumpy1.19python3.7.____cpythonpython_implcpython:
+        CONFIG: osx_64_mpimpichnumpy1.19python3.7.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpimpichnumpy1.19python3.8.____cpython:
-        CONFIG: osx_64_mpimpichnumpy1.19python3.8.____cpython
+      osx_64_mpimpichnumpy1.19python3.8.____cpythonpython_implcpython:
+        CONFIG: osx_64_mpimpichnumpy1.19python3.8.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpimpichnumpy1.19python3.9.____cpython:
-        CONFIG: osx_64_mpimpichnumpy1.19python3.9.____cpython
+      osx_64_mpimpichnumpy1.19python3.9.____cpythonpython_implcpython:
+        CONFIG: osx_64_mpimpichnumpy1.19python3.9.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpimpichnumpy1.21python3.10.____cpython:
-        CONFIG: osx_64_mpimpichnumpy1.21python3.10.____cpython
+      osx_64_mpimpichnumpy1.21python3.10.____cpythonpython_implcpython:
+        CONFIG: osx_64_mpimpichnumpy1.21python3.10.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpinompinumpy1.19python3.7.____cpython:
-        CONFIG: osx_64_mpinompinumpy1.19python3.7.____cpython
+      osx_64_mpinompinumpy1.19python3.7.____cpythonpython_implcpython:
+        CONFIG: osx_64_mpinompinumpy1.19python3.7.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpinompinumpy1.19python3.8.____cpython:
-        CONFIG: osx_64_mpinompinumpy1.19python3.8.____cpython
+      osx_64_mpinompinumpy1.19python3.8.____cpythonpython_implcpython:
+        CONFIG: osx_64_mpinompinumpy1.19python3.8.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpinompinumpy1.19python3.9.____cpython:
-        CONFIG: osx_64_mpinompinumpy1.19python3.9.____cpython
+      osx_64_mpinompinumpy1.19python3.9.____cpythonpython_implcpython:
+        CONFIG: osx_64_mpinompinumpy1.19python3.9.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpinompinumpy1.21python3.10.____cpython:
-        CONFIG: osx_64_mpinompinumpy1.21python3.10.____cpython
+      osx_64_mpinompinumpy1.21python3.10.____cpythonpython_implcpython:
+        CONFIG: osx_64_mpinompinumpy1.21python3.10.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpiopenmpinumpy1.19python3.7.____cpython:
-        CONFIG: osx_64_mpiopenmpinumpy1.19python3.7.____cpython
+      osx_64_mpiopenmpinumpy1.19python3.7.____cpythonpython_implcpython:
+        CONFIG: osx_64_mpiopenmpinumpy1.19python3.7.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpiopenmpinumpy1.19python3.8.____cpython:
-        CONFIG: osx_64_mpiopenmpinumpy1.19python3.8.____cpython
+      osx_64_mpiopenmpinumpy1.19python3.8.____cpythonpython_implcpython:
+        CONFIG: osx_64_mpiopenmpinumpy1.19python3.8.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpiopenmpinumpy1.19python3.9.____cpython:
-        CONFIG: osx_64_mpiopenmpinumpy1.19python3.9.____cpython
+      osx_64_mpiopenmpinumpy1.19python3.9.____cpythonpython_implcpython:
+        CONFIG: osx_64_mpiopenmpinumpy1.19python3.9.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_mpiopenmpinumpy1.21python3.10.____cpython:
-        CONFIG: osx_64_mpiopenmpinumpy1.21python3.10.____cpython
+      osx_64_mpiopenmpinumpy1.21python3.10.____cpythonpython_implcpython:
+        CONFIG: osx_64_mpiopenmpinumpy1.21python3.10.____cpythonpython_implcpython
         UPLOAD_PACKAGES: 'True'
       osx_arm64_mpimpichnumpy1.19python3.8.____cpython:
         CONFIG: osx_arm64_mpimpichnumpy1.19python3.8.____cpython
@@ -71,6 +71,7 @@ jobs:
       osx_arm64_mpiopenmpinumpy1.21python3.10.____cpython:
         CONFIG: osx_arm64_mpiopenmpinumpy1.21python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
+    maxParallel: 17
   timeoutInMinutes: 360
 
   steps:

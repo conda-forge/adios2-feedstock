@@ -24,14 +24,7 @@ Current build status
 ====================
 
 
-<table><tr>
-    <td>Travis</td>
-    <td>
-      <a href="https://app.travis-ci.com/conda-forge/adios2-feedstock">
-        <img alt="linux" src="https://img.shields.io/travis/com/conda-forge/adios2-feedstock/main.svg?label=Linux">
-      </a>
-    </td>
-  </tr>
+<table>
     
   <tr>
     <td>Azure</td>
@@ -45,339 +38,339 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_mpimpichnumpy1.19python3.7.____cpython</td>
+              <td>linux_64_mpimpichnumpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpimpichnumpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpimpichnumpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpimpichnumpy1.19python3.8.____cpython</td>
+              <td>linux_64_mpimpichnumpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpimpichnumpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpimpichnumpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpimpichnumpy1.19python3.9.____cpython</td>
+              <td>linux_64_mpimpichnumpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpimpichnumpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpimpichnumpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpimpichnumpy1.21python3.10.____cpython</td>
+              <td>linux_64_mpimpichnumpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpimpichnumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpimpichnumpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpinompinumpy1.19python3.7.____cpython</td>
+              <td>linux_64_mpinompinumpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpinompinumpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpinompinumpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpinompinumpy1.19python3.8.____cpython</td>
+              <td>linux_64_mpinompinumpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpinompinumpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpinompinumpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpinompinumpy1.19python3.9.____cpython</td>
+              <td>linux_64_mpinompinumpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpinompinumpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpinompinumpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpinompinumpy1.21python3.10.____cpython</td>
+              <td>linux_64_mpinompinumpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpinompinumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpinompinumpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpiopenmpinumpy1.19python3.7.____cpython</td>
+              <td>linux_64_mpiopenmpinumpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpiopenmpinumpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpiopenmpinumpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpiopenmpinumpy1.19python3.8.____cpython</td>
+              <td>linux_64_mpiopenmpinumpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpiopenmpinumpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpiopenmpinumpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpiopenmpinumpy1.19python3.9.____cpython</td>
+              <td>linux_64_mpiopenmpinumpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpiopenmpinumpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpiopenmpinumpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_mpiopenmpinumpy1.21python3.10.____cpython</td>
+              <td>linux_64_mpiopenmpinumpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpiopenmpinumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_64_mpiopenmpinumpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpimpichnumpy1.19python3.7.____cpython</td>
+              <td>linux_aarch64_mpimpichnumpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpimpichnumpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpimpichnumpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpimpichnumpy1.19python3.8.____cpython</td>
+              <td>linux_aarch64_mpimpichnumpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpimpichnumpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpimpichnumpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpimpichnumpy1.19python3.9.____cpython</td>
+              <td>linux_aarch64_mpimpichnumpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpimpichnumpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpimpichnumpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpimpichnumpy1.21python3.10.____cpython</td>
+              <td>linux_aarch64_mpimpichnumpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpimpichnumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpimpichnumpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpinompinumpy1.19python3.7.____cpython</td>
+              <td>linux_aarch64_mpinompinumpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpinompinumpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpinompinumpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpinompinumpy1.19python3.8.____cpython</td>
+              <td>linux_aarch64_mpinompinumpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpinompinumpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpinompinumpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpinompinumpy1.19python3.9.____cpython</td>
+              <td>linux_aarch64_mpinompinumpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpinompinumpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpinompinumpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpinompinumpy1.21python3.10.____cpython</td>
+              <td>linux_aarch64_mpinompinumpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpinompinumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpinompinumpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpiopenmpinumpy1.19python3.7.____cpython</td>
+              <td>linux_aarch64_mpiopenmpinumpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpiopenmpinumpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpiopenmpinumpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpiopenmpinumpy1.19python3.8.____cpython</td>
+              <td>linux_aarch64_mpiopenmpinumpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpiopenmpinumpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpiopenmpinumpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpiopenmpinumpy1.19python3.9.____cpython</td>
+              <td>linux_aarch64_mpiopenmpinumpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpiopenmpinumpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpiopenmpinumpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_aarch64_mpiopenmpinumpy1.21python3.10.____cpython</td>
+              <td>linux_aarch64_mpiopenmpinumpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpiopenmpinumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_aarch64_mpiopenmpinumpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpimpichnumpy1.19python3.7.____cpython</td>
+              <td>linux_ppc64le_mpimpichnumpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpimpichnumpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpimpichnumpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpimpichnumpy1.19python3.8.____cpython</td>
+              <td>linux_ppc64le_mpimpichnumpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpimpichnumpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpimpichnumpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpimpichnumpy1.19python3.9.____cpython</td>
+              <td>linux_ppc64le_mpimpichnumpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpimpichnumpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpimpichnumpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpimpichnumpy1.21python3.10.____cpython</td>
+              <td>linux_ppc64le_mpimpichnumpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpimpichnumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpimpichnumpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpinompinumpy1.19python3.7.____cpython</td>
+              <td>linux_ppc64le_mpinompinumpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpinompinumpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpinompinumpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpinompinumpy1.19python3.8.____cpython</td>
+              <td>linux_ppc64le_mpinompinumpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpinompinumpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpinompinumpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpinompinumpy1.19python3.9.____cpython</td>
+              <td>linux_ppc64le_mpinompinumpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpinompinumpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpinompinumpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpinompinumpy1.21python3.10.____cpython</td>
+              <td>linux_ppc64le_mpinompinumpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpinompinumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpinompinumpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpiopenmpinumpy1.19python3.7.____cpython</td>
+              <td>linux_ppc64le_mpiopenmpinumpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpiopenmpinumpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpiopenmpinumpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpiopenmpinumpy1.19python3.8.____cpython</td>
+              <td>linux_ppc64le_mpiopenmpinumpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpiopenmpinumpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpiopenmpinumpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpiopenmpinumpy1.19python3.9.____cpython</td>
+              <td>linux_ppc64le_mpiopenmpinumpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpiopenmpinumpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpiopenmpinumpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_ppc64le_mpiopenmpinumpy1.21python3.10.____cpython</td>
+              <td>linux_ppc64le_mpiopenmpinumpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpiopenmpinumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=linux&configuration=linux_ppc64le_mpiopenmpinumpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpimpichnumpy1.19python3.7.____cpython</td>
+              <td>osx_64_mpimpichnumpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpimpichnumpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpimpichnumpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpimpichnumpy1.19python3.8.____cpython</td>
+              <td>osx_64_mpimpichnumpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpimpichnumpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpimpichnumpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpimpichnumpy1.19python3.9.____cpython</td>
+              <td>osx_64_mpimpichnumpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpimpichnumpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpimpichnumpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpimpichnumpy1.21python3.10.____cpython</td>
+              <td>osx_64_mpimpichnumpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpimpichnumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpimpichnumpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpinompinumpy1.19python3.7.____cpython</td>
+              <td>osx_64_mpinompinumpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpinompinumpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpinompinumpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpinompinumpy1.19python3.8.____cpython</td>
+              <td>osx_64_mpinompinumpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpinompinumpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpinompinumpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpinompinumpy1.19python3.9.____cpython</td>
+              <td>osx_64_mpinompinumpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpinompinumpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpinompinumpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpinompinumpy1.21python3.10.____cpython</td>
+              <td>osx_64_mpinompinumpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpinompinumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpinompinumpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpiopenmpinumpy1.19python3.7.____cpython</td>
+              <td>osx_64_mpiopenmpinumpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpiopenmpinumpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpiopenmpinumpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpiopenmpinumpy1.19python3.8.____cpython</td>
+              <td>osx_64_mpiopenmpinumpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpiopenmpinumpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpiopenmpinumpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpiopenmpinumpy1.19python3.9.____cpython</td>
+              <td>osx_64_mpiopenmpinumpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpiopenmpinumpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpiopenmpinumpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_mpiopenmpinumpy1.21python3.10.____cpython</td>
+              <td>osx_64_mpiopenmpinumpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpiopenmpinumpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=osx&configuration=osx_64_mpiopenmpinumpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
@@ -444,31 +437,31 @@ Current build status
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_numpy1.19python3.7.____cpython</td>
+              <td>win_64_numpy1.19python3.7.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=win&configuration=win_64_numpy1.19python3.7.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=win&configuration=win_64_numpy1.19python3.7.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_numpy1.19python3.8.____cpython</td>
+              <td>win_64_numpy1.19python3.8.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=win&configuration=win_64_numpy1.19python3.8.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=win&configuration=win_64_numpy1.19python3.8.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_numpy1.19python3.9.____cpython</td>
+              <td>win_64_numpy1.19python3.9.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=win&configuration=win_64_numpy1.19python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=win&configuration=win_64_numpy1.19python3.9.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>win_64_numpy1.21python3.10.____cpython</td>
+              <td>win_64_numpy1.21python3.10.____cpythonpython_implcpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=7026&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=win&configuration=win_64_numpy1.21python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/adios2-feedstock?branchName=main&jobName=win&configuration=win_64_numpy1.21python3.10.____cpythonpython_implcpython" alt="variant">
                 </a>
               </td>
             </tr>
