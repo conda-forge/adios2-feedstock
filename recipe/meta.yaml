@@ -73,6 +73,7 @@ outputs:
         - bison      # [unix]
         #- diff-match-patch  # for ADIOS2 testing on windows, but does not help
 
+        - libpng  # [build_platform != target_platform]
         # Needed for Python:
         # Python _build_ is handled here, install in separate output
         - python                                 # [build_platform != target_platform]
