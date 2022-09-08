@@ -19,7 +19,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '10'
 docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- quay.io/condaforge/linux-anvil-aarch64
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
@@ -48,6 +48,8 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
+  zlib:
+    max_pin: x.x
 python:
 - 3.10.* *_cpython
 python_impl:
@@ -61,3 +63,5 @@ zip_keys:
 - - python
   - numpy
   - python_impl
+zlib:
+- '1.2'
