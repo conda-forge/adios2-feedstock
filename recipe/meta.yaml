@@ -90,7 +90,7 @@ outputs:
         - blosc
         - libpng
         - zfp 0.5  # CMake rejects zfp 1.0.0
-        - libzlib
+        - zlib
         # TODO: sz, mgard
 
         # Python:
