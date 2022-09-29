@@ -41,7 +41,6 @@ outputs:
     script: build-libadios.sh  # [unix]
     script: build-libadios.bat  # [win]
     build:
-      skip: true  # [python_impl == 'pypy']
       string: {{ mpi_prefix }}_h{{ PKG_HASH }}_{{ build }}
       # ignore run-exports from Python dependencies
       # note: all of these should be duplicated to host/build in adios2
@@ -137,7 +136,6 @@ outputs:
     script: build-adios-py.sh  # [unix]
     script: build-adios-py.bat  # [win]
     build:
-      skip: true  # [python_impl == 'pypy']
       string: {{ mpi_prefix }}_py{{ py }}h{{ PKG_HASH }}_{{ build }}
       run_exports:
         - {{ pin_subpackage('adios2', min_pin='x.x.x', max_pin='x.x.x') }} {{ mpi_prefix }}_*
