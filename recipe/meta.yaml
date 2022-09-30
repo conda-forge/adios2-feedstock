@@ -35,6 +35,8 @@ source:
 
 build:
   number: {{ build }}
+  # https://github.com/ornladios/ADIOS2/issues/2068
+  skip: true  # [python_impl == 'pypy']
 
 outputs:
   - name: libadios2
