@@ -1,13 +1,25 @@
 bzip2:
 - '1'
 c_compiler:
-- vs2019
+- gcc
+c_compiler_version:
+- '10'
+cdt_name:
+- cos7
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- vs2019
+- gxx
+cxx_compiler_version:
+- '10'
+docker_image:
+- quay.io/condaforge/linux-anvil-ppc64le
+fortran_compiler:
+- gfortran
+fortran_compiler_version:
+- '10'
 hdf5:
 - 1.12.2
 libffi:
@@ -15,11 +27,11 @@ libffi:
 libpng:
 - '1.6'
 mpi:
-- nompi
+- mpich
 mpich:
 - '4'
 numpy:
-- '1.20'
+- '1.23'
 openmpi:
 - '4'
 pin_run_as_build:
@@ -27,12 +39,15 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.7.* *_cpython
+- 3.11.* *_cpython
 python_impl:
 - cpython
 target_platform:
-- win-64
+- linux-ppc64le
 zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
+  - fortran_compiler_version
 - - python
   - numpy
   - python_impl
