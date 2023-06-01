@@ -32,6 +32,9 @@ source:
   sha256: {{ sha256 }}
   patches:
     - python-exclude-from-all.patch
+    # Windows: HDF5 1.14.0
+    # https://github.com/ornladios/ADIOS2/pull/3640
+    - 3640.patch
 
 build:
   number: {{ build }}
