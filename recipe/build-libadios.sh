@@ -35,6 +35,12 @@ else
     export USE_MPI=ON
     export RUN_TESTS=OFF  # some SST and SSC tests hang sporadically in CI
 fi
+#   2.9.0+ see https://github.com/ornladios/ADIOS2/issues/3647
+if [[ "${target_platform}" == "osx-arm64" ]]; then
+    export USE_SST=OFF
+else
+    export USE_SST=${USE_MPI}
+fi
 
 if [[ "${target_platform}" == *ppc* ]]; then
     echo "Disabling tests on ppc"
@@ -78,6 +84,7 @@ cmake              \
     -DADIOS2_USE_MPI=${USE_MPI}               \
     -DADIOS2_USE_PNG=ON                       \
     -DADIOS2_USE_Python=ON                    \
+    -DADIOS2_USE_SST=${USE_SST}               \
     -DADIOS2_USE_ZeroMQ=ON                    \
     -DADIOS2_USE_ZFP=ON                       \
     -DADIOS2_HAVE_ZFP_CUDA=OFF                \
