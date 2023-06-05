@@ -25,6 +25,7 @@ cmake ^
     -DADIOS2_USE_BZip2=ON       ^
     -DADIOS2_USE_Fortran=OFF    ^
     -DADIOS2_USE_HDF5=ON        ^
+    -DADIOS2_HAVE_HDF5_VOL=OFF  ^
     -DADIOS2_USE_PNG=ON         ^
     -DADIOS2_USE_Profiling=OFF  ^
     -DADIOS2_USE_Python=ON      ^
