@@ -1,27 +1,24 @@
-From 4a2c67fe6e2fc4af3cbe247e9f97a1501f61e6bb Mon Sep 17 00:00:00 2001
+From 9a163992131f518ccbdcd7b7155b427639ea7208 Mon Sep 17 00:00:00 2001
 From: Junmin Gu <jgu@lbl.gov>
 Date: Fri, 2 Jun 2023 14:03:29 -0700
-Subject: [PATCH 1/2] work around  with include <unistd.h> on  windows
+Subject: [PATCH] work around  with include <unistd.h> on  windows
 
 ---
- source/h5vol/CMakeLists.txt   | 15 +++++++++++++++
+ source/h5vol/CMakeLists.txt   | 12 ++++++++++++
  source/h5vol/H5VolReadWrite.c |  7 +++++++
- 2 files changed, 22 insertions(+)
+ 2 files changed, 19 insertions(+)
 
 diff --git a/source/h5vol/CMakeLists.txt b/source/h5vol/CMakeLists.txt
-index c94593a70e..ba1baad80b 100644
+index c94593a70..e8c2ce446 100644
 --- a/source/h5vol/CMakeLists.txt
 +++ b/source/h5vol/CMakeLists.txt
-@@ -9,6 +9,21 @@ if(CMAKE_C_COMPILER_ID MATCHES "^(GNU)$")
+@@ -9,6 +9,18 @@ if(CMAKE_C_COMPILER_ID MATCHES "^(GNU)$")
    string(APPEND CMAKE_C_FLAGS " -Wno-format-zero-length")
  endif()
  
 +include(CheckIncludeFiles)
 +check_include_files(unistd.h HAVE_UNISTD_H)
 +check_include_files(windows.h HAVE_WINDOWS_H)
-+
-+message("- HAVE_UNISTD?  ${HAVE_UNISTD_H} ")
-+message("- HAVE_WINDOWS? ${HAVE_WINDOWS_H}")
 +
 +if (HAVE_UNISTD_H)
 +   add_definitions(-DHAVE_UNISTD_H)
@@ -35,7 +32,7 @@ index c94593a70e..ba1baad80b 100644
    H5VolReadWrite.c
    H5Vol.c
 diff --git a/source/h5vol/H5VolReadWrite.c b/source/h5vol/H5VolReadWrite.c
-index f049d9ad85..5633eaf03d 100644
+index f049d9ad8..5633eaf03 100644
 --- a/source/h5vol/H5VolReadWrite.c
 +++ b/source/h5vol/H5VolReadWrite.c
 @@ -16,7 +16,14 @@
@@ -53,27 +50,6 @@ index f049d9ad85..5633eaf03d 100644
  // these are in h5private.h
  #define SUCCEED 1
  #define FAIL 0
+-- 
+2.34.1
 
-From a1a67ac6d25b510a5c3eb43118b4811bfb672118 Mon Sep 17 00:00:00 2001
-From: Junmin Gu <guj@users.noreply.github.com>
-Date: Sun, 4 Jun 2023 23:21:26 -0700
-Subject: [PATCH 2/2] Update CMakeLists.txt, removing duplicated message()
-
----
- source/h5vol/CMakeLists.txt | 3 ---
- 1 file changed, 3 deletions(-)
-
-diff --git a/source/h5vol/CMakeLists.txt b/source/h5vol/CMakeLists.txt
-index ba1baad80b..e8c2ce4461 100644
---- a/source/h5vol/CMakeLists.txt
-+++ b/source/h5vol/CMakeLists.txt
-@@ -13,9 +13,6 @@ include(CheckIncludeFiles)
- check_include_files(unistd.h HAVE_UNISTD_H)
- check_include_files(windows.h HAVE_WINDOWS_H)
- 
--message("- HAVE_UNISTD?  ${HAVE_UNISTD_H} ")
--message("- HAVE_WINDOWS? ${HAVE_WINDOWS_H}")
--
- if (HAVE_UNISTD_H)
-    add_definitions(-DHAVE_UNISTD_H)
- endif()
