@@ -34,7 +34,8 @@ source:
     - python-exclude-from-all.patch
     # Windows: HDF5 1.14.0
     # https://github.com/ornladios/ADIOS2/pull/3640
-    - 3640.patch
+    #- 3640.patch
+    - 3643.patch
     # Windows: Sleep in H5Vol
     # https://github.com/ornladios/ADIOS2/pull/3652
     - 3652.patch
