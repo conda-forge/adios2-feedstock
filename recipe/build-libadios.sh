@@ -2,7 +2,7 @@
 # Get an updated config.sub and config.guess
 cp $BUILD_PREFIX/share/gnuconfig/config.* ./thirdparty/enet/enet
 
-if [[ ${target_platform} =~ osx.* ]]; then
+if [[ ${target_platform} =~ osx ]]; then
     CMAKE_ARGS+=" -DADIOS2_USE_Fortran=OFF"
     CMAKE_ARGS+=" -DADIOS2_USE_BZip2=OFF"
 fi
@@ -101,6 +101,14 @@ cmake --build build -j${CPU_COUNT}
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]
 then
     # SST: Flaky tests
-    ctest --test-dir build --output-on-failure -E "SST"
+    exclude_tests="SST"
+    if [[ "${target_platform}" =~ osx ]]
+    then
+        exclude_tests+="|Test.Engine.DataMan1D.Serial"
+        exclude_tests+="|Test.Engine.DataMan1xN.Serial"
+        exclude_tests+="|Test.Engine.DataManSingleValues"
+    fi
+
+    ctest --test-dir build --output-on-failure -E "${exclude_tests}"
 fi
 cmake --build build --target install

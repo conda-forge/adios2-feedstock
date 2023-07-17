@@ -1,6 +1,6 @@
 {% set name = "adios2" %}
 {% set version = "2.9.0" %}
-{% set sha256 = "88896dbf79a7056a38f7cada5ba299f663d85dc873ce1429aab75da9843f1b43" %}
+{% set sha256 = "69f98ef58c818bb5410133e1891ac192653b0ec96eb9468590140f2552b6e5d1" %}
 {% set build = 0 %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
@@ -28,16 +28,13 @@ package:
   version: {{ version }}
 
 source:
-  #url: https://github.com/ornladios/ADIOS2/archive/v{{ version }}.tar.gz
-  # partly patched release_29 branch post 2.9.0
-  url: https://github.com/ornladios/ADIOS2/archive/7bd34be6afc1ade32eae110bee383ee8cc5f67df.tar.gz
+  url: https://github.com/ornladios/ADIOS2/archive/refs/tags/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
   patches:
     - python-exclude-from-all.patch
     # Windows: HDF5 1.14.0
     # https://github.com/ornladios/ADIOS2/pull/3640
-    #- 3640.patch
-    #- 3643.patch in commit above
+    - 3640.patch
     # Windows: Sleep in H5Vol
     # https://github.com/ornladios/ADIOS2/pull/3652
     - 3652.patch
@@ -184,5 +181,5 @@ extra:
   feedstock-name: adios2
   recipe-maintainers:
     - ax3l
-    - chuckatkins
+    - vicentebolea
     - williamfgc
