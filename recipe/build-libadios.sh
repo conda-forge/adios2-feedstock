@@ -35,11 +35,11 @@ else
     export USE_MPI=ON
     export RUN_TESTS=OFF  # some SST and SSC tests hang sporadically in CI
 fi
-#   2.9.0+ see https://github.com/ornladios/ADIOS2/issues/3647
+#   2.9.0+ see https://github.com/ornladios/ADIOS2/issues/3647#issuecomment-1591705964
 if [[ "${target_platform}" == "osx-arm64" ]]; then
-    export USE_SST=OFF
-else
-    export USE_SST=${USE_MPI}
+    if [[ ${mpi} != "nompi" ]]; then
+        CMAKE_ARGS+=" -DADIOS2_HAVE_MPI_CLIENT_SERVER=ON"
+    fi
 fi
 
 if [[ "${target_platform}" == *ppc* ]]; then
