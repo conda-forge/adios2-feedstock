@@ -84,7 +84,6 @@ cmake              \
     -DADIOS2_USE_MPI=${USE_MPI}               \
     -DADIOS2_USE_PNG=ON                       \
     -DADIOS2_USE_Python=ON                    \
-    -DADIOS2_USE_SST=${USE_SST}               \
     -DADIOS2_USE_ZeroMQ=ON                    \
     -DADIOS2_USE_ZFP=ON                       \
     -DADIOS2_HAVE_ZFP_CUDA=OFF                \
