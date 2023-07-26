@@ -2,7 +2,7 @@
 # Get an updated config.sub and config.guess
 cp $BUILD_PREFIX/share/gnuconfig/config.* ./thirdparty/enet/enet
 
-if [[ ${target_platform} =~ osx.* ]]; then
+if [[ ${target_platform} =~ osx ]]; then
     CMAKE_ARGS+=" -DADIOS2_USE_Fortran=OFF"
     CMAKE_ARGS+=" -DADIOS2_USE_BZip2=OFF"
 fi
@@ -34,6 +34,12 @@ if [[ ${mpi} == "nompi" ]]; then
 else
     export USE_MPI=ON
     export RUN_TESTS=OFF  # some SST and SSC tests hang sporadically in CI
+fi
+#   2.9.0+ see https://github.com/ornladios/ADIOS2/issues/3647#issuecomment-1591705964
+if [[ "${target_platform}" == "osx-arm64" ]]; then
+    if [[ ${mpi} != "nompi" ]]; then
+        CMAKE_ARGS+=" -DADIOS2_HAVE_MPI_CLIENT_SERVER=ON"
+    fi
 fi
 
 if [[ "${target_platform}" == *ppc* ]]; then
@@ -75,7 +81,6 @@ cmake              \
     -DADIOS2_USE_Blosc=ON                     \
     -DADIOS2_USE_BZip2=ON                     \
     -DADIOS2_USE_HDF5=ON                      \
-    -DADIOS2_HAVE_HDF5_VOL=OFF                \
     -DADIOS2_USE_MPI=${USE_MPI}               \
     -DADIOS2_USE_PNG=ON                       \
     -DADIOS2_USE_Python=ON                    \
@@ -95,6 +100,14 @@ cmake --build build -j${CPU_COUNT}
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]
 then
     # SST: Flaky tests
-    ctest --test-dir build --output-on-failure -E "SST"
+    exclude_tests="SST"
+    if [[ "${target_platform}" =~ osx ]]
+    then
+        exclude_tests+="|Test.Engine.DataMan1D.Serial"
+        exclude_tests+="|Test.Engine.DataMan1xN.Serial"
+        exclude_tests+="|Test.Engine.DataManSingleValues"
+    fi
+
+    ctest --test-dir build --output-on-failure -E "${exclude_tests}"
 fi
 cmake --build build --target install

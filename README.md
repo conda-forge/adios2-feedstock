@@ -623,6 +623,6 @@ Feedstock Maintainers
 =====================
 
 * [@ax3l](https://github.com/ax3l/)
-* [@chuckatkins](https://github.com/chuckatkins/)
+* [@vicentebolea](https://github.com/vicentebolea/)
 * [@williamfgc](https://github.com/williamfgc/)
 

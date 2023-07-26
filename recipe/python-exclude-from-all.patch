@@ -1,6 +1,6 @@
-From fd080d65c4fb67fe79664fbcfb1f953e46f4d170 Mon Sep 17 00:00:00 2001
+From ea14bf16fad34e8cfd198c678161284cf84f2953 Mon Sep 17 00:00:00 2001
 From: Min RK <benjaminrk@gmail.com>
-Date: Mon, 13 Jun 2022 12:02:39 +0200
+Date: Thu, 1 Jun 2023 13:30:35 -0700
 Subject: [PATCH] exclude Python bindings from install
 
 so we can opt-in to Python install for split outputs
@@ -29,17 +29,16 @@ index 5c6121e8f..053975c0b 100644
 +  EXCLUDE_FROM_ALL
  )
 diff --git a/source/utils/CMakeLists.txt b/source/utils/CMakeLists.txt
-index 8d0e979b0..4868c3e86 100644
+index 227c17675..0816273c7 100644
 --- a/source/utils/CMakeLists.txt
 +++ b/source/utils/CMakeLists.txt
-@@ -75,13 +75,17 @@ if(Python_Interpreter_FOUND)
+@@ -77,13 +77,15 @@ if(Python_Interpreter_FOUND)
    install(PROGRAMS adios2_json_pp.py
      RENAME adios2_json_pp
      DESTINATION ${CMAKE_INSTALL_BINDIR}
 -    COMPONENT adios2_scripts-runtime)
 +    COMPONENT adios2_scripts-runtime
-+    EXCLUDE_FROM_ALL
-+  )
++    EXCLUDE_FROM_ALL)
  endif()
  
  install(PROGRAMS adios2_deactivate_bp
@@ -47,11 +46,24 @@ index 8d0e979b0..4868c3e86 100644
    DESTINATION ${CMAKE_INSTALL_BINDIR}
 -  COMPONENT adios2_scripts-runtime)
 +  COMPONENT adios2_scripts-runtime
-+  EXCLUDE_FROM_ALL
-+)
++  EXCLUDE_FROM_ALL)
  
  # Simplified wrappers for adios2_reorganize
  configure_file(
+@@ -96,11 +98,13 @@ if(ADIOS2_HAVE_HDF5)
+   install(PROGRAMS ${PROJECT_BINARY_DIR}/adios2_reorganize_wrapper
+     RENAME bp2h5${ADIOS2_EXECUTABLE_SUFFIX}
+     DESTINATION ${CMAKE_INSTALL_BINDIR}
++    EXCLUDE_FROM_ALL
+   )
+   if(ADIOS2_HAVE_MPI)
+     install(PROGRAMS ${PROJECT_BINARY_DIR}/adios2_reorganize_wrapper
+       RENAME bp2h5_mpi${ADIOS2_EXECUTABLE_SUFFIX}
+       DESTINATION ${CMAKE_INSTALL_BINDIR}
++      EXCLUDE_FROM_ALL
+     )
+   endif()
+ endif()
 diff --git a/source/utils/bp4dbg/CMakeLists.txt b/source/utils/bp4dbg/CMakeLists.txt
 index 84b028c95..a2df313cb 100644
 --- a/source/utils/bp4dbg/CMakeLists.txt
@@ -89,5 +101,4 @@ index 7cd62825d..ae7bf3baf 100644
 +  EXCLUDE_FROM_ALL
  )
 -- 
-2.37.0
-
+2.34.1
