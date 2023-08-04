@@ -66,6 +66,7 @@ outputs:
         - gnuconfig  # [unix]
         # TODO: seems incompatible on OSX and too experimental for Windows
         - {{ compiler('fortran') }}  # [linux]
+        - ninja         # [unix]
         - make          # [unix]
         - pkg-config    # [unix]
         - cmake =3.23

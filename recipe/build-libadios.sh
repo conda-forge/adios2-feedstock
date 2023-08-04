@@ -1,31 +1,13 @@
 #!/bin/bash
+# shellcheck disable=SC2154 # Many vars here are injected
+
 # Get an updated config.sub and config.guess
-cp $BUILD_PREFIX/share/gnuconfig/config.* ./thirdparty/enet/enet
+cp "$BUILD_PREFIX/share/gnuconfig"/config.* ./thirdparty/enet/enet
 
 if [[ ${target_platform} =~ osx ]]; then
     CMAKE_ARGS+=" -DADIOS2_USE_Fortran=OFF"
     CMAKE_ARGS+=" -DADIOS2_USE_BZip2=OFF"
 fi
-
-
-# find out toolchain C++ standard
-CXX_STANDARD=11
-CXX_EXTENSIONS=OFF
-if [[ ${CXXFLAGS} == *"-std=c++11"* ]]; then
-    echo "11"
-    CXX_STANDARD=11
-elif [[ ${CXXFLAGS} == *"-std=c++14"* ]]; then
-    echo "14"
-    CXX_STANDARD=14
-elif [[ ${CXXFLAGS} == *"-std=c++17"* ]]; then
-    echo "17"
-    CXX_STANDARD=17
-elif [[ ${CXXFLAGS} == *"-std="* ]]; then
-    echo "ERROR: unknown C++ standard in toolchain!"
-    echo ${CXXFLAGS}
-    exit 1
-fi
-
 
 # MPI variants
 if [[ ${mpi} == "nompi" ]]; then
@@ -35,6 +17,7 @@ else
     export USE_MPI=ON
     export RUN_TESTS=OFF  # some SST and SSC tests hang sporadically in CI
 fi
+
 #   2.9.0+ see https://github.com/ornladios/ADIOS2/issues/3647#issuecomment-1591705964
 if [[ "${target_platform}" == "osx-arm64" ]]; then
     if [[ ${mpi} != "nompi" ]]; then
@@ -52,6 +35,7 @@ fi
 if [[ "$mpi" == "mpich" ]]; then
     export HYDRA_LAUNCHER=fork
 fi
+
 if [[ "$mpi" == "openmpi" ]]; then
     export OMPI_MCA_btl=self,tcp
     export OMPI_MCA_plm=isolated
@@ -66,22 +50,18 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION}" == "1" ]]; then
     export CMAKE_ARGS="${CMAKE_ARGS} -DADIOS2_HAVE_ZFP_CUDA_EXITCODE=0"
 fi
 
-
-cmake              \
-    -S ${SRC_DIR}  \
-    -B build       \
-    ${CMAKE_ARGS}  \
+# shellcheck disable=SC2086
+cmake               \
+    $CMAKE_ARGS     \
+    -S "$SRC_DIR"   \
+    -B build        \
+    -GNinja         \
     -DCMAKE_BUILD_TYPE=Release                \
-    -DCMAKE_VERBOSE_MAKEFILE=ON               \
     -DBUILD_SHARED_LIBS=ON                    \
-    -DBUILD_TESTING=${RUN_TESTS}              \
-    -DCMAKE_CXX_STANDARD=${CXX_STANDARD}      \
-    -DCMAKE_CXX_STANDARD_REQUIRED=ON          \
-    -DCMAKE_CXX_EXTENSIONS=${CXX_EXTENSIONS}  \
-    -DADIOS2_USE_Blosc=ON                     \
+    -DBUILD_TESTING="$RUN_TESTS"              \
     -DADIOS2_USE_BZip2=ON                     \
     -DADIOS2_USE_HDF5=ON                      \
-    -DADIOS2_USE_MPI=${USE_MPI}               \
+    -DADIOS2_USE_MPI="$USE_MPI"               \
     -DADIOS2_USE_PNG=ON                       \
     -DADIOS2_USE_Python=ON                    \
     -DADIOS2_USE_ZeroMQ=ON                    \
@@ -89,19 +69,19 @@ cmake              \
     -DADIOS2_HAVE_ZFP_CUDA=OFF                \
     -DADIOS2_BUILD_EXAMPLES=OFF               \
     -DADIOS2_RUN_INSTALL_TEST=OFF             \
-    -DPython_EXECUTABLE:FILEPATH=${PYTHON}    \
-    -DPython_INCLUDE_DIR=$(${PYTHON} -c "from sysconfig import get_paths as gp; print(gp()['include'])") \
-    -DCMAKE_INSTALL_LIBDIR=lib        \
-    -DCMAKE_INSTALL_PREFIX=${PREFIX}  \
-    -DKWSYS_LFS_WORKS=0               \
-    -DPNG_PNG_INCLUDE_DIR=${PREFIX}
+    -DPython_EXECUTABLE:FILEPATH="$PYTHON"    \
+    -DPython_INCLUDE_DIR="$("$PYTHON" -c "from sysconfig import get_paths as gp; print(gp()['include'])")" \
+    -DCMAKE_INSTALL_LIBDIR=lib       \
+    -DCMAKE_INSTALL_PREFIX="$PREFIX" \
+    -DPNG_PNG_INCLUDE_DIR="$PREFIX"
 
 if [ -z "$CPU_COUNT" ]
 then
   CPU_COUNT=2
 fi
 
-cmake --build build -j${CPU_COUNT}
+cmake --build build "-j$CPU_COUNT" -v
+
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]
 then
     # SST: Flaky tests
