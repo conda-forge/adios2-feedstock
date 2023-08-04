@@ -96,6 +96,11 @@ cmake              \
     -DKWSYS_LFS_WORKS=0               \
     -DPNG_PNG_INCLUDE_DIR=${PREFIX}
 
+if [ -z "$CPU_COUNT" ]
+then
+  CPU_COUNT=2
+fi
+
 cmake --build build -j${CPU_COUNT}
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]
 then
