@@ -1,9 +1,6 @@
 #!/bin/bash
 # shellcheck disable=SC2154 # Many vars here are injected
 
-# Get an updated config.sub and config.guess
-cp "$BUILD_PREFIX/share/gnuconfig"/config.* ./thirdparty/enet/enet
-
 if [[ ${target_platform} =~ osx ]]; then
     CMAKE_ARGS+=" -DADIOS2_USE_Fortran=OFF"
     CMAKE_ARGS+=" -DADIOS2_USE_BZip2=OFF"
@@ -95,4 +92,4 @@ then
 
     ctest --test-dir build --output-on-failure -E "${exclude_tests}"
 fi
-cmake --build build --target install
+cmake --install build
