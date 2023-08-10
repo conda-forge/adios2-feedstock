@@ -72,7 +72,7 @@ cmake               \
     -DCMAKE_INSTALL_PREFIX="${PREFIX}"        \
     -DPNG_PNG_INCLUDE_DIR="${PREFIX}"
 
-cmake --build build -j${CPU_COUNT} -v
+cmake --build build "-j${CPU_COUNT}" -v
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]
 then
