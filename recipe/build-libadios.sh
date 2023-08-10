@@ -49,16 +49,16 @@ fi
 
 # shellcheck disable=SC2086
 cmake               \
-    $CMAKE_ARGS     \
-    -S "$SRC_DIR"   \
+    ${CMAKE_ARGS}   \
+    -S "${SRC_DIR}" \
     -B build        \
     -GNinja         \
     -DCMAKE_BUILD_TYPE=Release                \
     -DBUILD_SHARED_LIBS=ON                    \
-    -DBUILD_TESTING="$RUN_TESTS"              \
+    -DBUILD_TESTING=${RUN_TESTS}              \
     -DADIOS2_USE_BZip2=ON                     \
     -DADIOS2_USE_HDF5=ON                      \
-    -DADIOS2_USE_MPI="$USE_MPI"               \
+    -DADIOS2_USE_MPI=${USE_MPI}               \
     -DADIOS2_USE_PNG=ON                       \
     -DADIOS2_USE_Python=ON                    \
     -DADIOS2_USE_ZeroMQ=ON                    \
@@ -66,18 +66,13 @@ cmake               \
     -DADIOS2_HAVE_ZFP_CUDA=OFF                \
     -DADIOS2_BUILD_EXAMPLES=OFF               \
     -DADIOS2_RUN_INSTALL_TEST=OFF             \
-    -DPython_EXECUTABLE:FILEPATH="$PYTHON"    \
-    -DPython_INCLUDE_DIR="$("$PYTHON" -c "from sysconfig import get_paths as gp; print(gp()['include'])")" \
-    -DCMAKE_INSTALL_LIBDIR=lib       \
-    -DCMAKE_INSTALL_PREFIX="$PREFIX" \
-    -DPNG_PNG_INCLUDE_DIR="$PREFIX"
+    -DPython_EXECUTABLE:FILEPATH="${PYTHON}"  \
+    -DPython_INCLUDE_DIR="$(${PYTHON} -c "from sysconfig import get_paths as gp; print(gp()['include'])")" \
+    -DCMAKE_INSTALL_LIBDIR=lib                \
+    -DCMAKE_INSTALL_PREFIX="${PREFIX}"        \
+    -DPNG_PNG_INCLUDE_DIR="${PREFIX}"
 
-if [ -z "$CPU_COUNT" ]
-then
-  CPU_COUNT=2
-fi
-
-cmake --build build "-j$CPU_COUNT" -v
+cmake --build build -j${CPU_COUNT} -v
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]
 then
