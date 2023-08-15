@@ -74,7 +74,7 @@ cmake               \
     -DPython_INCLUDE_DIR="$(${PYTHON} -c "from sysconfig import get_paths as gp; print(gp()['include'])")" \
     -DPNG_PNG_INCLUDE_DIR="${PREFIX}"
 
-cmake --build build "-j$((CPU_COUNT*2))" -v
+cmake --build build "-j$CPU_COUNT" -v
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]
 then
