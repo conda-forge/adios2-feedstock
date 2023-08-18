@@ -1,0 +1,21 @@
+From 5397b295009523f9f55130753b49470bb53e6d77 Mon Sep 17 00:00:00 2001
+From: Norbert Podhorszki <pnorbert@ornl.gov>
+Date: Thu, 17 Aug 2023 16:08:43 -0400
+Subject: [PATCH 1/2] Fix ChunkV maintaining CurOffset when downsizing current
+ chunk in Allocate() and creating the next chunk.
+
+---
+ .../toolkit/format/buffer/chunk/ChunkV.cpp    |   1 +
+
+diff --git a/source/adios2/toolkit/format/buffer/chunk/ChunkV.cpp b/source/adios2/toolkit/format/buffer/chunk/ChunkV.cpp
+index 27cb11e334..42df160434 100644
+--- a/source/adios2/toolkit/format/buffer/chunk/ChunkV.cpp
++++ b/source/adios2/toolkit/format/buffer/chunk/ChunkV.cpp
+@@ -193,6 +193,7 @@ BufferV::BufferPos ChunkV::Allocate(const size_t size, size_t align)
+         {
+             auto p = m_Chunks.back().Ptr + m_TailChunkPos;
+             std::fill(p, p + alignment, 0);
++            CurOffset += alignment;
+         }
+         DataV.back().Size = actualsize;
+         m_TailChunkPos = 0;
