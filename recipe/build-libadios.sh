@@ -56,7 +56,6 @@ cmake               \
     -DADIOS2_BUILD_EXAMPLES=OFF               \
     -DADIOS2_HAVE_ZFP_CUDA=OFF                \
     -DADIOS2_INSTALL_GENERATE_CONFIG=OFF      \
-    -DADIOS2_RUN_INSTALL_TEST=OFF             \
     -DADIOS2_RUN_INSTALL_TEST=ON              \
     -DADIOS2_USE_BZip2=ON                     \
     -DADIOS2_USE_HDF5=ON                      \
