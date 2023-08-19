@@ -53,9 +53,10 @@ cmake               \
     -S "${SRC_DIR}" \
     -B build        \
     -GNinja         \
-    -DCMAKE_BUILD_TYPE=Release                \
-    -DBUILD_SHARED_LIBS=ON                    \
-    -DBUILD_TESTING=${RUN_TESTS}              \
+    -DADIOS2_BUILD_EXAMPLES=OFF               \
+    -DADIOS2_HAVE_ZFP_CUDA=OFF                \
+    -DADIOS2_INSTALL_GENERATE_CONFIG=OFF      \
+    -DADIOS2_RUN_INSTALL_TEST=ON              \
     -DADIOS2_USE_BZip2=ON                     \
     -DADIOS2_USE_HDF5=ON                      \
     -DADIOS2_USE_MPI=${USE_MPI}               \
@@ -63,13 +64,13 @@ cmake               \
     -DADIOS2_USE_Python=ON                    \
     -DADIOS2_USE_ZeroMQ=ON                    \
     -DADIOS2_USE_ZFP=ON                       \
-    -DADIOS2_HAVE_ZFP_CUDA=OFF                \
-    -DADIOS2_BUILD_EXAMPLES=OFF               \
-    -DADIOS2_RUN_INSTALL_TEST=OFF             \
-    -DPython_EXECUTABLE:FILEPATH="${PYTHON}"  \
-    -DPython_INCLUDE_DIR="$(${PYTHON} -c "from sysconfig import get_paths as gp; print(gp()['include'])")" \
+    -DBUILD_SHARED_LIBS=ON                    \
+    -DBUILD_TESTING=${RUN_TESTS}              \
+    -DCMAKE_BUILD_TYPE=Release                \
     -DCMAKE_INSTALL_LIBDIR=lib                \
     -DCMAKE_INSTALL_PREFIX="${PREFIX}"        \
+    -DPython_EXECUTABLE:FILEPATH="${PYTHON}"  \
+    -DPython_INCLUDE_DIR="$(${PYTHON} -c "from sysconfig import get_paths as gp; print(gp()['include'])")" \
     -DPNG_PNG_INCLUDE_DIR="${PREFIX}"
 
 cmake --build build "-j${CPU_COUNT}" -v
@@ -78,6 +79,10 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]
 then
     # SST: Flaky tests
     exclude_tests="SST"
+    # Disable the Makefile install test since it relies on the adios2-config
+    # script which is not being build anyways since it is being flaky in
+    # several configurations.
+    exclude_tests+="|Install.Make.*"
     if [[ "${target_platform}" =~ osx ]]
     then
         exclude_tests+="|Test.Engine.DataMan1D.Serial"
