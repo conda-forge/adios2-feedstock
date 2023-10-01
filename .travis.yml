@@ -27,6 +27,11 @@ matrix:
       arch: arm64
       dist: focal
 
+    - env: CONFIG=linux_aarch64_mpimpichnumpy1.26python3.12.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-aarch64 DOCKER_IMAGE=quay.io/condaforge/linux-anvil-aarch64
+      os: linux
+      arch: arm64
+      dist: focal
+
     - env: CONFIG=linux_aarch64_mpinompinumpy1.22python3.10.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-aarch64 DOCKER_IMAGE=quay.io/condaforge/linux-anvil-aarch64
       os: linux
       arch: arm64
@@ -43,6 +48,11 @@ matrix:
       dist: focal
 
     - env: CONFIG=linux_aarch64_mpinompinumpy1.23python3.11.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-aarch64 DOCKER_IMAGE=quay.io/condaforge/linux-anvil-aarch64
+      os: linux
+      arch: arm64
+      dist: focal
+
+    - env: CONFIG=linux_aarch64_mpinompinumpy1.26python3.12.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-aarch64 DOCKER_IMAGE=quay.io/condaforge/linux-anvil-aarch64
       os: linux
       arch: arm64
       dist: focal
@@ -67,6 +77,11 @@ matrix:
       arch: arm64
       dist: focal
 
+    - env: CONFIG=linux_aarch64_mpiopenmpinumpy1.26python3.12.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-aarch64 DOCKER_IMAGE=quay.io/condaforge/linux-anvil-aarch64
+      os: linux
+      arch: arm64
+      dist: focal
+
     - env: CONFIG=linux_ppc64le_mpimpichnumpy1.22python3.10.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
@@ -83,6 +98,11 @@ matrix:
       dist: focal
 
     - env: CONFIG=linux_ppc64le_mpimpichnumpy1.23python3.11.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+      os: linux
+      arch: ppc64le
+      dist: focal
+
+    - env: CONFIG=linux_ppc64le_mpimpichnumpy1.26python3.12.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
       dist: focal
@@ -107,6 +127,11 @@ matrix:
       arch: ppc64le
       dist: focal
 
+    - env: CONFIG=linux_ppc64le_mpinompinumpy1.26python3.12.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+      os: linux
+      arch: ppc64le
+      dist: focal
+
     - env: CONFIG=linux_ppc64le_mpiopenmpinumpy1.22python3.10.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
@@ -123,6 +148,11 @@ matrix:
       dist: focal
 
     - env: CONFIG=linux_ppc64le_mpiopenmpinumpy1.23python3.11.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
+      os: linux
+      arch: ppc64le
+      dist: focal
+
+    - env: CONFIG=linux_ppc64le_mpiopenmpinumpy1.26python3.12.____cpythonpython_implcpython UPLOAD_PACKAGES=True PLATFORM=linux-ppc64le DOCKER_IMAGE=quay.io/condaforge/linux-anvil-ppc64le
       os: linux
       arch: ppc64le
       dist: focal
