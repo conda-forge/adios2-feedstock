@@ -21,7 +21,7 @@ cmake ^
     -DBUILD_TESTING=OFF         ^
     -DADIOS2_USE_MPI=OFF        ^
     -DADIOS2_BUILD_EXAMPLES=OFF ^
-    -DADIOS2_USE_Blosc=ON       ^
+    -DADIOS2_USE_Blosc2=ON      ^
     -DADIOS2_USE_BZip2=ON       ^
     -DADIOS2_USE_Fortran=OFF    ^
     -DADIOS2_USE_HDF5=ON        ^
