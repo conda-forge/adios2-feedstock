@@ -32,6 +32,7 @@ source:
   sha256: {{ sha256 }}
   patches:
     - python-exclude-from-all.patch
+    - rmFindBlosc2.patch
 
 build:
   number: {{ build }}
