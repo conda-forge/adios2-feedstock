@@ -54,6 +54,7 @@ cmake               \
     -B build        \
     -GNinja         \
     -DADIOS2_BUILD_EXAMPLES=OFF               \
+    -DADIOS2_Blosc2_PREFER_SHARED=ON          \
     -DADIOS2_USE_Blosc2=ON                    \
     -DADIOS2_HAVE_ZFP_CUDA=OFF                \
     -DADIOS2_INSTALL_GENERATE_CONFIG=OFF      \
