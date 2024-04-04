@@ -30,9 +30,6 @@ package:
 source:
   url: https://github.com/ornladios/ADIOS2/archive/refs/tags/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - python-exclude-from-all.patch
-    - rmFindBlosc2.patch
 
 build:
   number: {{ build }}
