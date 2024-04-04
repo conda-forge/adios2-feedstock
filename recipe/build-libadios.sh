@@ -94,4 +94,34 @@ then
 
     ctest --test-dir build --output-on-failure -E "${exclude_tests}"
 fi
-cmake --install build
+
+# Install everything but tools and scripts
+cmake --install build --component adios2_atl-development
+cmake --install build --component adios2_atl-libraries
+cmake --install build --component adios2_c-development
+cmake --install build --component adios2_c-libraries
+cmake --install build --component adios2_c-runtime
+cmake --install build --component adios2_core-config
+cmake --install build --component adios2_core-development
+cmake --install build --component adios2_core-libraries
+cmake --install build --component adios2_core-runtime
+cmake --install build --component adios2_cxx11-development
+cmake --install build --component adios2_cxx11-libraries
+cmake --install build --component adios2_cxx11-runtime
+cmake --install build --component adios2_dill-development
+cmake --install build --component adios2_dill-libraries
+cmake --install build --component adios2_enet-development
+cmake --install build --component adios2_enet-libraries
+cmake --install build --component adios2_evpath-development
+cmake --install build --component adios2_evpath-libraries
+cmake --install build --component adios2_ffs-development
+cmake --install build --component adios2_ffs-libraries
+cmake --install build --component adios2_fortran-development
+cmake --install build --component adios2_fortran-libraries
+cmake --install build --component cmenet
+cmake --install build --component cmepoll
+cmake --install build --component cmmulticast
+cmake --install build --component cmselect
+cmake --install build --component cmsockets
+cmake --install build --component cmudp
+cmake --install build --component Unspecified
