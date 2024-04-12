@@ -2,10 +2,16 @@ MACOSX_DEPLOYMENT_TARGET:
 - '10.9'
 bzip2:
 - '1'
+c_blosc2:
+- 2.14.4
 c_compiler:
 - clang
 c_compiler_version:
 - '16'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '10.9'
 channel_sources:
 - conda-forge
 channel_targets:
@@ -15,7 +21,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '16'
 hdf5:
-- 1.14.2
+- 1.14.3
 libffi:
 - '3.4'
 libpng:
