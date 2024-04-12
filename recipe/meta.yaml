@@ -1,7 +1,7 @@
 {% set name = "adios2" %}
 {% set version = "2.9.2" %}
 {% set sha256 = "78309297c82a95ee38ed3224c98b93d330128c753a43893f63bbe969320e4979" %}
-{% set build = 1 %}
+{% set build = 2 %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
 {% set mpi = mpi or 'nompi' %}
@@ -63,6 +63,7 @@ outputs:
     requirements:
       build:
         - {{ compiler('c') }}
+        - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
         - gnuconfig  # [unix]
         # TODO: seems incompatible on OSX and too experimental for Windows
