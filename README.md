@@ -738,6 +738,3 @@ Feedstock Maintainers
 * [@vicentebolea](https://github.com/vicentebolea/)
 * [@williamfgc](https://github.com/williamfgc/)
 
-
-<!-- dummy commit to enable rerendering -->
-
