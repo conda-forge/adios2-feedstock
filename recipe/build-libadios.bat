@@ -49,6 +49,7 @@ if errorlevel 1 exit 1
 :: if errorlevel 1 exit 1
 
 :: Install everything but tools and scripts
+::   see "make list_install_components"
 cmake --install build --component adios2_atl-development
 cmake --install build --component adios2_atl-libraries
 cmake --install build --component adios2_c-development
