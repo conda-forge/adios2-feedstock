@@ -97,15 +97,16 @@ fi
 
 # Install everything but tools and scripts
 #   see "make list_install_components"
+# core-config seems to need to be first, because it can _remove_ other cmake files
+cmake --install build --component adios2_core-config
+cmake --install build --component adios2_core-development
+cmake --install build --component adios2_core-libraries
+cmake --install build --component adios2_core-runtime
 cmake --install build --component adios2_atl-development
 cmake --install build --component adios2_atl-libraries
 cmake --install build --component adios2_c-development
 cmake --install build --component adios2_c-libraries
 cmake --install build --component adios2_c-runtime
-cmake --install build --component adios2_core-config
-cmake --install build --component adios2_core-development
-cmake --install build --component adios2_core-libraries
-cmake --install build --component adios2_core-runtime
 cmake --install build --component adios2_cxx11-development
 cmake --install build --component adios2_cxx11-libraries
 cmake --install build --component adios2_cxx11-runtime

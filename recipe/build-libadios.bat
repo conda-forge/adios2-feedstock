@@ -51,16 +51,16 @@ if errorlevel 1 exit 1
 :: Install everything but tools and scripts
 ::   see "make list_install_components"
 
+cmake --install build --component adios2_core-config
+cmake --install build --component adios2_core-development
+cmake --install build --component adios2_core-libraries
+cmake --install build --component adios2_core-runtime
 cmake --install build --component adios2_atl-development
 cmake --install build --component adios2_atl-libraries
 cmake --install build --component adios2_atl-runtime
 cmake --install build --component adios2_c-development
 cmake --install build --component adios2_c-libraries
 cmake --install build --component adios2_c-runtime
-cmake --install build --component adios2_core-config
-cmake --install build --component adios2_core-development
-cmake --install build --component adios2_core-libraries
-cmake --install build --component adios2_core-runtime
 cmake --install build --component adios2_cxx11-development
 cmake --install build --component adios2_cxx11-libraries
 cmake --install build --component adios2_cxx11-runtime
