@@ -7,7 +7,7 @@ export OMPI_MCA_plm=isolated
 export OMPI_MCA_btl=tcp,self
 export OMPI_MCA_btl_vader_single_copy_mechanism=none
 
-cd examples/hello
+cd examples/hello/helloWorld
 
 cmake $CMAKE_ARGS -B ./build
 cmake --build ./build

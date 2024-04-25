@@ -111,7 +111,7 @@ outputs:
       files:
         - test-libadios.sh
       source_files:
-        - examples/hello
+        - examples/hello/helloWorld
       commands:
         - test -f ${PREFIX}/lib/cmake/adios2/adios2-config.cmake                      # [unix]
         - test -f ${PREFIX}/lib/cmake/adios2/adios2-c-targets.cmake                   # [unix]
