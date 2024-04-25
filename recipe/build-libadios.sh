@@ -15,13 +15,6 @@ else
     export RUN_TESTS=OFF  # some SST and SSC tests hang sporadically in CI
 fi
 
-#   2.9.0+ see https://github.com/ornladios/ADIOS2/issues/3647#issuecomment-1591705964
-if [[ "${target_platform}" == "osx-arm64" ]]; then
-    if [[ ${mpi} != "nompi" ]]; then
-        CMAKE_ARGS+=" -DADIOS2_HAVE_MPI_CLIENT_SERVER=ON"
-    fi
-fi
-
 if [[ "${target_platform}" == *ppc* ]]; then
     echo "Disabling tests on ppc"
     # emulated ppc is too slow
@@ -45,6 +38,10 @@ fi
 
 if [[ "${CONDA_BUILD_CROSS_COMPILATION}" == "1" ]]; then
     export CMAKE_ARGS="${CMAKE_ARGS} -DADIOS2_HAVE_ZFP_CUDA_EXITCODE=0"
+    # 2.9.0+ see https://github.com/ornladios/ADIOS2/issues/3647#issuecomment-1591705964
+    if [[ ${mpi} != "nompi" ]]; then
+        CMAKE_ARGS+=" -DADIOS2_HAVE_MPI_CLIENT_SERVER=ON"
+    fi
 fi
 
 # shellcheck disable=SC2086
