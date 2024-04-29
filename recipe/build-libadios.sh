@@ -57,6 +57,7 @@ cmake               \
     -DADIOS2_INSTALL_GENERATE_CONFIG=OFF      \
     -DADIOS2_RUN_INSTALL_TEST=ON              \
     -DADIOS2_USE_BZip2=ON                     \
+    -DADIOS2_USE_Campaign=OFF                 \
     -DADIOS2_USE_HDF5=ON                      \
     -DADIOS2_USE_MPI=${USE_MPI}               \
     -DADIOS2_USE_PNG=ON                       \
