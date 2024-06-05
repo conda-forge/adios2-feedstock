@@ -1,7 +1,7 @@
 {% set name = "adios2" %}
 {% set version = "2.10.1" %}
 {% set sha256 = "ce776f3a451994f4979c6bd6d946917a749290a37b7433c0254759b02695ad85" %}
-{% set build = 0 %}
+{% set build = 1 %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
 {% set mpi = mpi or 'nompi' %}
@@ -30,6 +30,8 @@ package:
 source:
   url: https://github.com/ornladios/ADIOS2/archive/refs/tags/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - pr4196-add-libadios-mode.patch  # This adds ADIOS2_LIBADIOS_MODE remove with >2.10.1
 
 build:
   number: {{ build }}
