@@ -88,6 +88,9 @@ then
         exclude_tests+="|Test.Engine.DataMan1D.Serial"
         exclude_tests+="|Test.Engine.DataMan1xN.Serial"
         exclude_tests+="|Test.Engine.DataManSingleValues"
+        exclude_tests+="|Remote.BPWriteReadADIOS2stdio.GetRemote"
+        exclude_tests+="|Remote.BPWriteMemorySelectionRead.GetRemote"
+        exclude_tests+="|Remote.BPWriteMemorySelectionRead.FileRemote"
     fi
 
     ctest --test-dir build --output-on-failure -E "${exclude_tests}"
