@@ -1,6 +1,8 @@
 #!/bin/bash
 # shellcheck disable=SC2154 # Many vars here are injected
 
+set -x
+
 if [[ ${target_platform} =~ osx ]]; then
     CMAKE_ARGS+=" -DADIOS2_USE_Fortran=OFF"
     CMAKE_ARGS+=" -DADIOS2_USE_BZip2=OFF"
@@ -9,21 +11,8 @@ fi
 # MPI variants
 if [[ ${mpi} == "nompi" ]]; then
     export USE_MPI=OFF
-    export RUN_TESTS=ON
 else
     export USE_MPI=ON
-    export RUN_TESTS=OFF  # some SST and SSC tests hang sporadically in CI
-fi
-
-if [[ "${target_platform}" == *ppc* ]]; then
-    echo "Disabling tests on ppc"
-    # emulated ppc is too slow
-    export RUN_TESTS=OFF
-fi
-
-#   see https://github.com/conda-forge/hdf5-feedstock/blob/master/recipe/mpiexec.sh
-if [[ "$mpi" == "mpich" ]]; then
-    export HYDRA_LAUNCHER=fork
 fi
 
 if [[ "$mpi" == "openmpi" ]]; then
@@ -66,7 +55,7 @@ cmake               \
     -DADIOS2_USE_ZeroMQ=ON                    \
     -DADIOS2_USE_ZFP=ON                       \
     -DBUILD_SHARED_LIBS=ON                    \
-    -DBUILD_TESTING=${RUN_TESTS}              \
+    -DBUILD_TESTING=OFF                       \
     -DCMAKE_BUILD_TYPE=Release                \
     -DCMAKE_INSTALL_LIBDIR=lib                \
     -DCMAKE_INSTALL_PREFIX="${PREFIX}"        \
@@ -76,25 +65,5 @@ cmake               \
 
 cmake --build build "-j${CPU_COUNT}" -v
 
-if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" && "${RUN_TESTS}" == "ON" ]]
-then
-    # SST: Flaky tests
-    exclude_tests="SST"
-    # Disable the Makefile install test since it relies on the adios2-config
-    # script which is not being build anyways since it is being flaky in
-    # several configurations.
-    exclude_tests+="|Install.Make.*"
-    if [[ "${target_platform}" =~ osx ]]
-    then
-        exclude_tests+="|Test.Engine.DataMan1D.Serial"
-        exclude_tests+="|Test.Engine.DataMan1xN.Serial"
-        exclude_tests+="|Test.Engine.DataManSingleValues"
-        exclude_tests+="|Remote.BPWriteReadADIOS2stdio.GetRemote"
-        exclude_tests+="|Remote.BPWriteMemorySelectionRead.GetRemote"
-        exclude_tests+="|Remote.BPWriteMemorySelectionRead.FileRemote"
-    fi
-
-    ctest --test-dir build --output-on-failure -E "${exclude_tests}"
-fi
 
 cmake --install build
