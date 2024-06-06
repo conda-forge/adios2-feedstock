@@ -22,6 +22,7 @@ cmake ^
     -DADIOS2_USE_MPI=OFF        ^
     -DADIOS2_BUILD_EXAMPLES=OFF ^
     -DADIOS2_Blosc2_PREFER_SHARED=ON  ^
+    -DADIOS2_LIBADIOS_MODE=ON   ^
     -DADIOS2_USE_Blosc2=ON      ^
     -DADIOS2_USE_BZip2=ON       ^
     -DADIOS2_USE_Campaign=OFF   ^
@@ -49,42 +50,6 @@ if errorlevel 1 exit 1
 :: ctest --test-dir build --output-on-failure -E "SST"
 :: if errorlevel 1 exit 1
 
-:: Install everything but tools and scripts
-::   see "make list_install_components"
-
-cmake --install build --component adios2_core-config
-cmake --install build --component adios2_core-development
-cmake --install build --component adios2_core-libraries
-cmake --install build --component adios2_core-runtime
-cmake --install build --component adios2_atl-development
-cmake --install build --component adios2_atl-libraries
-cmake --install build --component adios2_atl-runtime
-cmake --install build --component adios2_c-development
-cmake --install build --component adios2_c-libraries
-cmake --install build --component adios2_c-runtime
-cmake --install build --component adios2_cxx11-development
-cmake --install build --component adios2_cxx11-libraries
-cmake --install build --component adios2_cxx11-runtime
-cmake --install build --component adios2_dill-development
-cmake --install build --component adios2_dill-libraries
-cmake --install build --component adios2_dill-runtime
-cmake --install build --component adios2_enet-development
-cmake --install build --component adios2_enet-libraries
-cmake --install build --component adios2_enet-runtime
-cmake --install build --component adios2_evpath-runtime
-cmake --install build --component adios2_evpath-development
-cmake --install build --component adios2_evpath-libraries
-cmake --install build --component adios2_ffs-development
-cmake --install build --component adios2_ffs-libraries
-cmake --install build --component adios2_ffs-runtime
-cmake --install build --component adios2_fortran-development
-cmake --install build --component adios2_fortran-libraries
-cmake --install build --component cmenet
-cmake --install build --component cmepoll
-cmake --install build --component cmmulticast
-cmake --install build --component cmselect
-cmake --install build --component cmsockets
-cmake --install build --component cmudp
-cmake --install build --component Unspecified
+cmake --install build
 
 if errorlevel 1 exit 1

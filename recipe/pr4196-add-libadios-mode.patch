@@ -1,0 +1,196 @@
+From 46d063d467cd54aa59a3e8dcb846644cf76c4d88 Mon Sep 17 00:00:00 2001
+From: Vicente Adolfo Bolea Sanchez <vicente.bolea@kitware.com>
+Date: Wed, 5 Jun 2024 17:19:25 -0400
+Subject: [PATCH] cmake: add ADIOS2_LIBADIOS_MODE flag
+
+---
+ CMakeLists.txt                                     |  6 ++++++
+ bindings/Python/CMakeLists.txt                     |  3 +++
+ python/CMakeLists.txt                              |  1 +
+ source/adios2/toolkit/remote/CMakeLists.txt        |  1 +
+ source/adios2/toolkit/sst/util/CMakeLists.txt      |  1 +
+ source/utils/CMakeLists.txt                        | 10 ++++++++--
+ source/utils/adios_campaign_manager/CMakeLists.txt |  1 +
+ source/utils/adios_iotest/CMakeLists.txt           |  1 +
+ source/utils/bp4dbg/CMakeLists.txt                 |  2 ++
+ source/utils/bp5dbg/CMakeLists.txt                 |  2 ++
+ 10 files changed, 26 insertions(+), 2 deletions(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index cb3697a15..935698403 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -188,6 +188,8 @@ adios_option(AWSSDK     "Enable support for S3 compatible storage using AWS SDK'
+ adios_option(Derived_Variable    "Enable support for derived variables" OFF)
+ adios_option(PIP        "Enable support for pip packaging" OFF)
+ 
++option(ADIOS2_LIBADIOS_MODE "Install only C/C++ library components" OFF)
++mark_as_advanced(ADIOS2_LIBADIOS_MODE)
+ option(ADIOS2_Blosc2_PREFER_SHARED "Prefer shared Blosc2 libraries" ON)
+ mark_as_advanced(ADIOS2_Blosc2_PREFER_SHARED)
+ mark_as_advanced(ADIOS2_USE_PIP)
+@@ -314,6 +316,10 @@ if(MSVC AND BUILD_SHARED_LIBS AND ADIOS2_HAVE_HDF5)
+   add_definitions(-DH5_BUILT_AS_DYNAMIC_LIB=1)
+ endif()
+ 
++if (ADIOS2_LIBADIOS_MODE)
++  set(ADIOS2_MAYBE_EXCLUDE_FROM_ALL "EXCLUDE_FROM_ALL")
++endif()
++
+ #------------------------------------------------------------------------------#
+ # Third party libraries
+ #------------------------------------------------------------------------------#
+diff --git a/bindings/Python/CMakeLists.txt b/bindings/Python/CMakeLists.txt
+index eb453387b..81287d3f1 100644
+--- a/bindings/Python/CMakeLists.txt
++++ b/bindings/Python/CMakeLists.txt
+@@ -60,12 +60,15 @@ endif()
+ install(TARGETS adios2_py
+   DESTINATION ${install_location}/bindings
+   COMPONENT adios2_python-python
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+ install(FILES ${CMAKE_PYTHON_OUTPUT_DIRECTORY}/adios2/bindings/__init__.py
+   DESTINATION ${install_location}/bindings
+   COMPONENT adios2_python-python
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+ install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/test
+   DESTINATION ${install_location}
+   COMPONENT adios2_python-python
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+diff --git a/python/CMakeLists.txt b/python/CMakeLists.txt
+index 4f7b79a38..b20ef8fb5 100644
+--- a/python/CMakeLists.txt
++++ b/python/CMakeLists.txt
+@@ -15,4 +15,5 @@ endif()
+ install(DIRECTORY ${CMAKE_PYTHON_OUTPUT_DIRECTORY}/adios2/
+   DESTINATION ${install_location}
+   COMPONENT adios2_python-python
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+diff --git a/source/adios2/toolkit/remote/CMakeLists.txt b/source/adios2/toolkit/remote/CMakeLists.txt
+index fdea6ec84..6e41eb916 100644
+--- a/source/adios2/toolkit/remote/CMakeLists.txt
++++ b/source/adios2/toolkit/remote/CMakeLists.txt
+@@ -15,5 +15,6 @@ if (NOT ADIOS2_USE_PIP)
+   set_property(TARGET adios2_remote_server PROPERTY OUTPUT_NAME adios2_remote_server${ADIOS2_EXECUTABLE_SUFFIX})
+   install(TARGETS adios2_remote_server EXPORT adios2
+     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT adios2_tools-runtime
++    ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+   )
+ endif ()
+diff --git a/source/adios2/toolkit/sst/util/CMakeLists.txt b/source/adios2/toolkit/sst/util/CMakeLists.txt
+index 7f7ec99db..c7a8fcee4 100644
+--- a/source/adios2/toolkit/sst/util/CMakeLists.txt
++++ b/source/adios2/toolkit/sst/util/CMakeLists.txt
+@@ -24,4 +24,5 @@ target_include_directories(sst_conn_tool PRIVATE .. ../cp )
+ 
+ install(TARGETS sst_conn_tool EXPORT adios2
+   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT adios2_tools-runtime
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+diff --git a/source/utils/CMakeLists.txt b/source/utils/CMakeLists.txt
+index 01f5f93c3..cb98ce6a9 100644
+--- a/source/utils/CMakeLists.txt
++++ b/source/utils/CMakeLists.txt
+@@ -23,6 +23,7 @@ target_include_directories(bpls PRIVATE
+ set_property(TARGET bpls PROPERTY OUTPUT_NAME bpls${ADIOS2_EXECUTABLE_SUFFIX})
+ install(TARGETS bpls EXPORT adios2
+   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT adios2_tools-runtime
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+ configure_file(
+   ${CMAKE_CURRENT_SOURCE_DIR}/bpls/bpls.cmake.gen.in
+@@ -70,6 +71,7 @@ install(TARGETS adios_reorganize
+   ${maybe_adios_reorganize_mpi}
+   EXPORT adios2
+   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT adios2_tools-runtime
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+ 
+ if(ADIOS2_HAVE_MPI)
+@@ -83,13 +85,17 @@ if(Python_Interpreter_FOUND)
+   install(PROGRAMS adios2_json_pp.py
+     RENAME adios2_json_pp
+     DESTINATION ${CMAKE_INSTALL_BINDIR}
+-    COMPONENT adios2_scripts-runtime)
++    COMPONENT adios2_scripts-runtime
++    ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
++  )
+ endif()
+ 
+ install(PROGRAMS adios2_deactivate_bp
+   RENAME adios2_deactivate_bp
+   DESTINATION ${CMAKE_INSTALL_BINDIR}
+-  COMPONENT adios2_scripts-runtime)
++  COMPONENT adios2_scripts-runtime
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
++)
+ 
+ # Simplified wrappers for adios2_reorganize
+ configure_file(
+diff --git a/source/utils/adios_campaign_manager/CMakeLists.txt b/source/utils/adios_campaign_manager/CMakeLists.txt
+index 01a9bce45..a7a3bd3f2 100644
+--- a/source/utils/adios_campaign_manager/CMakeLists.txt
++++ b/source/utils/adios_campaign_manager/CMakeLists.txt
+@@ -1,6 +1,7 @@
+ install(PROGRAMS adios2_campaign_manager.py
+   RENAME adios2_campaign_manager
+   DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT adios2_scripts-runtime
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+ #install(
+ #  FILES
+diff --git a/source/utils/adios_iotest/CMakeLists.txt b/source/utils/adios_iotest/CMakeLists.txt
+index fc490e63b..1eeba20f5 100644
+--- a/source/utils/adios_iotest/CMakeLists.txt
++++ b/source/utils/adios_iotest/CMakeLists.txt
+@@ -32,6 +32,7 @@ endif()
+ 
+ install(TARGETS adios_iotest EXPORT adios2
+   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT adios2_tools-runtime
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+ 
+ install(DIRECTORY iotest-config/
+diff --git a/source/utils/bp4dbg/CMakeLists.txt b/source/utils/bp4dbg/CMakeLists.txt
+index 84b028c95..4399aaf10 100644
+--- a/source/utils/bp4dbg/CMakeLists.txt
++++ b/source/utils/bp4dbg/CMakeLists.txt
+@@ -1,6 +1,7 @@
+ install(PROGRAMS bp4dbg.py
+   RENAME bp4dbg
+   DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT adios2_scripts-runtime
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+ install(
+   FILES
+@@ -10,4 +11,5 @@ install(
+     adios2/bp4dbg/metadata.py
+     adios2/bp4dbg/idxtable.py
+   DESTINATION ${CMAKE_INSTALL_PYTHONDIR}/adios2/bp4dbg COMPONENT adios2_scripts-runtime
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+diff --git a/source/utils/bp5dbg/CMakeLists.txt b/source/utils/bp5dbg/CMakeLists.txt
+index df085bb65..40bf02293 100644
+--- a/source/utils/bp5dbg/CMakeLists.txt
++++ b/source/utils/bp5dbg/CMakeLists.txt
+@@ -1,6 +1,7 @@
+ install(PROGRAMS bp5dbg.py
+   RENAME bp5dbg
+   DESTINATION ${CMAKE_INSTALL_BINDIR} COMPONENT adios2_scripts-runtime
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+ install(
+   FILES
+@@ -10,4 +11,5 @@ install(
+     adios2/bp5dbg/metametadata.py
+     adios2/bp5dbg/idxtable.py
+   DESTINATION ${CMAKE_INSTALL_PYTHONDIR}/adios2/bp5dbg COMPONENT adios2_scripts-runtime
++  ${ADIOS2_MAYBE_EXCLUDE_FROM_ALL}
+ )
+-- 
+2.35.3
+
