@@ -3,7 +3,7 @@ BUILD:
 bzip2:
 - '1'
 c_blosc2:
-- '2.14'
+- '2.15'
 c_compiler:
 - gcc
 c_compiler_version:
@@ -64,4 +64,4 @@ zip_keys:
   - numpy
   - python_impl
 zlib:
-- '1.2'
+- '1'

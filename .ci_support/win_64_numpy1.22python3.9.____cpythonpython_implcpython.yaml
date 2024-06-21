@@ -1,7 +1,7 @@
 bzip2:
 - '1'
 c_blosc2:
-- '2.14'
+- '2.15'
 c_compiler:
 - vs2019
 c_stdlib:
@@ -41,4 +41,4 @@ zip_keys:
   - numpy
   - python_impl
 zlib:
-- '1.2'
+- '1'
