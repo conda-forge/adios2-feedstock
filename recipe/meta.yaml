@@ -69,7 +69,7 @@ outputs:
         - ninja         # [unix]
         - make          # [unix]
         - pkg-config    # [unix]
-        - cmake =3.23
+        - cmake
         - {{ mpi }}  # [mpi == 'openmpi']
         - flex       # [unix]
         - bison      # [unix]
