@@ -169,6 +169,7 @@ outputs:
         - python -c "import adios2; print(adios2.__version__)"
         # Python-based scripts are present:
         - bp5dbg --help  # [unix]
+        - bpls --help  # [unix]
         - if exist %LIBRARY_PREFIX%\bin\bp5dbg (exit 0) else (exit 1)  # [win]
 
 about:
