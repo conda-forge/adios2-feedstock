@@ -63,45 +63,52 @@ outputs:
         - {{ compiler('c') }}
         - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
-        - gnuconfig  # [unix]
-        # TODO: seems incompatible on OSX and too experimental for Windows
-        - {{ compiler('fortran') }}  # [linux]
-        - ninja         # [unix]
-        - make          # [unix]
-        - pkg-config    # [unix]
-        - cmake
-        - {{ mpi }}  # [mpi == 'openmpi']
-        - flex       # [unix]
-        - bison      # [unix]
-        #- diff-match-patch  # for ADIOS2 testing on windows, but does not help
-
-        # Needed for Python:
-        # Python _build_ is handled here, install in separate output
-        - python                                 # [build_platform != target_platform]
-        - cross-python_{{ target_platform }}     # [build_platform != target_platform]
-        - numpy                                  # [build_platform != target_platform]
-      host:
-        - {{ mpi }}  # [mpi != 'nompi']
-        - libffi
-        # need to list hdf5 twice to get version pinning from conda_build_config
-        - hdf5
-        - hdf5 * {{ mpi_prefix }}_*
-        # TODO: Could NOT find ZeroMQ (missing: ZeroMQ_LIBRARY) on Windows
-        - zeromq >=4.1  # [not win]
+                                              # TODO: seems incompatible on OSX and too experimental for Windows
+        - {{ compiler('fortran') }}           # [linux]
+        - {{ mpi }}                           # [mpi == 'openmpi']
+        - bison                               # [unix]
         - bzip2
         - c-blosc2
+        - cmake
+        - cross-python_{{ target_platform }}  # [build_platform != target_platform]
+        - flex                                # [unix]
+        - hdf5 * {{ mpi_prefix }}_*
+        - libffi
         - libpng
-        - zfp 0.5  # CMake rejects zfp 1.0.0
+        - make                                # [unix]
+        - ninja                               # [unix]
+        - numpy                               # [build_platform != target_platform]
+        - pkg-config                          # [unix]
+        - python                              # [build_platform != target_platform]
+        - zeromq >=4.1                        # [not win]
+        - zfp
         - zlib
-        # TODO: sz, mgard
 
-        # Python:
+      host:
+        - {{ mpi }}  # [mpi != 'nompi']
+        - bzip2
+        - c-blosc2
+        - hdf5 * {{ mpi_prefix }}_*
+        - libffi
+        - libpng
         - mpi4py     # [mpi != 'nompi']
-        - python
         - numpy
+        - python
+        - zeromq >=4.1  # [not win]
+        - zfp
+        - zlib
 
       run:
         - {{ mpi }}  # [mpi != 'nompi']
+        - {{ pin_compatible('numpy') }}
+        - bzip2
+        - c-blosc2
+        - cmake
+        - libpng
+        - libzlib
+        - zeromq >=4.1  # [not win]
+        - zfp
+        - hdf5 * {{ mpi_prefix }}_*
 
     test:
       requires:
@@ -114,15 +121,15 @@ outputs:
       source_files:
         - examples/hello/helloWorld
       commands:
-        - test -f ${PREFIX}/lib/cmake/adios2/adios2-config.cmake                      # [unix]
-        - test -f ${PREFIX}/lib/cmake/adios2/adios2-c-targets.cmake                   # [unix]
-        - test -f ${PREFIX}/lib/cmake/adios2/adios2-cxx11-targets.cmake               # [unix]
-        - test -f ${PREFIX}/lib/libadios2_cxx11${SHLIB_EXT}                           # [unix]
-        - test -f ${PREFIX}/lib/libadios2_c${SHLIB_EXT}                               # [unix]
-        - if exist %LIBRARY_PREFIX%\bin\adios2_cxx11.dll (exit 0) else (exit 1)       # [win]
-        - if exist %LIBRARY_PREFIX%\bin\adios2_c.dll (exit 0) else (exit 1)           # [win]
-        - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-config.cmake (exit 0) else (exit 1)  # [win]
-        - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-c-targets.cmake (exit 0) else (exit 1)  # [win]
+        - test -f ${PREFIX}/lib/cmake/adios2/adios2-config.cmake                                        # [unix]
+        - test -f ${PREFIX}/lib/cmake/adios2/adios2-c-targets.cmake                                     # [unix]
+        - test -f ${PREFIX}/lib/cmake/adios2/adios2-cxx11-targets.cmake                                 # [unix]
+        - test -f ${PREFIX}/lib/libadios2_cxx11${SHLIB_EXT}                                             # [unix]
+        - test -f ${PREFIX}/lib/libadios2_c${SHLIB_EXT}                                                 # [unix]
+        - if exist %LIBRARY_PREFIX%\bin\adios2_cxx11.dll (exit 0) else (exit 1)                         # [win]
+        - if exist %LIBRARY_PREFIX%\bin\adios2_c.dll (exit 0) else (exit 1)                             # [win]
+        - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-config.cmake (exit 0) else (exit 1)         # [win]
+        - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-c-targets.cmake (exit 0) else (exit 1)      # [win]
         - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-cxx11-targets.cmake (exit 0) else (exit 1)  # [win]
 
         # make sure we didn't install Python files
@@ -154,13 +161,13 @@ outputs:
         - {{ mpi }}  # [mpi != 'nompi']
         - {{ pin_subpackage("libadios2", exact=True) }}
         - python
-        - mpi4py  # [mpi != 'nompi']
+        - mpi4py     # [mpi != 'nompi']
         - numpy
       run:
         - {{ mpi }}  # [mpi != 'nompi']
         - {{ pin_subpackage("libadios2", exact=True) }}
         - python
-        - mpi4py  # [mpi != 'nompi']
+        - mpi4py     # [mpi != 'nompi']
         - numpy
     test:
       # test.imports is unreliable for multiple outputs
