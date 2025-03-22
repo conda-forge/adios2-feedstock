@@ -151,6 +151,7 @@ outputs:
         - {{ mpi }}  # [mpi != 'nompi']
         - {{ pin_subpackage("libadios2", exact=True) }}
         - hdf5
+        - hdf5 * {{ mpi_prefix }}_*
         - python
         - mpi4py     # [mpi != 'nompi']
         - numpy
