@@ -92,7 +92,8 @@ outputs:
         - mpi4py     # [mpi != 'nompi']
         - numpy
         - python
-        - zeromq >=4.1  # [not win]
+        - zeromq  # [not win]
+        - ucx  # [linux and mpi != 'nompi']
         - zfp
         - zlib
 
