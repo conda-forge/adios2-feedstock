@@ -50,6 +50,10 @@ python_impl:
 - cpython
 target_platform:
 - linux-aarch64
+ucx:
+- '1.18'
+zeromq:
+- 4.3.5
 zfp:
 - '1.0'
 zip_keys:
