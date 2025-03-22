@@ -48,7 +48,7 @@ outputs:
       # note: all of these should be duplicated to host/build in adios2
       # to get the right pins
       ignore_run_exports_from:
-        - cross-python
+        - cross-python_{{ target_platform }}
         - python
         - mpi4py
         - numpy
