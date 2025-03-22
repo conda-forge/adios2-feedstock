@@ -140,6 +140,9 @@ outputs:
     # those in the actual build above which have relevant run_exports
     requirements:
       build:
+        - {{ compiler("c") }}
+        - {{ stdlib("c") }}
+        - {{ compiler("cxx") }}
         - python                                 # [build_platform != target_platform]
         - cross-python_{{ target_platform }}     # [build_platform != target_platform]
         - numpy                                  # [build_platform != target_platform]
@@ -147,9 +150,12 @@ outputs:
       host:
         - {{ mpi }}  # [mpi != 'nompi']
         - {{ pin_subpackage("libadios2", exact=True) }}
+        - hdf5
         - python
         - mpi4py     # [mpi != 'nompi']
         - numpy
+        - ucx  # [linux and mpi != 'nompi']
+        - zfp
       run:
         - {{ pin_subpackage("libadios2", exact=True) }}
         - python
