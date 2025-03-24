@@ -26,6 +26,8 @@ fortran_compiler:
 - gfortran
 fortran_compiler_version:
 - '13'
+hdf5:
+- 1.14.3
 libffi:
 - '3.4'
 libpng:
@@ -48,6 +50,10 @@ python_impl:
 - cpython
 target_platform:
 - linux-aarch64
+ucx:
+- '1.18'
+zeromq:
+- 4.3.5
 zfp:
 - '1.0'
 zip_keys:
