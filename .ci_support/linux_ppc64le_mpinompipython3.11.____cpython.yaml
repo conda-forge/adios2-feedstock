@@ -51,7 +51,7 @@ python_impl:
 target_platform:
 - linux-ppc64le
 ucx:
-- '1.18'
+- '1.19'
 zeromq:
 - 4.3.5
 zfp:
