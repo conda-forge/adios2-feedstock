@@ -1,0 +1,167 @@
+# This recipe uses the v1 YAML format introduced by CEP 13
+# For more information see: https://prefix-dev.github.io/rattler-build/latest/reference/recipe_file/
+
+context:
+  name: adios2
+  version: 2.11.0
+  sha256: 0a2bd745e3f39745f07587e4a5f92d72f12fa0e2be305e7957bdceda03735dbf
+  build_number: 4
+
+recipe:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/ornladios/ADIOS2/archive/v${{ version }}.tar.gz
+  sha256: ${{ sha256 }}
+
+build:
+  number: ${{ build_number }}
+
+outputs:
+  - package:
+      name: adios2
+    build:
+      string: ${{ 'nompi' if mpi == 'nompi' else 'mpi_' + mpi }}_py${{ python | version_to_buildstring }}_h${{ hash }}_${{ build_number + (100 if mpi == 'nompi' else 0) }}
+      script:
+        file: ${{ "build-adios.sh" if unix else "build-adios.bat" }}
+        env:
+          mpi: ${{ mpi }}
+      skip:
+        - if: python_impl == "pypy"
+          then: true
+        - if: win and mpi != 'nompi'
+          then: true
+    requirements:
+      run_exports:
+        # Strict runtime dependency on build-time MPI flavor
+        # patch-releases are not ABI compatible:
+        #   https://docs.conda.io/projects/conda-build/en/latest/resources/variants.html#referencing-subpackages
+        #   https://abi-laboratory.pro/?view=timeline&l=adios2
+        strong:
+          - ${{ pin_subpackage('adios2', exact=True) }}
+      build:
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+        - ${{ stdlib('c') }}
+        - if: unix
+          then:
+            - gnuconfig
+            - ninja
+            - make
+            - pkg-config
+            - flex
+            - bison
+        - if: linux
+          then: ${{ compiler('fortran') }}
+        - cmake
+        - if: build_platform != target_platform
+          then:
+            - python
+            - cross-python_${{ target_platform }}
+            - numpy
+        - if: mpi != "nompi" and build_platform != target_platform
+          then: ${{ mpi }}
+      host:
+        - python
+        - numpy
+        - if: mpi != "nompi"
+          then:
+            - ${{ mpi }}
+            - mpi4py
+        - libffi
+        - hdf5
+        - hdf5 * ${{ 'nompi' if mpi == 'nompi' else 'mpi_' + mpi }}_*
+        - if: not win
+          then:
+            - zeromq
+            - libsodium
+        - bzip2
+        - c-blosc2
+        - libpng
+        - zfp
+        - if: linux and mpi != 'nompi' and target_platform != 'linux-ppc64le'
+          then:
+            - ucx
+        - zlib
+      run:
+        - python
+        - if: mpi != "nompi"
+          then: ${{ mpi }}
+    tests:
+      - requirements:
+          build:
+            - ${{ compiler('c') }}
+            - ${{ compiler('cxx') }}
+            - ${{ stdlib('c') }}
+            - if: linux
+              then: ${{ compiler('fortran') }}
+            - cmake
+            - if: unix
+              then:
+                - make
+                - ninja
+        files:
+          source:
+            - examples/
+          recipe:
+            - test-adios.sh
+        script:
+          - python -c "import adios2; print(adios2.__version__)"
+          - if: unix
+            then:
+              - test -f ${PREFIX}/lib/cmake/adios2/adios2-config.cmake
+              - test -f ${PREFIX}/lib/cmake/adios2/adios2-c-targets.cmake
+              - test -f ${PREFIX}/lib/cmake/adios2/adios2-cxx-targets.cmake
+              - test -f ${PREFIX}/lib/libadios2_cxx${SHLIB_EXT}
+              - test -f ${PREFIX}/lib/libadios2_c${SHLIB_EXT}
+              - bp5dbg --help
+              - bpls --help
+              - mpi=${{ mpi }} bash test-adios.sh
+          - if: win
+            then:
+              - if exist %LIBRARY_PREFIX%\bin\adios2_cxx.dll (exit 0) else (exit 1)
+              - if exist %LIBRARY_PREFIX%\bin\adios2_c.dll (exit 0) else (exit 1)
+              - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-config.cmake (exit 0) else (exit 1)
+              - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-c-targets.cmake (exit 0) else (exit 1)
+              - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-cxx-targets.cmake (exit 0) else (exit 1)
+              - if exist %LIBRARY_PREFIX%\bin\bp5dbg (exit 0) else (exit 1)
+
+  - package:
+      name: libadios2
+    build:
+      string: ${{ 'nompi' if mpi == 'nompi' else 'mpi_' + mpi }}_py${{ python | version_to_buildstring }}_h${{ hash }}_${{ build_number + (100 if mpi == 'nompi' else 0) }}
+      skip:
+        - if: python_impl == "pypy"
+          then: true
+        - if: win and mpi != 'nompi'
+          then: true
+    requirements:
+      run:
+        - ${{ pin_subpackage('adios2', exact=True) }}
+      run_exports:
+        - ${{ pin_subpackage('adios2', exact=True) }}
+    tests:
+      - script:
+          - python -c "import adios2; print(adios2.__version__)"
+
+about:
+  homepage: https://www.olcf.ornl.gov/center-projects/adios/
+  license: Apache-2.0
+  license_file: LICENSE
+  summary: Next generation of ADIOS developed in the Exascale Computing Program
+  description: |
+    ADIOS2 is the latest implementation of the ADaptable Input Output System,
+    ADIOS. This brand new architecture was designed to continue supporting the
+    performance legacy of ADIOS, and extend its current capabilities to address
+    current and future input/output (IO) challenges in the scientific data
+    lifecycle through effective research and development (R&D) activities.
+  documentation: https://adios2.readthedocs.io
+  repository: https://github.com/ornladios/ADIOS2
+
+extra:
+  feedstock-name: adios2
+  recipe-maintainers:
+    - ax3l
+    - vicentebolea
+    - williamfgc

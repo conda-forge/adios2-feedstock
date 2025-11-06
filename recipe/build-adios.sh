@@ -43,7 +43,6 @@ cmake               \
     -GNinja         \
     -DADIOS2_BUILD_EXAMPLES=OFF               \
     -DADIOS2_Blosc2_PREFER_SHARED=ON          \
-    -DADIOS2_LIBADIOS_MODE=ON                 \
     -DADIOS2_USE_Blosc2=ON                    \
     -DADIOS2_HAVE_ZFP_CUDA=OFF                \
     -DADIOS2_INSTALL_GENERATE_CONFIG=OFF      \
@@ -61,11 +60,10 @@ cmake               \
     -DCMAKE_BUILD_TYPE=Release                \
     -DCMAKE_INSTALL_LIBDIR=lib                \
     -DCMAKE_INSTALL_PREFIX="${PREFIX}"        \
+    -DPNG_PNG_INCLUDE_DIR="${PREFIX}"         \
     -DPython_EXECUTABLE:FILEPATH="${PYTHON}"  \
-    -DPython_INCLUDE_DIR="$(${PYTHON} -c "from sysconfig import get_paths as gp; print(gp()['include'])")" \
-    -DPNG_PNG_INCLUDE_DIR="${PREFIX}"
+    -DPython_INCLUDE_DIR="$(${PYTHON} -c "from sysconfig import get_paths as gp; print(gp()['include'])")"
 
 cmake --build build "-j${CPU_COUNT}" -v
-
 
 cmake --install build
