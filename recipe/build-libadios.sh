@@ -53,7 +53,7 @@ cmake               \
     -DADIOS2_USE_HDF5=ON                      \
     -DADIOS2_USE_MPI=${USE_MPI}               \
     -DADIOS2_USE_PNG=ON                       \
-    -DADIOS2_USE_Python=ON                    \
+    -DADIOS2_USE_Python=OFF                   \
     -DADIOS2_USE_ZeroMQ=ON                    \
     -DADIOS2_USE_ZFP=ON                       \
     -DBUILD_SHARED_LIBS=ON                    \
@@ -61,11 +61,8 @@ cmake               \
     -DCMAKE_BUILD_TYPE=Release                \
     -DCMAKE_INSTALL_LIBDIR=lib                \
     -DCMAKE_INSTALL_PREFIX="${PREFIX}"        \
-    -DPython_EXECUTABLE:FILEPATH="${PYTHON}"  \
-    -DPython_INCLUDE_DIR="$(${PYTHON} -c "from sysconfig import get_paths as gp; print(gp()['include'])")" \
     -DPNG_PNG_INCLUDE_DIR="${PREFIX}"
 
 cmake --build build "-j${CPU_COUNT}" -v
-
 
 cmake --install build

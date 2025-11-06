@@ -1,0 +1,5 @@
+# MPI variants configuration for rattler-build
+mpi:
+  - nompi
+  - mpich
+  - openmpi

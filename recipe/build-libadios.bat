@@ -31,24 +31,17 @@ cmake ^
     -DADIOS2_USE_HDF5_VOL=OFF   ^
     -DADIOS2_USE_PNG=ON         ^
     -DADIOS2_USE_Profiling=OFF  ^
-    -DADIOS2_USE_Python=ON      ^
+    -DADIOS2_USE_Python=OFF     ^
     -DADIOS2_USE_ZeroMQ=OFF     ^
     -DADIOS2_USE_ZFP=ON         ^
     -DADIOS2_HAVE_ZFP_CUDA=OFF  ^
     -DADIOS2_RUN_INSTALL_TEST=OFF         ^
-    -DPython_EXECUTABLE:FILEPATH=%PYTHON% ^
     -DCMAKE_INSTALL_LIBDIR=lib  ^
     -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%
 if errorlevel 1 exit 1
 
 cmake --build build -j%CPU_COUNT%
 if errorlevel 1 exit 1
-
-:: diff command is required for testing: package "diff-match-patch"
-:: should provide it but ADIOS 2.7.1 CMake cannot find it
-:: nmake test  OR
-:: ctest --test-dir build --output-on-failure -E "SST"
-:: if errorlevel 1 exit 1
 
 cmake --install build
 
