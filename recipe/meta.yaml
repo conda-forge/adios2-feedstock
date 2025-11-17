@@ -30,8 +30,6 @@ package:
 source:
   url: https://github.com/ornladios/ADIOS2/archive/refs/tags/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - pr4196-add-libadios-mode.patch  # This adds ADIOS2_LIBADIOS_MODE remove with >2.10.1
 
 build:
   number: {{ build }}
@@ -110,14 +108,14 @@ outputs:
       commands:
         - test -f ${PREFIX}/lib/cmake/adios2/adios2-config.cmake                                        # [unix]
         - test -f ${PREFIX}/lib/cmake/adios2/adios2-c-targets.cmake                                     # [unix]
-        - test -f ${PREFIX}/lib/cmake/adios2/adios2-cxx11-targets.cmake                                 # [unix]
-        - test -f ${PREFIX}/lib/libadios2_cxx11${SHLIB_EXT}                                             # [unix]
+        - test -f ${PREFIX}/lib/cmake/adios2/adios2-cxx-targets.cmake                                 # [unix]
+        - test -f ${PREFIX}/lib/libadios2_cxx${SHLIB_EXT}                                             # [unix]
         - test -f ${PREFIX}/lib/libadios2_c${SHLIB_EXT}                                                 # [unix]
-        - if exist %LIBRARY_PREFIX%\bin\adios2_cxx11.dll (exit 0) else (exit 1)                         # [win]
+        - if exist %LIBRARY_PREFIX%\bin\adios2_cxx.dll (exit 0) else (exit 1)                         # [win]
         - if exist %LIBRARY_PREFIX%\bin\adios2_c.dll (exit 0) else (exit 1)                             # [win]
         - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-config.cmake (exit 0) else (exit 1)         # [win]
         - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-c-targets.cmake (exit 0) else (exit 1)      # [win]
-        - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-cxx11-targets.cmake (exit 0) else (exit 1)  # [win]
+        - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-cxx-targets.cmake (exit 0) else (exit 1)  # [win]
 
         # make sure we didn't install Python files
         - test ! -d ${SP_DIR}/adios2  # [unix]

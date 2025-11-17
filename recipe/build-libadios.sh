@@ -29,8 +29,10 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION}" == "1" ]]; then
     export CMAKE_ARGS="${CMAKE_ARGS} -DADIOS2_HAVE_ZFP_CUDA_EXITCODE=0"
     # 2.9.0+ see https://github.com/ornladios/ADIOS2/issues/3647#issuecomment-1591705964
     if [[ ${mpi} != "nompi" ]]; then
-        CMAKE_ARGS+=" -DADIOS2_HAVE_MPI_CLIENT_SERVER=ON"
+        CMAKE_ARGS+=" -DADIOS2_SST_HAVE_MPI_DP_HEURISTICS_PASSED=ON"
     fi
+    CMAKE_ARGS+=" -DRUN_RESULT=ON"
+    CMAKE_ARGS+=" -DRUN_RESULT__TRYRUN_OUTPUT=Format_IEEE_754_littleendian"
 fi
 
 # shellcheck disable=SC2086
