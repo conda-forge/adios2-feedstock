@@ -1,7 +1,7 @@
 {% set name = "adios2" %}
-{% set version = "2.10.2" %}
-{% set sha256 = "14cf0bcd94772194bce0f2c0e74dba187965d1cffd12d45f801c32929158579e" %}
-{% set build = 14 %}
+{% set version = "2.11.0" %}
+{% set sha256 = "0a2bd745e3f39745f07587e4a5f92d72f12fa0e2be305e7957bdceda03735dbf" %}
+{% set build = 0 %}
 
 # ensure mpi is defined (needed for conda-smithy recipe-lint)
 {% set mpi = mpi or 'nompi' %}
@@ -30,8 +30,6 @@ package:
 source:
   url: https://github.com/ornladios/ADIOS2/archive/refs/tags/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - pr4196-add-libadios-mode.patch  # This adds ADIOS2_LIBADIOS_MODE remove with >2.10.1
 
 build:
   number: {{ build }}
@@ -110,14 +108,14 @@ outputs:
       commands:
         - test -f ${PREFIX}/lib/cmake/adios2/adios2-config.cmake                                        # [unix]
         - test -f ${PREFIX}/lib/cmake/adios2/adios2-c-targets.cmake                                     # [unix]
-        - test -f ${PREFIX}/lib/cmake/adios2/adios2-cxx11-targets.cmake                                 # [unix]
-        - test -f ${PREFIX}/lib/libadios2_cxx11${SHLIB_EXT}                                             # [unix]
+        - test -f ${PREFIX}/lib/cmake/adios2/adios2-cxx-targets.cmake                                 # [unix]
+        - test -f ${PREFIX}/lib/libadios2_cxx${SHLIB_EXT}                                             # [unix]
         - test -f ${PREFIX}/lib/libadios2_c${SHLIB_EXT}                                                 # [unix]
-        - if exist %LIBRARY_PREFIX%\bin\adios2_cxx11.dll (exit 0) else (exit 1)                         # [win]
+        - if exist %LIBRARY_PREFIX%\bin\adios2_cxx.dll (exit 0) else (exit 1)                         # [win]
         - if exist %LIBRARY_PREFIX%\bin\adios2_c.dll (exit 0) else (exit 1)                             # [win]
         - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-config.cmake (exit 0) else (exit 1)         # [win]
         - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-c-targets.cmake (exit 0) else (exit 1)      # [win]
-        - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-cxx11-targets.cmake (exit 0) else (exit 1)  # [win]
+        - if exist %LIBRARY_PREFIX%\lib\cmake\adios2\adios2-cxx-targets.cmake (exit 0) else (exit 1)  # [win]
 
         # make sure we didn't install Python files
         - test ! -d ${SP_DIR}/adios2  # [unix]
