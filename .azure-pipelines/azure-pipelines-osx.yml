@@ -100,7 +100,8 @@ jobs:
         UPLOAD_PACKAGES: 'True'
     maxParallel: 19
   timeoutInMinutes: 360
-  variables: {}
+  variables:
+    RATTLER_BUILD_EXPERIMENTAL: true
 
   steps:
   # TODO: Fast finish on azure pipelines?
@@ -121,5 +122,3 @@ jobs:
     displayName: Run OSX build
     env:
       BINSTAR_TOKEN: $(BINSTAR_TOKEN)
-      FEEDSTOCK_TOKEN: $(FEEDSTOCK_TOKEN)
-      STAGING_BINSTAR_TOKEN: $(STAGING_BINSTAR_TOKEN)
