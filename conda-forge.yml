@@ -1,12 +1,20 @@
 bot:
   automerge: true
+linter:
+  skip:
+    - unknown_meta_key
+    - unknown_azure_setting
+    - unknown_docker_setting
 build_platform:
   linux_aarch64: linux_64
   linux_ppc64le: linux_64
   osx_arm64: osx_64
 conda_build:
   pkg_format: '2'
-conda_forge_output_validation: true
+conda_forge_output_validation: false
+conda_build_tool: rattler-build
+docker:
+  run_args: "-e EXTRA_CB_OPTIONS"
 github:
   branch_name: main
   tooling_branch_name: main
@@ -15,3 +23,13 @@ provider:
   linux_ppc64le: default
   win: azure
 test: native_and_emulated
+azure:
+  settings_linux:
+    variables:
+      EXTRA_CB_OPTIONS: "--experimental"
+  settings_win:
+    variables:
+      RATTLER_BUILD_EXPERIMENTAL: true
+  settings_osx:
+    variables:
+      RATTLER_BUILD_EXPERIMENTAL: true
