@@ -61,7 +61,6 @@ outputs:
         - {{ compiler('c') }}
         - {{ stdlib("c") }}
         - {{ compiler('cxx') }}
-        # TODO: seems incompatible on OSX and too experimental for Windows
         - {{ compiler("fortran") }}
         - bison                               # [unix]
         - cmake
