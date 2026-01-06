@@ -4,7 +4,6 @@
 set -x
 
 if [[ ${target_platform} =~ osx ]]; then
-    CMAKE_ARGS+=" -DADIOS2_USE_Fortran=OFF"
     CMAKE_ARGS+=" -DADIOS2_USE_BZip2=OFF"
 fi
 
