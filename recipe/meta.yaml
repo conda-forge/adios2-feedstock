@@ -91,7 +91,7 @@ outputs:
         - numpy
         - python
         - zeromq  # [not win]
-        - ucx  # [linux and mpi != 'nompi']
+        - ucx  # [linux and mpi != 'nompi' and not ppc64le]
         - zfp
         - zlib
 
