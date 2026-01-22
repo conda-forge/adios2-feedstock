@@ -25,7 +25,7 @@ cmake ^
     -DADIOS2_LIBADIOS_MODE=ON   ^
     -DADIOS2_USE_Blosc2=ON      ^
     -DADIOS2_USE_BZip2=ON       ^
-    -DADIOS2_USE_Campaign=OFF   ^
+    -DADIOS2_USE_Campaign=ON    ^
     -DADIOS2_USE_Fortran=OFF    ^
     -DADIOS2_USE_HDF5=ON        ^
     -DADIOS2_USE_HDF5_VOL=OFF   ^
