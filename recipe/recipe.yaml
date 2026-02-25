@@ -107,7 +107,7 @@ outputs:
               - test -f ${PREFIX}/lib/libadios2_c${SHLIB_EXT}
               - test ! -d ${SP_DIR}/adios2
               - test ! -f ${PREFIX}/bin/bp5dbg
-              - bash test-libadios.sh
+              - mpi=${{ mpi }} bash test-libadios.sh
           - if: win
             then:
               - if exist %LIBRARY_PREFIX%\bin\adios2_cxx11.dll (exit 0) else (exit 1)
