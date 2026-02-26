@@ -8,187 +8,42 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_mpimpichpython3.10.____cpython:
-        CONFIG: linux_64_mpimpichpython3.10.____cpython
+      linux_64_mpimpich:
+        CONFIG: linux_64_mpimpich
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpimpichpython3.11.____cpython:
-        CONFIG: linux_64_mpimpichpython3.11.____cpython
+      linux_64_mpinompi:
+        CONFIG: linux_64_mpinompi
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpimpichpython3.12.____cpython:
-        CONFIG: linux_64_mpimpichpython3.12.____cpython
+      linux_64_mpiopenmpi:
+        CONFIG: linux_64_mpiopenmpi
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpimpichpython3.13.____cp313:
-        CONFIG: linux_64_mpimpichpython3.13.____cp313
+      linux_aarch64_mpimpich:
+        CONFIG: linux_aarch64_mpimpich
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpimpichpython3.14.____cp314:
-        CONFIG: linux_64_mpimpichpython3.14.____cp314
+      linux_aarch64_mpinompi:
+        CONFIG: linux_aarch64_mpinompi
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpinompipython3.10.____cpython:
-        CONFIG: linux_64_mpinompipython3.10.____cpython
+      linux_aarch64_mpiopenmpi:
+        CONFIG: linux_aarch64_mpiopenmpi
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpinompipython3.11.____cpython:
-        CONFIG: linux_64_mpinompipython3.11.____cpython
+      linux_ppc64le_mpimpich:
+        CONFIG: linux_ppc64le_mpimpich
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpinompipython3.12.____cpython:
-        CONFIG: linux_64_mpinompipython3.12.____cpython
+      linux_ppc64le_mpinompi:
+        CONFIG: linux_ppc64le_mpinompi
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpinompipython3.13.____cp313:
-        CONFIG: linux_64_mpinompipython3.13.____cp313
+      linux_ppc64le_mpiopenmpi:
+        CONFIG: linux_ppc64le_mpiopenmpi
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpinompipython3.14.____cp314:
-        CONFIG: linux_64_mpinompipython3.14.____cp314
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpiopenmpipython3.10.____cpython:
-        CONFIG: linux_64_mpiopenmpipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpiopenmpipython3.11.____cpython:
-        CONFIG: linux_64_mpiopenmpipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpiopenmpipython3.12.____cpython:
-        CONFIG: linux_64_mpiopenmpipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpiopenmpipython3.13.____cp313:
-        CONFIG: linux_64_mpiopenmpipython3.13.____cp313
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_mpiopenmpipython3.14.____cp314:
-        CONFIG: linux_64_mpiopenmpipython3.14.____cp314
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpimpichpython3.10.____cpython:
-        CONFIG: linux_aarch64_mpimpichpython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpimpichpython3.11.____cpython:
-        CONFIG: linux_aarch64_mpimpichpython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpimpichpython3.12.____cpython:
-        CONFIG: linux_aarch64_mpimpichpython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpimpichpython3.13.____cp313:
-        CONFIG: linux_aarch64_mpimpichpython3.13.____cp313
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpimpichpython3.14.____cp314:
-        CONFIG: linux_aarch64_mpimpichpython3.14.____cp314
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpinompipython3.10.____cpython:
-        CONFIG: linux_aarch64_mpinompipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpinompipython3.11.____cpython:
-        CONFIG: linux_aarch64_mpinompipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpinompipython3.12.____cpython:
-        CONFIG: linux_aarch64_mpinompipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpinompipython3.13.____cp313:
-        CONFIG: linux_aarch64_mpinompipython3.13.____cp313
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpinompipython3.14.____cp314:
-        CONFIG: linux_aarch64_mpinompipython3.14.____cp314
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpiopenmpipython3.10.____cpython:
-        CONFIG: linux_aarch64_mpiopenmpipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpiopenmpipython3.11.____cpython:
-        CONFIG: linux_aarch64_mpiopenmpipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpiopenmpipython3.12.____cpython:
-        CONFIG: linux_aarch64_mpiopenmpipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpiopenmpipython3.13.____cp313:
-        CONFIG: linux_aarch64_mpiopenmpipython3.13.____cp313
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_aarch64_mpiopenmpipython3.14.____cp314:
-        CONFIG: linux_aarch64_mpiopenmpipython3.14.____cp314
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpimpichpython3.10.____cpython:
-        CONFIG: linux_ppc64le_mpimpichpython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpimpichpython3.11.____cpython:
-        CONFIG: linux_ppc64le_mpimpichpython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpimpichpython3.12.____cpython:
-        CONFIG: linux_ppc64le_mpimpichpython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpimpichpython3.13.____cp313:
-        CONFIG: linux_ppc64le_mpimpichpython3.13.____cp313
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpimpichpython3.14.____cp314:
-        CONFIG: linux_ppc64le_mpimpichpython3.14.____cp314
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpinompipython3.10.____cpython:
-        CONFIG: linux_ppc64le_mpinompipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpinompipython3.11.____cpython:
-        CONFIG: linux_ppc64le_mpinompipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpinompipython3.12.____cpython:
-        CONFIG: linux_ppc64le_mpinompipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpinompipython3.13.____cp313:
-        CONFIG: linux_ppc64le_mpinompipython3.13.____cp313
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpinompipython3.14.____cp314:
-        CONFIG: linux_ppc64le_mpinompipython3.14.____cp314
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpiopenmpipython3.10.____cpython:
-        CONFIG: linux_ppc64le_mpiopenmpipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpiopenmpipython3.11.____cpython:
-        CONFIG: linux_ppc64le_mpiopenmpipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpiopenmpipython3.12.____cpython:
-        CONFIG: linux_ppc64le_mpiopenmpipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpiopenmpipython3.13.____cp313:
-        CONFIG: linux_ppc64le_mpiopenmpipython3.13.____cp313
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_ppc64le_mpiopenmpipython3.14.____cp314:
-        CONFIG: linux_ppc64le_mpiopenmpipython3.14.____cp314
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-    maxParallel: 28
   timeoutInMinutes: 360
   variables: {}
 
