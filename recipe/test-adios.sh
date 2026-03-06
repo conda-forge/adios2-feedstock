@@ -7,6 +7,10 @@ export OMPI_MCA_plm=isolated
 export OMPI_MCA_btl=tcp,self
 export OMPI_MCA_btl_vader_single_copy_mechanism=none
 
+if [[ "$mpi" == "nompi" ]]; then
+  exit 0
+fi
+
 cd examples/hello/helloWorld
 
 cmake $CMAKE_ARGS -B ./build
@@ -15,7 +19,5 @@ cmake --build ./build
 for name in adios2_hello_helloWorld_c adios2_hello_helloWorld adios2_hello_helloWorld_hl; do
   echo $name
   ./build/$name
-  if [[ "$mpi" != "nompi" ]]; then
-    ./build/${name}_mpi
-  fi
+  ./build/${name}_mpi
 done
