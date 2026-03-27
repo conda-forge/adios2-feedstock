@@ -30,6 +30,8 @@ package:
 source:
   url: https://github.com/ornladios/ADIOS2/archive/refs/tags/v{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - patch-install-dir.patch
 
 build:
   number: {{ build }}
