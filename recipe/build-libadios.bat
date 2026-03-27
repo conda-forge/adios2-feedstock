@@ -17,6 +17,7 @@ cmake ^
     -G "NMake Makefiles"        ^
     -DCMAKE_BUILD_TYPE=Release  ^
     -DCMAKE_VERBOSE_MAKEFILE=ON ^
+    -DCMAKE_INSTALL_PYTHONDIR=%SP_DIR% ^
     -DBUILD_SHARED_LIBS=ON      ^
     -DBUILD_TESTING=OFF         ^
     -DADIOS2_USE_MPI=OFF        ^
