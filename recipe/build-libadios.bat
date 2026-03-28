@@ -17,7 +17,6 @@ cmake ^
     -G "NMake Makefiles"        ^
     -DCMAKE_BUILD_TYPE=Release  ^
     -DCMAKE_VERBOSE_MAKEFILE=ON ^
-    -DCMAKE_INSTALL_PYTHONDIR=Lib/site-packages ^
     -DBUILD_SHARED_LIBS=ON      ^
     -DBUILD_TESTING=OFF         ^
     -DADIOS2_USE_MPI=OFF        ^
