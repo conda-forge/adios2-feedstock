@@ -3,9 +3,18 @@
 
 set -x
 
+USE_BZIP2=ON
+
 if [[ ${target_platform} =~ osx ]]; then
     CMAKE_ARGS+=" -DADIOS2_USE_Fortran=OFF"
-    CMAKE_ARGS+=" -DADIOS2_USE_BZip2=OFF"
+    USE_BZIP2=OFF
+fi
+
+# osx_64 CI runners use Apple Silicon + Rosetta 2 emulation; DILL's libffi
+# x86_64 JIT emulation segfaults under Rosetta 2. DILL_NATIVE_ONLY skips
+# libffi so FFS falls back to its non-JIT path.
+if [[ ${target_platform} == "osx-64" ]]; then
+    CMAKE_ARGS+=" -DDILL_NATIVE_ONLY=ON"
 fi
 
 # MPI variants
@@ -48,7 +57,7 @@ cmake               \
     -DADIOS2_HAVE_ZFP_CUDA=OFF                \
     -DADIOS2_INSTALL_GENERATE_CONFIG=OFF      \
     -DADIOS2_RUN_INSTALL_TEST=ON              \
-    -DADIOS2_USE_BZip2=ON                     \
+    -DADIOS2_USE_BZip2=${USE_BZIP2}           \
     -DADIOS2_USE_Campaign=OFF                 \
     -DADIOS2_USE_HDF5=ON                      \
     -DADIOS2_USE_MPI=${USE_MPI}               \

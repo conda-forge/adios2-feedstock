@@ -9,7 +9,14 @@ export OMPI_MCA_btl_vader_single_copy_mechanism=none
 
 cd examples/hello/helloWorld
 
-cmake $CMAKE_ARGS -B ./build
+MPI_ARGS=""
+if [[ "${mpi}" != "nompi" ]]; then
+    # Override the cross-compiler with the MPI wrappers so cmake's FindMPI
+    # works normally instead of failing in cross-compilation mode.
+    MPI_ARGS="-DCMAKE_C_COMPILER=${PREFIX}/bin/mpicc -DCMAKE_CXX_COMPILER=${PREFIX}/bin/mpicxx"
+fi
+
+cmake $CMAKE_ARGS $MPI_ARGS -B ./build
 cmake --build ./build
 
 for name in adios2_hello_helloWorld_c adios2_hello_helloWorld adios2_hello_helloWorld_hl; do
