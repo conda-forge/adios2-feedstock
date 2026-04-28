@@ -2,7 +2,6 @@
 cmake --install build --component adios2_tools-runtime --prefix %LIBRARY_PREFIX%
 cmake --install build --component adios2_scripts-runtime --prefix %LIBRARY_PREFIX%
 cmake --install build --component adios2_python-python --prefix %LIBRARY_PREFIX%
-
 :: python installs to Library/Lib/site-packages instead of Lib/site-packages for some reason
 :: Use xcopy+rd instead of move: move fails when the destination already exists (e.g.
 :: staging cmake --install already placed files in SP_DIR via Python3_SITELIB).
