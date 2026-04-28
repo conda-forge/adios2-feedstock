@@ -32,7 +32,6 @@ outputs:
         - ${{ compiler('cxx') }}
         - ${{ stdlib('c') }}
         - ${{ compiler('fortran') }}
-        - ${{ "gnuconfig" if unix }}
         - ${{ "ninja" if unix }}
         - ${{ "make" if unix }}
         - ${{ "pkg-config" if unix }}
@@ -88,12 +87,10 @@ outputs:
             - ${{ compiler('c') }}
             - ${{ compiler('cxx') }}
             - ${{ stdlib('c') }}
-            - ${{ compiler('fortran') }}
             - cmake
             - if: unix
               then:
                 - make
-                - ninja
         files:
           source:
             - examples/
