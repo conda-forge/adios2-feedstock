@@ -124,7 +124,7 @@ outputs:
       from: adios2-build
       run_exports: false
     build:
-      string: ${{ 'nompi' if mpi == 'nompi' else 'mpi_' + mpi }}_${{ 'py' + (python | version_to_buildstring) + '_' if python < '3.12' else '' }}h${{ hash }}_${{ build_number + (100 if mpi == 'nompi' else 0) }}
+      string: ${{ 'nompi' if mpi == 'nompi' else 'mpi_' + mpi }}_py${{ python | version_to_buildstring }}_h${{ hash }}_${{ build_number + (100 if mpi == 'nompi' else 0) }}
       script:
         file: ${{ "build-adios-py.sh" if unix else "build-adios-py.bat" }}
       skip:
