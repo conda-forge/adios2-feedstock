@@ -3,9 +3,9 @@
 
 context:
   name: adios2
-  version: 2.11.0
-  sha256: 0a2bd745e3f39745f07587e4a5f92d72f12fa0e2be305e7957bdceda03735dbf
-  build_number: 7
+  version: "2.12.1"
+  sha256: 71edd8f721448311852122fca8d83ae497b43846e5bfcdfd275dc06bb7f3d0c5
+  build_number: 0
 
 recipe:
   name: ${{ name }}
@@ -143,8 +143,8 @@ outputs:
             - python
             - cross-python_${{ target_platform }}
             - numpy
-        - if: mpi != "nompi" and build_platform != target_platform
-          then: ${{ mpi }}
+            - if: mpi != "nompi"
+              then: ${{ mpi }}
       run:
         - python
         - ${{ pin_subpackage('libadios2', exact=True) }}
