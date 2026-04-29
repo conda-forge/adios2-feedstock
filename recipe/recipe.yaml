@@ -124,13 +124,15 @@ outputs:
       from: adios2-build
       run_exports: false
     build:
-      string: ${{ 'nompi' if mpi == 'nompi' else 'mpi_' + mpi }}_py${{ python | version_to_buildstring }}_h${{ hash }}_${{ build_number + (100 if mpi == 'nompi' else 0) }}
+      string: ${{ 'nompi' if mpi == 'nompi' else 'mpi_' + mpi }}_${{ 'py' + (python | version_to_buildstring) + '_' if python < '3.12' else '' }}h${{ hash }}_${{ build_number + (100 if mpi == 'nompi' else 0) }}
       script:
         file: ${{ "build-adios-py.sh" if unix else "build-adios-py.bat" }}
       skip:
         - if: python_impl == "pypy"
           then: true
         - if: win and mpi != 'nompi'
+          then: true
+        - if: python >= "3.13"
           then: true
     requirements:
       build:
@@ -146,10 +148,16 @@ outputs:
             - if: mpi != "nompi"
               then: ${{ mpi }}
       run:
-        - python
+        - if: python < "3.12"
+          then:
+            - python
+            - "python_abi * *_cp${{ python | version_to_buildstring }}"
+        - if: python >= "3.12"
+          then:
+            - python >=3.12
+            - "python_abi * *_abi3"
         - ${{ pin_subpackage('libadios2', exact=True) }}
         - numpy
-        - "python_abi * *_cp${{ python | version_to_buildstring }}"
         - if: mpi != "nompi"
           then:
             - ${{ mpi }}
