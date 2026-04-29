@@ -8,23 +8,8 @@ jobs:
     vmImage: $(VMIMAGE)
   strategy:
     matrix:
-      osx_64_hdf51.14.6mpimpichpython3.10.____cpython:
-        CONFIG: osx_64_hdf51.14.6mpimpichpython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
-      osx_64_hdf51.14.6mpimpichpython3.11.____cpython:
-        CONFIG: osx_64_hdf51.14.6mpimpichpython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
       osx_64_hdf51.14.6mpimpichpython3.12.____cpython:
         CONFIG: osx_64_hdf51.14.6mpimpichpython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
-      osx_64_hdf51.14.6mpimpichpython3.13.____cp313:
-        CONFIG: osx_64_hdf51.14.6mpimpichpython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         store_build_artifacts: false
@@ -33,23 +18,8 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         store_build_artifacts: false
-      osx_64_hdf51.14.6mpinompipython3.10.____cpython:
-        CONFIG: osx_64_hdf51.14.6mpinompipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
-      osx_64_hdf51.14.6mpinompipython3.11.____cpython:
-        CONFIG: osx_64_hdf51.14.6mpinompipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
       osx_64_hdf51.14.6mpinompipython3.12.____cpython:
         CONFIG: osx_64_hdf51.14.6mpinompipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
-      osx_64_hdf51.14.6mpinompipython3.13.____cp313:
-        CONFIG: osx_64_hdf51.14.6mpinompipython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         store_build_artifacts: false
@@ -58,23 +28,8 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         store_build_artifacts: false
-      osx_64_hdf51.14.6mpiopenmpipython3.10.____cpython:
-        CONFIG: osx_64_hdf51.14.6mpiopenmpipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
-      osx_64_hdf51.14.6mpiopenmpipython3.11.____cpython:
-        CONFIG: osx_64_hdf51.14.6mpiopenmpipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
       osx_64_hdf51.14.6mpiopenmpipython3.12.____cpython:
         CONFIG: osx_64_hdf51.14.6mpiopenmpipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
-      osx_64_hdf51.14.6mpiopenmpipython3.13.____cp313:
-        CONFIG: osx_64_hdf51.14.6mpiopenmpipython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         store_build_artifacts: false
@@ -83,23 +38,8 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         store_build_artifacts: false
-      osx_64_hdf52mpimpichpython3.10.____cpython:
-        CONFIG: osx_64_hdf52mpimpichpython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
-      osx_64_hdf52mpimpichpython3.11.____cpython:
-        CONFIG: osx_64_hdf52mpimpichpython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
       osx_64_hdf52mpimpichpython3.12.____cpython:
         CONFIG: osx_64_hdf52mpimpichpython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
-      osx_64_hdf52mpimpichpython3.13.____cp313:
-        CONFIG: osx_64_hdf52mpimpichpython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         store_build_artifacts: false
@@ -108,23 +48,8 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         store_build_artifacts: false
-      osx_64_hdf52mpinompipython3.10.____cpython:
-        CONFIG: osx_64_hdf52mpinompipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
-      osx_64_hdf52mpinompipython3.11.____cpython:
-        CONFIG: osx_64_hdf52mpinompipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
       osx_64_hdf52mpinompipython3.12.____cpython:
         CONFIG: osx_64_hdf52mpinompipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
-      osx_64_hdf52mpinompipython3.13.____cp313:
-        CONFIG: osx_64_hdf52mpinompipython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         store_build_artifacts: false
@@ -133,23 +58,8 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         store_build_artifacts: false
-      osx_64_hdf52mpiopenmpipython3.10.____cpython:
-        CONFIG: osx_64_hdf52mpiopenmpipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
-      osx_64_hdf52mpiopenmpipython3.11.____cpython:
-        CONFIG: osx_64_hdf52mpiopenmpipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
       osx_64_hdf52mpiopenmpipython3.12.____cpython:
         CONFIG: osx_64_hdf52mpiopenmpipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15
-        store_build_artifacts: false
-      osx_64_hdf52mpiopenmpipython3.13.____cp313:
-        CONFIG: osx_64_hdf52mpiopenmpipython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         store_build_artifacts: false
@@ -158,23 +68,8 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15
         store_build_artifacts: false
-      osx_arm64_hdf51.14.6mpimpichpython3.10.____cpython:
-        CONFIG: osx_arm64_hdf51.14.6mpimpichpython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
-      osx_arm64_hdf51.14.6mpimpichpython3.11.____cpython:
-        CONFIG: osx_arm64_hdf51.14.6mpimpichpython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
       osx_arm64_hdf51.14.6mpimpichpython3.12.____cpython:
         CONFIG: osx_arm64_hdf51.14.6mpimpichpython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
-      osx_arm64_hdf51.14.6mpimpichpython3.13.____cp313:
-        CONFIG: osx_arm64_hdf51.14.6mpimpichpython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15-arm64
         store_build_artifacts: false
@@ -183,23 +78,8 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15-arm64
         store_build_artifacts: false
-      osx_arm64_hdf51.14.6mpinompipython3.10.____cpython:
-        CONFIG: osx_arm64_hdf51.14.6mpinompipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
-      osx_arm64_hdf51.14.6mpinompipython3.11.____cpython:
-        CONFIG: osx_arm64_hdf51.14.6mpinompipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
       osx_arm64_hdf51.14.6mpinompipython3.12.____cpython:
         CONFIG: osx_arm64_hdf51.14.6mpinompipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
-      osx_arm64_hdf51.14.6mpinompipython3.13.____cp313:
-        CONFIG: osx_arm64_hdf51.14.6mpinompipython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15-arm64
         store_build_artifacts: false
@@ -208,23 +88,8 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15-arm64
         store_build_artifacts: false
-      osx_arm64_hdf51.14.6mpiopenmpipython3.10.____cpython:
-        CONFIG: osx_arm64_hdf51.14.6mpiopenmpipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
-      osx_arm64_hdf51.14.6mpiopenmpipython3.11.____cpython:
-        CONFIG: osx_arm64_hdf51.14.6mpiopenmpipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
       osx_arm64_hdf51.14.6mpiopenmpipython3.12.____cpython:
         CONFIG: osx_arm64_hdf51.14.6mpiopenmpipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
-      osx_arm64_hdf51.14.6mpiopenmpipython3.13.____cp313:
-        CONFIG: osx_arm64_hdf51.14.6mpiopenmpipython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15-arm64
         store_build_artifacts: false
@@ -233,23 +98,8 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15-arm64
         store_build_artifacts: false
-      osx_arm64_hdf52mpimpichpython3.10.____cpython:
-        CONFIG: osx_arm64_hdf52mpimpichpython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
-      osx_arm64_hdf52mpimpichpython3.11.____cpython:
-        CONFIG: osx_arm64_hdf52mpimpichpython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
       osx_arm64_hdf52mpimpichpython3.12.____cpython:
         CONFIG: osx_arm64_hdf52mpimpichpython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
-      osx_arm64_hdf52mpimpichpython3.13.____cp313:
-        CONFIG: osx_arm64_hdf52mpimpichpython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15-arm64
         store_build_artifacts: false
@@ -258,23 +108,8 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15-arm64
         store_build_artifacts: false
-      osx_arm64_hdf52mpinompipython3.10.____cpython:
-        CONFIG: osx_arm64_hdf52mpinompipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
-      osx_arm64_hdf52mpinompipython3.11.____cpython:
-        CONFIG: osx_arm64_hdf52mpinompipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
       osx_arm64_hdf52mpinompipython3.12.____cpython:
         CONFIG: osx_arm64_hdf52mpinompipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
-      osx_arm64_hdf52mpinompipython3.13.____cp313:
-        CONFIG: osx_arm64_hdf52mpinompipython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15-arm64
         store_build_artifacts: false
@@ -283,23 +118,8 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15-arm64
         store_build_artifacts: false
-      osx_arm64_hdf52mpiopenmpipython3.10.____cpython:
-        CONFIG: osx_arm64_hdf52mpiopenmpipython3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
-      osx_arm64_hdf52mpiopenmpipython3.11.____cpython:
-        CONFIG: osx_arm64_hdf52mpiopenmpipython3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
       osx_arm64_hdf52mpiopenmpipython3.12.____cpython:
         CONFIG: osx_arm64_hdf52mpiopenmpipython3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
-        VMIMAGE: macOS-15-arm64
-        store_build_artifacts: false
-      osx_arm64_hdf52mpiopenmpipython3.13.____cp313:
-        CONFIG: osx_arm64_hdf52mpiopenmpipython3.13.____cp313
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15-arm64
         store_build_artifacts: false
@@ -308,7 +128,6 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         VMIMAGE: macOS-15-arm64
         store_build_artifacts: false
-    maxParallel: 43
   timeoutInMinutes: 360
   variables: {}
 

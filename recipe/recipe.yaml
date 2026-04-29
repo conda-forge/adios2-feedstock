@@ -132,6 +132,8 @@ outputs:
           then: true
         - if: win and mpi != 'nompi'
           then: true
+      python:
+        version_independent: true
     requirements:
       build:
         - ${{ compiler('c') }}
@@ -145,11 +147,12 @@ outputs:
             - numpy
             - if: mpi != "nompi"
               then: ${{ mpi }}
+      host:
+        - python-abi3 ${{ python_min }}.*
       run:
-        - python
+        - python >=${{ python_min }}
         - ${{ pin_subpackage('libadios2', exact=True) }}
         - numpy
-        - "python_abi * *_cp${{ python | version_to_buildstring }}"
         - if: mpi != "nompi"
           then:
             - ${{ mpi }}
