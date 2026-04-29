@@ -40,8 +40,8 @@ if [[ "${CONDA_BUILD_CROSS_COMPILATION}" == "1" ]]; then
     if [[ ${mpi} != "nompi" ]]; then
         CMAKE_ARGS+=" -DADIOS2_SST_HAVE_MPI_DP_HEURISTICS_PASSED=ON"
     fi
-    CMAKE_ARGS+=" -DRUN_RESULT=ON"
-    CMAKE_ARGS+=" -DRUN_RESULT__TRYRUN_OUTPUT=Format_IEEE_754_littleendian"
+    CMAKE_ARGS+=" -DFFS_FLOAT_FORMAT_TEST=ON"
+    CMAKE_ARGS+=" -DFFS_FLOAT_FORMAT_TEST__TRYRUN_OUTPUT=Format_IEEE_754_littleendian"
 fi
 
 # shellcheck disable=SC2086
