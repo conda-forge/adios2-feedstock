@@ -5,7 +5,7 @@ context:
   name: adios2
   version: "2.12.1"
   sha256: 71edd8f721448311852122fca8d83ae497b43846e5bfcdfd275dc06bb7f3d0c5
-  build_number: 0
+  build_number: 1
 
 recipe:
   name: ${{ name }}
