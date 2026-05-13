@@ -1,0 +1,13 @@
+diff --git a/source/utils/CMakeLists.txt b/source/utils/CMakeLists.txt
+index df79dfcbc..c29a4187b 100644
+--- a/source/utils/CMakeLists.txt
++++ b/source/utils/CMakeLists.txt
+@@ -40,7 +40,7 @@ file(GENERATE
+ )
+ 
+ # BPCMP
+-if(ADIOS2_HAVE_Python)
++if(FALSE)
+   add_subdirectory(bpcmp)
+ 
+   configure_file(

@@ -5,7 +5,7 @@ context:
   name: adios2
   version: "2.12.1"
   sha256: 71edd8f721448311852122fca8d83ae497b43846e5bfcdfd275dc06bb7f3d0c5
-  build_number: 1
+  build_number: 2
 
 recipe:
   name: ${{ name }}
@@ -14,6 +14,8 @@ recipe:
 source:
   url: https://github.com/ornladios/ADIOS2/archive/v${{ version }}.tar.gz
   sha256: ${{ sha256 }}
+  patches:
+    - patches/disable-bmpcp-py.patch
 
 build:
   number: ${{ build_number }}
