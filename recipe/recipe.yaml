@@ -14,6 +14,8 @@ recipe:
 source:
   url: https://github.com/ornladios/ADIOS2/archive/v${{ version }}.tar.gz
   sha256: ${{ sha256 }}
+  patches:
+    - patches/disable-bmpcp-py.patch
 
 build:
   number: ${{ build_number }}
