@@ -31,7 +31,7 @@ libffi:
 libpng:
 - '1.6'
 libsodium:
-- 1.0.21
+- 1.0.22
 mpi:
 - nompi
 mpich:
