@@ -33,7 +33,7 @@ libffi:
 libpng:
 - '1.6'
 libsodium:
-- 1.0.21
+- 1.0.22
 macos_machine:
 - x86_64-apple-darwin13.4.0
 mpi:
