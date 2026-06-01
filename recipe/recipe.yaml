@@ -60,6 +60,7 @@ outputs:
         - zfp
         - ${{ "ucx" if linux and mpi != "nompi" and target_platform != "linux-ppc64le" }}
         - zlib
+        - sqlite
       ignore_run_exports:
         from_package:
           - python
