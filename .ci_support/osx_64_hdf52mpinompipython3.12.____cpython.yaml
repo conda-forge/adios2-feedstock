@@ -5,11 +5,11 @@ MACOSX_SDK_VERSION:
 bzip2:
 - '1'
 c_blosc2:
-- '3.2'
+- '3.3'
 c_compiler:
 - clang
 c_compiler_version:
-- '19'
+- '21'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -21,17 +21,17 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '19'
+- '21'
 fortran_compiler:
 - gfortran
 fortran_compiler_version:
-- '14'
+- '15'
 hdf5:
 - '2'
 libcurl:
 - '8'
 libffi:
-- '3.5'
+- '3.7'
 libpng:
 - '1.6'
 libsodium:
