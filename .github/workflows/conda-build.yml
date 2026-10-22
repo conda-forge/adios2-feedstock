@@ -599,7 +599,7 @@ jobs:
             runs_on: ['ubuntu-24.04-arm']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf51.14.6mpimpichpython3.11.____cpython
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -611,7 +611,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf51.14.6mpimpichpython3.12.____cpython
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -623,7 +623,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf51.14.6mpimpichpython3.13.____cp313
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -635,7 +635,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf51.14.6mpimpichpython3.14.____cp314
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -647,7 +647,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf51.14.6mpinompipython3.11.____cpython
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -659,7 +659,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf51.14.6mpinompipython3.12.____cpython
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -671,7 +671,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf51.14.6mpinompipython3.13.____cp313
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -683,7 +683,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf51.14.6mpinompipython3.14.____cp314
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -695,7 +695,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf51.14.6mpiopenmpipython3.11.____cpython
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -707,7 +707,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf51.14.6mpiopenmpipython3.12.____cpython
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -719,7 +719,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf51.14.6mpiopenmpipython3.13.____cp313
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -731,7 +731,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf51.14.6mpiopenmpipython3.14.____cp314
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -743,7 +743,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf52mpimpichpython3.11.____cpython
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -755,7 +755,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf52mpimpichpython3.12.____cpython
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -767,7 +767,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf52mpimpichpython3.13.____cp313
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -779,7 +779,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf52mpimpichpython3.14.____cp314
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -791,7 +791,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf52mpinompipython3.11.____cpython
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -803,7 +803,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf52mpinompipython3.12.____cpython
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -815,7 +815,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf52mpinompipython3.13.____cp313
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -827,7 +827,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf52mpinompipython3.14.____cp314
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -839,7 +839,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf52mpiopenmpipython3.11.____cpython
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -851,7 +851,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf52mpiopenmpipython3.12.____cpython
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -863,7 +863,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf52mpiopenmpipython3.13.____cp313
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -875,7 +875,7 @@ jobs:
             runs_on: ['ubuntu-latest']
             tools_install_dir: ~/miniforge3
           - CONFIG: linux_ppc64le_hdf52mpiopenmpipython3.14.____cp314
-            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-ppc64le:alma10
+            DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma10
             STORE_BUILD_ARTIFACTS: False
             UPLOAD_PACKAGES: True
             build_workspace_dir: build_artifacts
@@ -992,6 +992,8 @@ jobs:
       run: |
         if [[ "$(uname -m)" == "x86_64" ]]; then
           docker run --rm --privileged multiarch/qemu-user-static:register --reset --credential yes
+        elif [[ "$(uname -m)" == "aarch64" ]]; then
+          docker run --rm --privileged --entrypoint /opt/docker/bin/register-binfmt ${{ matrix.DOCKER_IMAGE }} aarch64
         fi
 
     - name: Build on Linux
