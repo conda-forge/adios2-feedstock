@@ -64,6 +64,7 @@ cmake               \
     -DADIOS2_USE_OPENSSL=ON                   \
     -DADIOS2_USE_PNG=ON                       \
     -DADIOS2_USE_Python=ON                    \
+    -DADIOS2_USE_PythonStableABI=ON           \
     -DADIOS2_USE_ZeroMQ=ON                    \
     -DADIOS2_USE_ZFP=ON                       \
     -DBUILD_SHARED_LIBS=ON                    \

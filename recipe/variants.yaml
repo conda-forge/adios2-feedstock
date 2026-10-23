@@ -4,3 +4,19 @@ mpi:
   - mpich
   - openmpi
 
+# ABI3: the bindings need Python >= 3.12 (nanobind stable ABI), so raise
+# python_min above the conda-forge default and build only the python_min variant
+python_min:
+  - "3.12"
+python:
+  - "3.12.* *_cpython"
+  - "3.13.* *_cp313"
+  - "3.14.* *_cp314"
+# strings, to match the values conda-smithy passes for is_abi3
+is_python_min:
+  - "true"
+  - "false"
+  - "false"
+zip_keys:
+  - - python
+    - is_python_min
