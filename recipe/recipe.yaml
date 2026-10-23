@@ -5,7 +5,7 @@ context:
   name: adios2
   version: "2.12.1"
   sha256: 71edd8f721448311852122fca8d83ae497b43846e5bfcdfd275dc06bb7f3d0c5
-  build: 10
+  build: 11
   mpi_prefix: ${{ 'nompi' if mpi == 'nompi' else 'mpi_' + mpi }}
   build_number: ${{ build + (100 if mpi == 'nompi' else 0) }}
 
@@ -195,6 +195,7 @@ outputs:
             then:
               - Library/bin/
               - Lib/site-packages/
+              - lib/python/site-packages/
         exclude:
           - if: win
             then:
