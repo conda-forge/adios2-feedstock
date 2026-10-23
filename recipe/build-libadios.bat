@@ -64,3 +64,11 @@ if exist "%LIBRARY_LIB%\site-packages\adios2" (
     rd /S /Q "%LIBRARY_LIB%\site-packages\adios2"
     if errorlevel 1 exit 1
 )
+
+:: python 3.15 on win: site-packages is lib/python/site-packages and cmake installs there
+if exist "%LIBRARY_LIB%\python\site-packages\adios2" (
+    xcopy /E /I /Y "%LIBRARY_LIB%\python\site-packages\adios2" "%SP_DIR%\adios2"
+    if errorlevel 1 exit 1
+    rd /S /Q "%LIBRARY_LIB%\python"
+    if errorlevel 1 exit 1
+)
