@@ -33,6 +33,7 @@ cmake ^
     -DADIOS2_USE_PNG=ON         ^
     -DADIOS2_USE_Profiling=OFF  ^
     -DADIOS2_USE_Python=ON      ^
+    -DADIOS2_USE_PythonStableABI=ON ^
     -DADIOS2_USE_ZeroMQ=OFF     ^
     -DADIOS2_USE_ZFP=ON         ^
     -DADIOS2_HAVE_ZFP_CUDA=OFF  ^

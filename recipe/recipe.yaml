@@ -5,7 +5,7 @@ context:
   name: adios2
   version: "2.12.1"
   sha256: 71edd8f721448311852122fca8d83ae497b43846e5bfcdfd275dc06bb7f3d0c5
-  build: 11
+  build: 12
   mpi_prefix: ${{ 'nompi' if mpi == 'nompi' else 'mpi_' + mpi }}
   build_number: ${{ build + (100 if mpi == 'nompi' else 0) }}
 
@@ -89,6 +89,8 @@ outputs:
         - if: python_impl == "pypy"
           then: true
         - if: win and mpi != 'nompi'
+          then: true
+        - if: is_abi3 and not is_python_min
           then: true
       files:
         include:
@@ -185,6 +187,8 @@ outputs:
           then: true
         - if: win and mpi != 'nompi'
           then: true
+        - if: is_abi3 and not is_python_min
+          then: true
       files:
         include:
           - if: unix
@@ -200,24 +204,69 @@ outputs:
           - if: win
             then:
               - Library/bin/*.dll
+      python:
+        version_independent: ${{ is_abi3 }}
     requirements:
+      build:
+        - ${{ compiler('c') }}
+        - ${{ compiler('cxx') }}
+        - ${{ stdlib('c') }}
+        - cmake
+        - if: build_platform != target_platform
+          then:
+            - python
+            - cross-python_${{ target_platform }}
+            - numpy
+            - if: mpi != "nompi"
+              then: ${{ mpi }}
+      host:
+        - if: is_abi3
+          then: python-abi3
+        - python
       run:
-        # inherits most run dependencies from staging run_exports
-        # overdepends somewhat, but no matter because pinned libadios2
-        # links everything overdepended upon
+        - python
         - ${{ pin_subpackage('libadios2', exact=True) }}
+        - numpy
+        - if: mpi != "nompi"
+          then:
+            - ${{ mpi }}
+            - mpi4py
       run_exports:
         # Downstream packages that host adios2 get adios2 (Python + tools) at runtime
         - ${{ pin_subpackage('adios2', lower_bound='x.x.x', upper_bound='x.x.x') }}
         - adios2 * ${{ mpi_prefix }}_*
     tests:
       - package_contents:
+          # abi3 (version independent) packages keep scripts in python-scripts/
           bin:
-            - bp5dbg
-            - bpls
+            - if: win
+              then:
+                - bp5dbg
+                - bpls
+          files:
+            - if: unix
+              then:
+                - python-scripts/bp5dbg
+                - python-scripts/bpls
           include:
             not_exists:
               - '*'
+      - python:
+          imports:
+            - adios2
+          python_version:
+            - if: is_abi3
+              then: ${{ python_min }}.*
+            - "*"
+      - if: is_abi3
+        then:
+          requirements:
+            run:
+              - abi3audit
+          script:
+            - if: unix
+              then: abi3audit $SP_DIR/adios2/bindings/adios2_bindings.abi3.so -s -v --assume-minimum-abi3 ${{ python_min }}
+              else: abi3audit %SP_DIR%/adios2/bindings/adios2_bindings.pyd -s -v --assume-minimum-abi3 ${{ python_min }}
       - script:
           - python -c "import adios2; print(adios2.__version__)"
           - if: unix
