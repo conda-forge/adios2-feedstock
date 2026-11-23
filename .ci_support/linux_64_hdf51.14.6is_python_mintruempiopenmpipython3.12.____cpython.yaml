@@ -1,7 +1,9 @@
+DOCKER_PLATFORM:
+- linux/amd64
 bzip2:
 - '1'
 c_blosc2:
-- '3.3'
+- '3.7'
 c_compiler:
 - gcc
 c_compiler_version:
