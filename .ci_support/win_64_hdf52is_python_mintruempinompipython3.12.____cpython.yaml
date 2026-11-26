@@ -1,7 +1,7 @@
 bzip2:
 - '1'
 c_blosc2:
-- '3.8'
+- '3.9'
 c_compiler:
 - vs
 c_compiler_version:
